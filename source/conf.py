@@ -16,9 +16,9 @@ sys.path.insert(0, os.path.abspath("./_ext"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'GNUstep Tutorials'
-copyright = '2024, GNUstep contributors'
-author = 'GNUstep contributors'
+project = 'Titan Robotics #2022 Documentation'
+copyright = '2024, Titan Robotics #2022'
+author = 'Titan Robotics #2022'
 
 # The full version, including alpha/beta/rc tags
 release = '2024'
@@ -33,7 +33,7 @@ extensions = [
     'myst_parser', # Markdown support
     'sphinx_design', # Grids, cards, icons, etc.
     'sphinx_copybutton', # Copy button to the right of code blocks
-    'makedomain', # Domain to document GNUstep Make
+    'makedomain', # Domain
 ]
 myst_enable_extensions = [
     'colon_fence'
