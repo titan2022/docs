@@ -7,9 +7,9 @@
 <meta content="white" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="black" media="(prefers-color-scheme: dark)" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Resources | Titan Robotics 2024 documentation</title>
-<meta content="Resources | Titan Robotics 2024 documentation" property="og:title"/>
-<meta content="Resources | Titan Robotics 2024 documentation" name="twitter:title"/>
+<title>Style guide | Titan Robotics 2024 documentation</title>
+<meta content="Style guide | Titan Robotics 2024 documentation" property="og:title"/>
+<meta content="Style guide | Titan Robotics 2024 documentation" name="twitter:title"/>
 <link href="../_static/pygments.css?v=8d216cef" rel="stylesheet" type="text/css"/>
 <link href="../_static/theme.css?v=ecdfb4fc" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -17,8 +17,8 @@
 <link href="../_static/awesome-sphinx-design.css?v=a54cf077" rel="stylesheet" type="text/css"/>
 <link href="../search.html" rel="search" title="Search"/>
 <link href="../genindex.html" rel="index" title="Index"/>
-<link href="StyleGuide.html" rel="next" title="Style guide"/>
-<link href="../index.html" rel="prev" title="Titan Robotics #2022 Documentation"/>
+<link href="1_JavaProgramming/index.html" rel="next" title="1 - Java Programming"/>
+<link href="index.html" rel="prev" title="Resources"/>
 <script>
     <!-- Prevent Flash of wrong theme -->
       const userPreference = localStorage.getItem('darkMode');
@@ -73,8 +73,8 @@
 <div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="current reference internal expandable" href="#">Resources<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
-<li class="toctree-l2"><a class="reference internal" href="StyleGuide.html">Style guide</a></li>
+<li class="toctree-l1 current" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="index.html">Resources<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul class="current" x-show="expanded">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Style guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1_JavaProgramming/index.html">1 - Java Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2_CppProgramming/index.html">2 - C++ Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_Coprocessors/index.html">3 - Coprocessors</a></li>
@@ -108,30 +108,80 @@
 <path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
 </svg>
 </a>
-<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Resources</span>
+<div class="mr-1">/</div><a class="hover:text-foreground overflow-hidden text-ellipsis whitespace-nowrap" href="index.html">Resources</a>
+<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Style guide</span>
 </nav>
 <div id="content" role="main">
-<section id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"><span>#</span></a></h1>
-<section id="documentation-and-other-websites">
-<h2>Documentation and other websites<a class="headerlink" href="#documentation-and-other-websites" title="Permalink to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#documentation-and-other-websites'"><span>#</span></a></h2>
-<p>Use the following resources to learn more about FRC programming and other topics related to the team. These are simply recommendations from the team at the time of writting and might be irrelevant even a short time after. Always check updated sources.</p>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="StyleGuide.html">Style guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_JavaProgramming/index.html">1 - Java Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_CppProgramming/index.html">2 - C++ Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Coprocessors/index.html">3 - Coprocessors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_Linux/index.html">4 - Linux</a></li>
+<section id="style-guide">
+<h1>Style guide<a class="headerlink" href="#style-guide" title="Permalink to this heading"><span>#</span></a></h1>
+<p>This guide aims to keep our team’s code style consistent, so please follow it as much as possible. Access casing for variables and methods is especially important since a lot of code references code that someone else wrote.</p>
+<section id="naming">
+<h2>Naming<a class="headerlink" href="#naming" title="Permalink to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#naming'"><span>#</span></a></h2>
+<section id="java">
+<h3>Java<a class="headerlink" href="#java" title="Permalink to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#java'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>Public variables: PascalCase</p></li>
+<li><p>Public/private top level constant variables: <code class="docutils literal notranslate"><span class="pre">MACRO_CASE</span></code></p></li>
+<li><p>Private top level members: <code class="docutils literal notranslate"><span class="pre">m_camelCase</span></code></p></li>
+<li><p>Private local (including constant) variables: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code></p></li>
+<li><p>Enums: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Methods: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code></p></li>
+<li><p>Classes: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Class files: <code class="docutils literal notranslate"><span class="pre">PascalCase.java</span></code></p></li>
+<li><p>Method files: <code class="docutils literal notranslate"><span class="pre">camelCase.java</span></code></p></li>
+<li><p>Test files: <code class="docutils literal notranslate"><span class="pre">PascalCaseTest.java</span></code></p></li>
+<li><p>Subsystem classes and files: <code class="docutils literal notranslate"><span class="pre">PascalCaseSubsystem.java</span></code></p></li>
+<li><p>Abstract subsystem classes and files: <code class="docutils literal notranslate"><span class="pre">PascalCaseSubsystem.java</span></code></p></li>
+<li><p>Command classes and files: <code class="docutils literal notranslate"><span class="pre">PascalCaseCommand.java</span></code></p></li>
 </ul>
-</div>
+</section>
+<section id="c">
+<h3>C++<a class="headerlink" href="#c" title="Permalink to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#c'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>Public variables: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Public/private top level constant variables: <code class="docutils literal notranslate"><span class="pre">MACRO_CASE</span></code></p></li>
+<li><p>Private top level members: <code class="docutils literal notranslate"><span class="pre">m_camelCase</span></code></p></li>
+<li><p>Private local (including constant) variables: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code></p></li>
+<li><p>Enums: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Methods: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code></p></li>
+<li><p>Classes: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Class files: <code class="docutils literal notranslate"><span class="pre">PascalCase.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">PascalCase.hpp</span></code></p></li>
+<li><p>Method files: <code class="docutils literal notranslate"><span class="pre">camelCase.cpp</span></code></p></li>
+<li><p>Test files: <code class="docutils literal notranslate"><span class="pre">test_camelCase.cpp</span></code></p></li>
+<li><p>CMake modules: <code class="docutils literal notranslate"><span class="pre">PascalCase.cmake</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#structure'"><span>#</span></a></h2>
+<p>The following outlines the file structure in a WPILib projecct.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subsystems</span></code> folder</p>
+<ul>
+<li><p>subfolders grouping related subsystems (e.g. drive)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commands</span></code> folder</p>
+<ul>
+<li><p>subfolders grouping related subsystems (e.g. arm)</p></li>
+<li><p>one <code class="docutils literal notranslate"><span class="pre">auto</span></code> folder for auto related commands</p></li>
+</ul>
+</li>
+<li><p>Auto folder for full auto routines (not PathPlanner)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utils</span></code> folder for reused code</p></li>
+<li><p>Follow <a class="reference external" href="https://pathplanner.dev/home.html">PathPlanner documentation</a> for PathPlanner structure</p></li>
+</ul>
 </section>
 </section>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#documentation-and-other-websites'" class="reference internal" href="#documentation-and-other-websites">Documentation and other websites</a></li>
+<li><a :data-current="activeSection === '#naming'" class="reference internal" href="#naming">Naming</a><ul>
+<li><a :data-current="activeSection === '#java'" class="reference internal" href="#java">Java</a></li>
+<li><a :data-current="activeSection === '#c'" class="reference internal" href="#c">C++</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#structure'" class="reference internal" href="#structure">Structure</a></li>
 </ul>
 </div>
 </aside>

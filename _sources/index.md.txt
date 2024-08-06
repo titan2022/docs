@@ -6,4 +6,6 @@ caption: Contents
 titlesonly: true
 ---     
 Resources/index.md
+TitanAlgorithms/index.md
+TitanProcessing/index.md
 ```
