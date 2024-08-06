@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath("./_ext"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Titan Robotics #2022 Documentation'
+project = 'Titan Robotics'
 copyright = '2024, Titan Robotics #2022'
 author = 'Titan Robotics #2022'
 
@@ -53,7 +53,8 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'furo'
+html_permalinks_icon = '<span>#</span>'
+html_theme = 'sphinxawesome_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
