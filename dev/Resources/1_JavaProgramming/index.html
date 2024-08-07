@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="2 - C++ Programming" href="../2_CppProgramming/index.html" /><link rel="prev" title="Style guide" href="../StyleGuide.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>1 - Java Programming - Titan Robotics 2024 documentation</title>
+        <title>Java / roboRIO Programming - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -240,7 +240,7 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../StyleGuide.html">Style guide</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">1 - Java Programming</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Java / roboRIO Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_CppProgramming/index.html">2 - C++ Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Coprocessors/index.html">3 - Coprocessors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4_Linux/index.html">4 - Linux</a></li>
@@ -298,11 +298,34 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="java-programming">
-<h1>1 - Java Programming<a class="headerlink" href="#java-programming" title="Permalink to this heading">¶</a></h1>
+          <section id="java-roborio-programming">
+<h1>Java / roboRIO Programming<a class="headerlink" href="#java-roborio-programming" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p>The <a class="reference external" href="https://docs.wpilib.org/en/stable/">official WPILib documentation</a> has the most amount of content regarding FRC programming. Reading through the entire Wiki will set you ahead of majority of FRC programmers. Some components do not have official WPILib support and contain their documentation externally, such as <a class="reference external" href="https://v6.docs.ctr-electronics.com/en/stable/">Phoneix 6</a> and <a class="reference external" href="https://pdocs.kauailabs.com/navx-mxp/">NavX2</a></p>
+<p>The <a class="reference external" href="https://docs.wpilib.org/en/stable/">official WPILib documentation</a> has the most amount of content regarding FRC programming. Reading through the entire Wiki will set you ahead of majority of FRC programmers. Some components do not have official WPILib support and contain their documentation externally, such as <a class="reference external" href="https://v6.docs.ctr-electronics.com/en/stable/">Phoenix 6</a> and <a class="reference external" href="https://pdocs.kauailabs.com/navx-mxp/">NavX2</a></p>
+</section>
+<section id="library-guides">
+<h2>Library guides<a class="headerlink" href="#library-guides" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>WPILib</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/index.html">Basic Programming</a></p></li>
+<li><p><a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html">Command-Based Programming</a></p></li>
+<li><p><a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://v6.docs.ctr-electronics.com/en/stable/index.html">CTRE Phoenix 6</a></p></li>
+<li><p><a class="reference external" href="https://pathplanner.dev/home.html">PathPlanner</a></p></li>
+</ul>
+</section>
+<section id="api-references">
+<h2>API references<a class="headerlink" href="#api-references" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib (<code class="docutils literal notranslate"><span class="pre">edu.wpi.first</span></code>)</a></p></li>
+<li><p><a class="reference external" href="https://api.ctr-electronics.com/phoenix6/release/java/">CTRE Phoenix 6 (<code class="docutils literal notranslate"><span class="pre">com.ctre.phoenix6</span></code>)</a></p></li>
+<li><p><a class="reference external" href="https://pathplanner.dev/api/java/">PathPlannerLib (<code class="docutils literal notranslate"><span class="pre">com.pathplanner.lib</span></code>)</a></p></li>
+<li><p><a class="reference external" href="https://codedocs.revrobotics.com/java/">FRC-REVLib (<code class="docutils literal notranslate"><span class="pre">com.revrobotics</span></code>)</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -361,8 +384,10 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">1 - Java Programming</a><ul>
+<li><a class="reference internal" href="#">Java / roboRIO Programming</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#library-guides">Library guides</a></li>
+<li><a class="reference internal" href="#api-references">API references</a></li>
 </ul>
 </li>
 </ul>
