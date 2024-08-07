@@ -1,0 +1,555 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Lesson 3: Tank Drive Simulation" href="../TankDriveSimulation/index.html" /><link rel="prev" title="Color-based segmentation in OpenCV Python: Tutorial" href="../OpenCV_ColorSegmentation/Tutorial.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>Lesson 2: Java Basics - Titan Robotics 2024 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Titan Robotics 2024 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Titan Robotics 2024 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Preseason Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Preseason Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Overview/index.html">Lesson 1: Setup, Strategy, Overview (All-Team)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Lesson 1: Setup, Strategy, Overview (All-Team)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../LEDProgramming/index.html">LED Programming</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of LED Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../LEDProgramming/Tutorial.html">LED Programming: Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../OpenCV_ColorSegmentation/index.html">Color-based segmentation in OpenCV Python</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Color-based segmentation in OpenCV Python</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../OpenCV_ColorSegmentation/Tutorial.html">Color-based segmentation in OpenCV Python: Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Lesson 2: Java Basics</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../TankDriveSimulation/index.html">Lesson 3: Tank Drive Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Lesson 3: Tank Drive Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../TankDriveSimulation/Tutorial.html">Tank Drive Simulation: Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../AutonomousSimulation/index.html">Lesson 4: Autonomous Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Lesson 4: Autonomous Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../AutonomousSimulation/Tutorial.html">Arm Simulation: Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ArmSimulation/index.html">Lesson 5: Arm Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Lesson 5: Arm Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ArmSimulation/Tutorial.html">Arm Simulation: Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Mock1/index.html">Lesson 6: Mock Season Part 1—Subsystems/Commands</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Lesson 6: Mock Season Part 1—Subsystems/Commands</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Mock2/index.html">Lesson 7: Mock Season Part 2—Autonomous</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Lesson 7: Mock Season Part 2—Autonomous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../2024CodeOverview/index.html">Lesson 8: 2024 Code overview</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Lesson 8: 2024 Code overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Resources/index.html">Resources</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Resources/StyleGuide.html">Style guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Resources/1_JavaProgramming/index.html">1 - Java Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Resources/2_CppProgramming/index.html">2 - C++ Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Resources/3_Coprocessors/index.html">3 - Coprocessors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Resources/4_Linux/index.html">4 - Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../TitanProcessing/index.html">Titan Processing</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../TitanProcessing/1_Installation/index.html">1 - Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TitanProcessing/2_AprilTags/index.html">2 - AprilTag Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TitanProcessing/3_Localization/index.html">3 - Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../TitanProcessing/4_Networking/index.html">4 - Networking</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/PreseasonTraining/JavaBasics/index.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/PreseasonTraining/JavaBasics/index.md" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="lesson-2-java-basics">
+<h1>Lesson 2: Java Basics<a class="headerlink" href="#lesson-2-java-basics" title="Permalink to this heading">¶</a></h1>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>What is Java</p>
+<ul>
+<li><p>A JIT (compiled “Just-In-Time”) language</p>
+<ul>
+<li><p>Compiled into Java bytecode</p></li>
+<li><p>Then bytecode is translated into machine code on target platform</p></li>
+<li><p>Makes code more cross-platform than C/C++, which is directly compiled</p></li>
+</ul>
+</li>
+<li><p>Statically typed</p>
+<ul>
+<li><p>Every variable has a “type”</p></li>
+<li><p>E.g. “int” == integer number, “double” == decimal number, “string” == text, etc</p></li>
+<li><p>Lower case type is primitive type: basic type included with java</p></li>
+<li><p>Upper case type is class type: complex type, see next</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Object oriented programming</p>
+<ul>
+<li><p>Everything is an “object” of a certain “class”</p></li>
+<li><p>Each class can have “variables” and “functions”</p></li>
+<li><p>There’s also “constructors”, which are methods that run when you create an object</p></li>
+<li><p>There’s also modifiers: “public”, “private”, “readonly”, “static”</p></li>
+<li><p>Private things can only be accessed inside the object</p></li>
+<li><p>Static are the same for all object instances of a class</p></li>
+<li><p>Readonly cant be modified after creation, all readonly are static</p></li>
+<li><p>Btw, “variable” == “member” == “attribute” and “function” == “method”</p></li>
+<li><p>Python and C++ also have classes</p></li>
+<li><p>Example class:</p></li>
+</ul>
+</li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Car.java</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Car</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 2</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">Engine</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Engine</span><span class="p">();</span><span class="w">  </span>
+<span class="linenos"> 3</span><span class="kd">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">fuel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Unit is gallons  </span>
+<span class="linenos"> 4</span><span class="kd">public</span><span class="w"> </span><span class="n">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Unit is miles  </span>
+<span class="linenos"> 5</span><span class="w">	  </span>
+<span class="linenos"> 6</span><span class="c1">// The constructor  </span>
+<span class="linenos"> 7</span><span class="kd">public</span><span class="w"> </span><span class="nf">Car</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">fuel</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">mileage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 8</span><span class="w">	</span><span class="k">this</span><span class="p">.</span><span class="na">fuel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fuel</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos"> 9</span><span class="w">	</span><span class="k">this</span><span class="p">.</span><span class="na">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">10</span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1">// This method drives the car by X miles  </span>
+<span class="linenos">13</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">driveCar</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">miles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">14</span><span class="w">	</span><span class="k">this</span><span class="p">.</span><span class="na">mileage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">miles</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">15</span><span class="w">	</span><span class="k">this</span><span class="p">.</span><span class="na">fuel</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">miles</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">33.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 33 miles per gallon  </span>
+<span class="linenos">16</span><span class="p">}</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1">// Adds fuel to car  </span>
+<span class="linenos">19</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addFuel</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">fuel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">20</span><span class="w">		</span><span class="k">this</span><span class="p">.</span><span class="na">fuel</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">fuel</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">21</span><span class="w">	</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">22</span><span class="p">}</span><span class="w">	  </span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Main.java</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// ...  </span>
+<span class="linenos">2</span><span class="n">Car</span><span class="w"> </span><span class="n">hondaCivic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Brand new car with zero mileage  </span>
+<span class="linenos">3</span><span class="n">car</span><span class="p">.</span><span class="na">addFuel</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Filled it up  </span>
+<span class="linenos">4</span><span class="n">car</span><span class="p">.</span><span class="na">driveCar</span><span class="p">(</span><span class="mf">30.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Drove the car to IMSA  </span>
+<span class="linenos">5</span><span class="c1">// ...  </span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Libraries</p>
+<ul>
+<li><p>Other code you import, typically written by other people</p></li>
+<li><p>Consists of classes</p></li>
+<li><p>Standard library is included with java</p></li>
+<li><p>WPILib is the library we use for FRC</p></li>
+<li><p>It has stuff like classes for motors and sensors</p></li>
+<li><p>We also have a library for our gyroscope written by the manufacturer</p></li>
+<li><p>And also our own library for reusable code: Titan Algorithms</p></li>
+</ul>
+</li>
+<li><p>Walkthrough practice: inventory manager</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Item.java</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">class</span> <span class="nc">Item</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">2</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">3</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Quantity</span><span class="p">;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">6</span><span class="w">		</span><span class="k">this</span><span class="p">.</span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">7</span><span class="w">		</span><span class="k">this</span><span class="p">.</span><span class="na">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">8</span><span class="w">	</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">9</span><span class="p">}</span><span class="w">  </span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Inventory.java</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Inventory</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 2</span><span class="kd">private</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">public</span><span class="w"> </span><span class="nf">Inventory</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addItem</span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 7</span><span class="n">items</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">11</span><span class="w">	</span><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">12</span><span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">13</span><span class="w">		</span><span class="n">If</span><span class="w"> </span><span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">Name</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">query</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">14</span><span class="w">			</span><span class="c1">// Yes you can add strings  </span>
+<span class="linenos">15</span><span class="w">			</span><span class="c1">// &quot;\n&quot; or &quot;\r\n&quot; on Windows is special character for new line  </span>
+<span class="linenos">16</span><span class="w">			</span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">Name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;\r\n&quot;</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">17</span><span class="w">		</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">18</span><span class="p">}</span><span class="w">   </span>
+<span class="linenos">19</span><span class="p">}</span><span class="w">	  </span>
+<span class="linenos">20</span><span class="p">}</span><span class="w">  </span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Main.java</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w"> </span><span class="c1">// Import standard library for print, this is done automatically by VSCode</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1">// Name of our program  </span>
+<span class="linenos"> 4</span><span class="kd">class</span> <span class="nc">InventoryManager</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 5</span><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos"> 6</span><span class="w"> 		</span><span class="c1">// Java’s print function  </span>
+<span class="linenos"> 7</span><span class="w">    		</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Welcome to inventory manager.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos"> 8</span><span class="w">    		</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Type ‘/add [item name] [quantity]’ to add an item. No spaces in name.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos"> 9</span><span class="w">		</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Type ‘/search [item name]’ to find an item.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos">10</span><span class="w">		</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Type ‘/exit’ to leave the program.&quot;</span><span class="p">);</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">		</span><span class="c1">// Scanner object used to record user input  </span>
+<span class="linenos">13</span><span class="n">Scanner</span><span class="w"> </span><span class="n">inputScanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="c1">// Our inventory  </span>
+<span class="linenos">16</span><span class="n">Inventory</span><span class="w"> </span><span class="n">inventory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Inventory</span><span class="p">();</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">		</span><span class="c1">// While loops run if the condition is true  </span>
+<span class="linenos">19</span><span class="w">		</span><span class="kt">boolean</span><span class="w"> </span><span class="n">isRunning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">20</span><span class="w">		</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isRunning</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">21</span><span class="n">String</span><span class="w"> </span><span class="n">userInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputScanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w"> </span><span class="c1">// Get command input  </span>
+<span class="linenos">22</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">splittedCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userInput</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;\\s+&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Array with each word</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">			</span><span class="n">If</span><span class="w"> </span><span class="p">(</span><span class="n">userInput</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;/exit&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">25</span><span class="w">				</span><span class="n">isRunning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">26</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Exiting.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos">27</span><span class="w">			</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">userInput</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;/add&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">28</span><span class="w">				</span><span class="c1">// Item count is a string but has to be converted to an integer type  </span>
+<span class="linenos">29</span><span class="w">				</span><span class="n">Item</span><span class="w"> </span><span class="n">newItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Item</span><span class="p">(</span><span class="n">splittedCommand</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="w">  </span>
+<span class="linenos">30</span><span class="n">splittedCommand</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">));</span><span class="w">  </span>
+<span class="linenos">31</span><span class="w">				</span><span class="n">inventory</span><span class="p">.</span><span class="na">addItem</span><span class="p">(</span><span class="n">newItem</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos">32</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item added.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos">33</span><span class="w">			</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">userInput</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;/search&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">34</span><span class="w">				</span><span class="n">String</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">splittedCommand</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span><span class="w">  </span>
+<span class="linenos">35</span><span class="w">				</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">inventory</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">query</span><span class="p">));</span><span class="w">  </span>
+<span class="linenos">36</span><span class="w">			</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="linenos">37</span><span class="w">				</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Unknown command.&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="linenos">38</span><span class="w">			</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">39</span><span class="w">		</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">40</span><span class="w">	</span><span class="p">}</span><span class="w">  </span>
+<span class="linenos">41</span><span class="p">}</span><span class="w">  </span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../TankDriveSimulation/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Lesson 3: Tank Drive Simulation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../OpenCV_ColorSegmentation/Tutorial.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Color-based segmentation in OpenCV Python: Tutorial</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Titan Robotics #2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Lesson 2: Java Basics</a><ul>
+<li><a class="reference internal" href="#agenda">Agenda</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=172f29ee"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    </body>
+</html>
