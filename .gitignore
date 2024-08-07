@@ -6,3 +6,4 @@ lib64
 pyvenv.cfg
 build
 __pycache__*
+scripts
