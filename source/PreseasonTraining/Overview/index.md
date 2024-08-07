@@ -1,4 +1,4 @@
-# Lesson 1: Setup, Strategy, Overview (All-Team)
+# Programming Subteam Overview
 
 ```{toctree}
 ---
