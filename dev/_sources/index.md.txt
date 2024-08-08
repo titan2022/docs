@@ -9,4 +9,5 @@ PreseasonTraining/index.md
 Resources/index.md
 TitanAlgorithms/index.md
 TitanProcessing/index.md
+TitanDashboard/index.md
 ```

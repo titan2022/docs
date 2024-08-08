@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="2 - AprilTag Detection" href="../2_AprilTags/index.html" /><link rel="prev" title="Titan Processing" href="../index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Networking" href="../Networking/index.html" /><link rel="prev" title="Installation" href="../Installation/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>1 - Installation - Titan Robotics 2024 documentation</title>
+        <title>Calibration - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -247,10 +247,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">1 - Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../2_AprilTags/index.html">2 - AprilTag Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3_Localization/index.html">3 - Localization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4_Networking/index.html">4 - Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/index.html">Installation</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Networking/index.html">Networking</a></li>
 </ul>
 </li>
 </ul>
@@ -273,12 +272,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/TitanProcessing/1_Installation/index.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/TitanProcessing/Calibration/index.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/TitanProcessing/1_Installation/index.md" title="Edit this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/TitanProcessing/Calibration/index.md" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -291,14 +290,29 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="installation">
-<h1>1 - Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
+          <section id="calibration">
+<h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading">¶</a></h1>
+<section id="how-to-run">
+<h2>How to run<a class="headerlink" href="#how-to-run" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Print the pattern on letter sized paper</p></li>
+<li><p>Check that dimentions of the squares or/and markers match the script (in cm)</p></li>
+<li><p>Start the script with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/TYPE_calibration.py</span> <span class="pre">PATH/TO/processing.cfg</span></code></p></li>
+<li><p>Hold the pattern on a flat surface in front of the camera</p></li>
+<li><p>Make sure the camera recognizes the pattern and displays a colorful overlay</p></li>
+<li><p>All changes will be saved to the specified config file</p></li>
+</ol>
+</section>
+<section id="what-it-does">
+<h2>What it does<a class="headerlink" href="#what-it-does" title="Permalink to this heading">¶</a></h2>
+<p>This script utilizes the basic <a class="reference external" href="https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html">camera calibration</a> logic provided by the documentation. It uses the pattern to determine focal size of the camera in pixels for specified resolution in the config. The focal x and y values should be <a class="reference external" href="https://ksimek.github.io/2013/08/13/intrinsic/#:~:text=In%20practice%2C,number%20of%20reasons">close to each other</a>. The script also calibrates the optical center and distortion coefficients. The first four values are necessary for accurate Apriltag pose estimation, while all distortion coefficients may be left at 0.</p>
+</section>
 </section>
 
         </article>
@@ -306,23 +320,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../2_AprilTags/index.html">
+          <a class="next-page" href="../Networking/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">2 - AprilTag Detection</div>
+                <div class="title">Networking</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../index.html">
+          <a class="prev-page" href="../Installation/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Titan Processing</div>
+                <div class="title">Installation</div>
                 
               </div>
             </a>
@@ -344,8 +358,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Calibration</a><ul>
+<li><a class="reference internal" href="#how-to-run">How to run</a></li>
+<li><a class="reference internal" href="#what-it-does">What it does</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
