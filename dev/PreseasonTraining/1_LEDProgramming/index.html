@@ -320,7 +320,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here is another example that sets every pixel to red instead of just the first one utilizing a for loop.</p>
+<p>Here is another example that sets every pixel to red, instead of just the first one, utilizing a for loop.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">	</span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">// Sets all pixels to blank</span>
 
@@ -333,12 +333,52 @@
 </pre></div>
 </div>
 <p>But to make it more interesting, you can utilize the <code class="docutils literal notranslate"><span class="pre">i</span></code> iterator variable in your hue calculations. Since <code class="docutils literal notranslate"><span class="pre">i</span></code> is an integer, it has to be converted into a decimal number (called <code class="docutils literal notranslate"><span class="pre">float</span></code> in most programming languages), only after which you can use it in division equations. Here we divide it by the number of LEDs to create a progression from 0.0 to 1.0 and then multiply by the hue range, that being 255. This for loop will go through every hue value from 0 to 255 and create a rainbow which you can see in the Wokwi example.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
-<span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
-<span class="p">...</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>But for now, our results are static. To animate, you can utilize the <code class="docutils literal notranslate"><span class="pre">delay(milliseconds)</span></code> function, similar to Python’s <code class="docutils literal notranslate"><span class="pre">time.sleep(seconds)</span></code>. Without a delay, the board will repeat the <code class="docutils literal notranslate"><span class="pre">loop()</span></code> function as fast as it can.</p>
+<p>Here is a list of some notable methods and features:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// For loop (runs until second condition is false)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing</span>
+<span class="p">}</span>
+
+<span class="c1">// While loop (runs forever until condition is false)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// If-else statement</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thing1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">thing2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing 1</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing 2</span>
+<span class="p">}</span>
+
+<span class="c1">// The delay (sleep) funciton</span>
+<span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Waits 1 second</span>
+
+<span class="c1">// Modulo operator</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">number0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thing</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Returns remainder of &quot;thing&quot; divided by 2</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">Math functions (specific to Arduino)</span>
+<span class="cm">- sin(x)</span>
+<span class="cm">- cos(x)</span>
+<span class="cm">- tan(x)</span>
+<span class="cm">- pow(x, y)</span>
+<span class="cm">- sqrt(x)</span>
+<span class="cm">- log(x) &lt;-- natural log</span>
+<span class="cm">- log10(x)</span>
+
+<span class="cm">*/</span>
+
+<span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set color using HSV</span>
+<span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set color using RGB</span>
+</pre></div>
+</div>
 </section>
 <section id="more-examples">
 <h2>More examples<a class="headerlink" href="#more-examples" title="Permalink to this heading">¶</a></h2>
