@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Color-based segmentation in OpenCV Python" href="../OpenCV_ColorSegmentation/index.html" /><link rel="prev" title="Programming Subteam Overview" href="../Overview/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>1 - LED Programming - Titan Robotics 2024 documentation</title>
+        <title>LED Programming - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -206,7 +206,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Overview/index.html">Programming Subteam Overview</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Programming Subteam Overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">1 - LED Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 1 - LED Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">LED Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of LED Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../OpenCV_ColorSegmentation/index.html">Color-based segmentation in OpenCV Python</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Color-based segmentation in OpenCV Python</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -290,16 +290,117 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="led-programming">
-<h1>1 - LED Programming<a class="headerlink" href="#led-programming" title="Permalink to this heading">¶</a></h1>
+<h1>LED Programming<a class="headerlink" href="#led-programming" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
+<p>This lesson is about programming an LED strip using a microcontroller, such as an Arduino Uno. <a class="reference external" href="https://wokwi.com/">Wokwi</a> is an online emulator that will substitute a real board.</p>
+<p>In Arduino programming, you can can define two methods: <code class="docutils literal notranslate"><span class="pre">setup</span></code> and <code class="docutils literal notranslate"><span class="pre">loop</span></code>. The first runs once when the microcontroller turns on and the second repeats infinitely. For our purposes, <code class="docutils literal notranslate"><span class="pre">loop</span></code> is enough.</p>
+<p>Here is a Wokwi instance that has the necessary code set up with 100 LED lights displaying a rainbow.</p>
+<iframe
+  src="https://wokwi.com/projects/375725533336935425"
+  style="width:100%; height:500px;"
+></iframe>
+<p>FastLED, the library we are using for control, provides several functions. In this case, <code class="docutils literal notranslate"><span class="pre">FastLED.clear()</span></code> is necessary to set all pixels to an empty state. After setting the pixels, the board has to send the signal to the LED strip and you can do so through the <code class="docutils literal notranslate"><span class="pre">FastLED.show()</span></code> method.</p>
+<p>Earlier in the Wokwi example I defined an array of 100 pixels called <code class="docutils literal notranslate"><span class="pre">leds</span></code>. You can access each pixel using the bracket operator and set them using the <code class="docutils literal notranslate"><span class="pre">CHSV(hue,</span> <span class="pre">saturation,</span> <span class="pre">value)</span></code> function. The library also provides a <code class="docutils literal notranslate"><span class="pre">CRGB(red,</span> <span class="pre">green,</span> <span class="pre">blue)</span></code> function if you want to set a color using the RGB standard. For both, all numbers are integers from 0 to 255 (2^8 or one byte).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">// Sets all pixels to blank</span>
+
+<span class="w">	</span><span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Sets first pixel to red</span>
+
+<span class="w">	</span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Updates pixels</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is another example that sets every pixel to red, instead of just the first one, utilizing a for loop.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="n">FastLED</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">// Sets all pixels to blank</span>
+
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="c1">// Sets i-th pixel to red</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">FastLED</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="c1">// Updates pixels</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>But to make it more interesting, you can utilize the <code class="docutils literal notranslate"><span class="pre">i</span></code> iterator variable in your hue calculations. Since <code class="docutils literal notranslate"><span class="pre">i</span></code> is an integer, it has to be converted into a decimal number (called <code class="docutils literal notranslate"><span class="pre">float</span></code> in most programming languages), only after which you can use it in division equations. Here we divide it by the number of LEDs to create a progression from 0.0 to 1.0 and then multiply by the hue range, that being 255. This for loop will go through every hue value from 0 to 255 and create a rainbow which you can see in the Wokwi example.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">leds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_LEDS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>But for now, our results are static. To animate, you can utilize the <code class="docutils literal notranslate"><span class="pre">delay(milliseconds)</span></code> function, similar to Python’s <code class="docutils literal notranslate"><span class="pre">time.sleep(seconds)</span></code>. Without a delay, the board will repeat the <code class="docutils literal notranslate"><span class="pre">loop()</span></code> function as fast as it can.</p>
+<p>Here is a list of some notable methods and features:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// For loop (runs until second condition is false)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing</span>
+<span class="p">}</span>
+
+<span class="c1">// While loop (runs forever until condition is false)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// If-else statement</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thing1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">thing2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing 1</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="c1">// Do thing 2</span>
+<span class="p">}</span>
+
+<span class="c1">// The delay (sleep) funciton</span>
+<span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Waits 1 second</span>
+
+<span class="c1">// Modulo operator</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">number0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thing</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Returns remainder of &quot;thing&quot; divided by 2</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">Math functions (specific to Arduino)</span>
+<span class="cm">- sin(x)</span>
+<span class="cm">- cos(x)</span>
+<span class="cm">- tan(x)</span>
+<span class="cm">- pow(x, y)</span>
+<span class="cm">- sqrt(x)</span>
+<span class="cm">- log(x) &lt;-- natural log</span>
+<span class="cm">- log10(x)</span>
+
+<span class="cm">*/</span>
+
+<span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHSV</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set color using HSV</span>
+<span class="n">leds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CRGB</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set color using RGB</span>
+</pre></div>
+</div>
+</section>
+<section id="more-examples">
+<h2>More examples<a class="headerlink" href="#more-examples" title="Permalink to this heading">¶</a></h2>
+<section id="animated-rainbow">
+<h3>Animated Rainbow<a class="headerlink" href="#animated-rainbow" title="Permalink to this heading">¶</a></h3>
+<iframe
+  src="https://wokwi.com/projects/375728281107786753"
+  style="width:100%; height:500px;"
+></iframe>
+</section>
+<section id="sine-wave">
+<h3>Sine Wave<a class="headerlink" href="#sine-wave" title="Permalink to this heading">¶</a></h3>
+<iframe
+  src="https://wokwi.com/projects/375728506812760065"
+  style="width:100%; height:500px;"
+></iframe>
+</section>
+</section>
+<section id="deploying">
+<h2>Deploying<a class="headerlink" href="#deploying" title="Permalink to this heading">¶</a></h2>
+<p>You can deploy your code on an actual Arduino Uno or another supported board by downloading desktop version of <a class="reference external" href="https://www.arduino.cc/en/software">Arduino IDE</a> and creating a project. Connect your board, select it and the USB port under “Tools” tab. Click upload.</p>
+</section>
 </section>
 
         </article>
@@ -345,8 +446,33 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">LED Programming</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#more-examples">More examples</a><ul>
+<li><a class="reference internal" href="#animated-rainbow">Animated Rainbow</a></li>
+<li><a class="reference internal" href="#sine-wave">Sine Wave</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deploying">Deploying</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
