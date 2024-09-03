@@ -11,6 +11,9 @@ Create a GitHub account (username doesn't matter) or use an existing one. Send y
 ## Git login
 When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell) and type `gh auth login`. Select `Github.com`, `HTTPS`, `Y`, `Login with a web browser`, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.
 
+## (Only for pre-season) Java
+There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose OpenJDK 16 (LTS) and HotSpot JVM.
+
 ## FRC Game Tools
 The WPIlib suite is necessary to run robot code. Follow [instructions in the official docs](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html). It might say that you have a limited free trial but in reality it will never run out (similar to WinRAR). When choosing the VSCode option, select standalone install. Java will be included, but if you already have it installed it shouldn't interfere.
 
