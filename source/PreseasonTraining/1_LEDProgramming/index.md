@@ -36,7 +36,7 @@ void loop() {
 }
 ```
 
-Here is another example that sets every pixel to red instead of just the first one utilizing a for loop.
+Here is another example that sets every pixel to red, instead of just the first one, utilizing a for loop.
 
 ```cpp
 void loop() {
@@ -53,12 +53,53 @@ void loop() {
 But to make it more interesting, you can utilize the `i` iterator variable in your hue calculations. Since `i` is an integer, it has to be converted into a decimal number (called `float` in most programming languages), only after which you can use it in division equations. Here we divide it by the number of LEDs to create a progression from 0.0 to 1.0 and then multiply by the hue range, that being 255. This for loop will go through every hue value from 0 to 255 and create a rainbow which you can see in the Wokwi example.
 
 ```cpp
-...
 leds[i] = CHSV((float)i / NUM_LEDS * 255, 255, 255);
-...
 ```
 
 But for now, our results are static. To animate, you can utilize the `delay(milliseconds)` function, similar to Python's `time.sleep(seconds)`. Without a delay, the board will repeat the `loop()` function as fast as it can.
+
+Here is a list of some notable methods and features:
+```cpp
+// For loop (runs until second condition is false)
+for (int i = 0; i < 100; i++) {
+	// Do thing
+}
+
+// While loop (runs forever until condition is false)
+int i = 0;
+while (i < 100) {
+	i++;
+}
+
+// If-else statement
+if (thing1 == thing2) {
+	// Do thing 1
+} else {
+	// Do thing 2
+}
+
+// The delay (sleep) funciton
+delay(1000); // Waits 1 second
+
+// Modulo operator
+int number0 = thing % 2; // Returns remainder of "thing" divided by 2
+
+/*
+
+Math functions (specific to Arduino)
+- sin(x)
+- cos(x)
+- tan(x)
+- pow(x, y)
+- sqrt(x)
+- log(x) <-- natural log
+- log10(x)
+
+*/
+
+leds[0] = CHSV(0, 0, 0); // Set color using HSV
+leds[0] = CRGB(0, 0, 0); // Set color using RGB
+```
 
 ## More examples
 
