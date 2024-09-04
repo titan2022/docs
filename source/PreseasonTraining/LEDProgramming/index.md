@@ -1,14 +1,5 @@
 # LED Programming
 
-```{toctree}
----
-maxdepth: 2
-caption: Contents
-titlesonly: true
----
-Tutorial.md
-```
-
 ## Setup
 
 This lesson is about programming an LED strip using a microcontroller, such as an Arduino Uno. [Wokwi](https://wokwi.com/) is an online emulator that will substitute a real board.
@@ -16,6 +7,8 @@ This lesson is about programming an LED strip using a microcontroller, such as a
 In Arduino programming, you can can define two methods: `setup` and `loop`. The first runs once when the microcontroller turns on and the second repeats infinitely. For our purposes, `loop` is enough.
 
 Here is a Wokwi instance that has the necessary code set up with 100 LED lights displaying a rainbow.
+
+[open in new tab](https://wokwi.com/projects/375725533336935425)
 
 <iframe
   src="https://wokwi.com/projects/375725533336935425"
@@ -105,12 +98,16 @@ leds[0] = CRGB(0, 0, 0); // Set color using RGB
 
 ### Animated Rainbow
 
+[open in new tab](https://wokwi.com/projects/375728281107786753)
+
 <iframe
   src="https://wokwi.com/projects/375728281107786753"
   style="width:100%; height:500px;"
 ></iframe>
 
 ### Sine Wave
+
+[open in new tab](https://wokwi.com/projects/375728506812760065)
 
 <iframe
   src="https://wokwi.com/projects/375728506812760065"
