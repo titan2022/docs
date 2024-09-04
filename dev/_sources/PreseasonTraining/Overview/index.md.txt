@@ -1,13 +1,5 @@
 # Programming Subteam Overview
 
-```{toctree}
----
-maxdepth: 2
-caption: Contents
-titlesonly: true
----
-```
-
 ## Agenda
 
 * What does FRC programming do  
