@@ -303,16 +303,18 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
 <section id="os-support">
 <h2>OS Support<a class="headerlink" href="#os-support" title="Permalink to this heading">¶</a></h2>
-<p>Currently, Titan Processing only supports Linux builds with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.</p>
+<p>Currently, Titan Processing only supports Linux builds for AArch64 and x86_64 with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.</p>
 </section>
 <section id="building">
 <h2>Building<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h2>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Install OpenCV 4.8.x or above with the Aruco contrib module. Python support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib <a class="reference external" href="https://github.com/opencv/opencv_contrib">here</a>.</p></li>
+<li><p>Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib <a class="reference external" href="https://github.com/opencv/opencv_contrib">here</a>, but only the ArUco submodule is used.</p></li>
 <li><p>(Optional) Install <a class="reference external" href="https://github.com/IntelRealSense/librealsense">Intel RealSense SDK</a> to build RealSense modules.</p></li>
-<li><p>Install <a class="reference external" href="https://github.com/nlohmann/json">JSON for Modern C++</a> using <a class="reference external" href="https://github.com/Microsoft/vcpkg">vcpkg</a> or build it from scratch. To install vcpkg with our own Debian binaries, execute the following.</p></li>
+<li><p>Install <a class="reference external" href="https://github.com/google/googletest/blob/main/googletest/README.md">GoogleTest testing framework</a>.</p></li>
+<li><p>Install <a class="reference external" href="https://github.com/nlohmann/json">JSON for Modern C++</a> using <a class="reference external" href="https://github.com/Microsoft/vcpkg">vcpkg</a> or build it from scratch.
+To install vcpkg with our own Debian binaries, execute the following.</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install vcpkg binary (optional)</span>
 curl<span class="w"> </span>-OL<span class="w"> </span>https://github.com/ethanc8/titanian-repo/raw/master/debian/pool/main/v/vcpkg/vcpkg_2023.12.10-2+titan2022_amd64.deb
@@ -339,14 +341,16 @@ cmake<span class="w"> </span>-B<span class="w"> </span>.<span class="w"> </span>
 cmake<span class="w"> </span>-B<span class="w"> </span>.<span class="w"> </span>-S<span class="w"> </span>..<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=[</span>PATH<span class="w"> </span>TO<span class="w"> </span>VCPKG<span class="o">]</span>/scripts/buildsystems/vcpkg.cmake<span class="w"> </span>-DBUILD_EXAMPLES<span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Build the project using your build system.</p></li>
+<ol class="arabic simple" start="5">
+<li><p>Build and install the project using your build system.</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Makefile</span>
 make<span class="w"> </span>-j
+sudo<span class="w"> </span>make<span class="w"> </span>install
 
 <span class="c1"># For Ninja</span>
 ninja
+sudo<span class="w"> </span>ninja<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
