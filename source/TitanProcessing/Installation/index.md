@@ -2,15 +2,17 @@
 
 ## OS Support
 
-Currently, Titan Processing only supports Linux builds with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.
+Currently, Titan Processing only supports Linux builds for AArch64 and x86_64 with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.
 
 ## Building
 
 ### Instructions
 
-1. Install OpenCV 4.8.x or above with the Aruco contrib module. Python support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib [here](https://github.com/opencv/opencv_contrib).
+1. Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib [here](https://github.com/opencv/opencv_contrib), but only the ArUco submodule is used.
 2. (Optional) Install [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense) to build RealSense modules.
-3. Install [JSON for Modern C++](https://github.com/nlohmann/json) using [vcpkg](https://github.com/Microsoft/vcpkg) or build it from scratch. To install vcpkg with our own Debian binaries, execute the following.
+3. Install [GoogleTest testing framework](https://github.com/google/googletest/blob/main/googletest/README.md).
+4. Install [JSON for Modern C++](https://github.com/nlohmann/json) using [vcpkg](https://github.com/Microsoft/vcpkg) or build it from scratch.
+To install vcpkg with our own Debian binaries, execute the following.
 
 ```bash
 # Install vcpkg binary (optional)
@@ -38,14 +40,16 @@ cmake -B . -S .. -DCMAKE_TOOLCHAIN_FILE=[PATH TO VCPKG]/scripts/buildsystems/vcp
 cmake -B . -S .. -DCMAKE_TOOLCHAIN_FILE=[PATH TO VCPKG]/scripts/buildsystems/vcpkg.cmake -DBUILD_EXAMPLES=1
 ```
 
-4. Build the project using your build system.
+5. Build and install the project using your build system.
 
 ```bash
 # For Makefile
 make -j
+sudo make install
 
 # For Ninja
 ninja
+sudo ninja install
 ```
 
 ### Build Options
