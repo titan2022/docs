@@ -302,9 +302,50 @@
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
 <p>If you are having trouble with installing any of the following, please feel free to reach out to veteran programming members on Discord.</p>
+<section id="operating-system">
+<h2>Operating system<a class="headerlink" href="#operating-system" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-0">
+Windows</label><div class="sd-tab-content docutils">
+<p>Make sure you’re on a 64-bit Windows version with an Intel or AMD CPU. All Windows 11 installations are 64-bit. If you’re on Windows 10, you can check this in the Control Panel:</p>
+<ol class="arabic simple">
+<li><p>Click Start, type <code class="docutils literal notranslate"><span class="pre">system</span></code> in the search box, and, under Control Panel, click System.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If System isn’t listed under Control Panel in the search results, click Control Panel to see more results.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Under System, look at the System type entry. It will say either 32-bit Operating System or 64-bit Operating System.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-1">
+Linux</label><div class="sd-tab-content docutils">
+<p>Make sure you’re on a 64-bit (amd64 or arm64) distribution which uses glibc (which includes most popular distros such as Debian, Ubuntu, Mint, Arch, elementary OS, Fedora, Enterprise Linux, and SuSE).</p>
+</div>
+</div>
+</section>
 <section id="git">
 <h2>Git<a class="headerlink" href="#git" title="Permalink to this heading">¶</a></h2>
-<p>Our choice of project-management software is Git. If you do not have it installed already, do so at <a class="reference external" href="https://git-scm.com/download/win">its official website</a> (Select 32-bit if your computer was made before 2003). All the default options are fine, feel free to spam “next”.</p>
+<p>Our choice of project-management software is Git.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-2">
+Windows</label><div class="sd-tab-content docutils">
+<p>If you do not have it installed already, do so at <a class="reference external" href="https://git-scm.com/download/win">its official website</a> (select the 64-bit standalone installer). All the default options are fine, feel free to spam “next”.</p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-3">
+Linux</label><div class="sd-tab-content docutils">
+<p>Download <code class="docutils literal notranslate"><span class="pre">git</span></code> from your distribution. If you don’t know how to do that, please ask Ethan or Georgi.</p>
+<p>On Debian, Ubuntu, Mint, and other distros that use <code class="docutils literal notranslate"><span class="pre">apt</span></code> or <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="github-cli">
 <h2>GitHub CLI<a class="headerlink" href="#github-cli" title="Permalink to this heading">¶</a></h2>
@@ -316,27 +357,99 @@
 </section>
 <section id="only-for-pre-season-java">
 <h2>(Only for pre-season) Java<a class="headerlink" href="#only-for-pre-season-java" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-4">
+Windows</label><div class="sd-tab-content docutils">
 <p>There are many JDKs (Java Development Kits) available online but <a class="reference external" href="https://adoptium.net/">Temurin</a> is a great option. Choose OpenJDK 16 (LTS) and HotSpot JVM.</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-5">
+Linux</label><div class="sd-tab-content docutils">
+<p>Your distribution should have a JDK available to download. If not, you can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or other shell configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/&quot;</span>
+</pre></div>
+</div>
+<p>If you’re on Debian, Ubuntu, Mint, or some other <code class="docutils literal notranslate"><span class="pre">apt</span></code>-based distribution, you can install the system-recommended JDK using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>default-jdk
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="frc-game-tools">
 <h2>FRC Game Tools<a class="headerlink" href="#frc-game-tools" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-6">
+Windows</label><div class="sd-tab-content docutils">
 <p>The WPIlib suite is necessary to run robot code. Follow <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html">instructions in the official docs</a>. It might say that you have a limited free trial but in reality it will never run out (similar to WinRAR). When choosing the VSCode option, select standalone install. Java will be included, but if you already have it installed it shouldn’t interfere.</p>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-7">
+Linux</label><div class="sd-tab-content docutils">
+<p>Please use my script to install these tools. Make sure that <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> is on your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
+<p>To run the script, you must have a display (X11 or Wayland) and a network connection.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+<p>If you also want to install the WPILib extension into your main VSCode or VSCodium installation, please set the environment variable FLDK_INSTALL_EXT_DESTINATION to the name of the command that launches VSCode (which is <code class="docutils literal notranslate"><span class="pre">code</span></code> for Microsoft binaries, <code class="docutils literal notranslate"><span class="pre">code-oss</span></code> if you compiled it yourself, and <code class="docutils literal notranslate"><span class="pre">codium</span></code> for VSCodium). For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">FLDK_INSTALL_EXT_DESTINATION</span><span class="o">=</span>code<span class="w"> </span>bash
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="phoenix-tuner-x">
 <h2>Phoenix Tuner X<a class="headerlink" href="#phoenix-tuner-x" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-8">
+Windows</label><div class="sd-tab-content docutils">
 <p>Phoenix Tuner X is the diagnostics tool for CTRE devices (e.g. Falcon 500 motors). It is <a class="reference external" href="https://apps.microsoft.com/detail/9nvv4pwdw27z">available on the Microsoft Store</a>.</p>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-9">
+Linux</label><div class="sd-tab-content docutils">
+<p>This is <strong>completely optional</strong>. It’s a kind of involved process, and isn’t useful unless you need to debug the motor controllers or other CTRE peripherals.</p>
+<p>These instructions assume that you’re on a Debian/Ubuntu system and are currently in a Wayland session.</p>
+<p>First, install the Android rootfs and userspace libraries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>ca-certificates<span class="w"> </span>-y
+curl<span class="w"> </span>https://repo.waydro.id<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>waydroid<span class="w"> </span>-y
+sudo<span class="w"> </span>waydroid<span class="w"> </span>init
+waydroid<span class="w"> </span>prop<span class="w"> </span><span class="nb">set</span><span class="w"> </span>persist.waydroid.multi_windows<span class="w"> </span><span class="nb">true</span>
+waydroid<span class="w"> </span>session<span class="w"> </span>stop
+</pre></div>
+</div>
+<p>Now, download and install Phoenix Tuner X:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/ethanc8/someblobs/releases/download/phoenix-tuner-x-2024.6.1.0/Tuner.X_2024.6.1.0_apkcombo.com.apk
+waydroid<span class="w"> </span>app<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;./Tuner X*.apk&quot;</span>
+waydroid<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>com.ctre.phoenix_tuner
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="rev-hardware-client">
 <h2>REV Hardware Client<a class="headerlink" href="#rev-hardware-client" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-10">
+Windows</label><div class="sd-tab-content docutils">
 <p>REV Hardware Client is the REV-specific diagnostics tool for REV devices (e.g. SPARK MAX). Follow installation instructions on <a class="reference external" href="https://docs.revrobotics.com/rev-hardware-client/gs/install">its official page</a>.</p>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-11">
+Linux</label><div class="sd-tab-content docutils">
+<p>Unfortunately, REV Hardware Client is currently not available for Linux.</p>
+</div>
+</div>
 </section>
 <section id="optional-apache-maven">
 <h2>(Optional) Apache Maven<a class="headerlink" href="#optional-apache-maven" title="Permalink to this heading">¶</a></h2>
 <p>Install <a class="reference external" href="https://maven.apache.org/download.cgi">Apache Maven</a> only if you are an experienced FRC programming member and wish to contribute to TitanAlgorithms. Make sure Maven is in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
-</section>
-<section id="linux">
-<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h2>
-<p>WPIlib support on Linux is unofficial and may not work correctly (use at your own risk). Follow installation instructions on <a class="reference external" href="https://github.com/ethanc8/FRCLinuxDevKit">Ethan Charoenpitaks’es repository</a>. More info regarding deployment can be found in <a class="reference external" href="https://www.chiefdelphi.com/t/roborio-deployment-from-linux/452092">this thread</a></p>
 </section>
 </section>
 
@@ -396,6 +509,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#operating-system">Operating system</a></li>
 <li><a class="reference internal" href="#git">Git</a></li>
 <li><a class="reference internal" href="#github-cli">GitHub CLI</a></li>
 <li><a class="reference internal" href="#git-login">Git login</a></li>
@@ -404,7 +518,6 @@
 <li><a class="reference internal" href="#phoenix-tuner-x">Phoenix Tuner X</a></li>
 <li><a class="reference internal" href="#rev-hardware-client">REV Hardware Client</a></li>
 <li><a class="reference internal" href="#optional-apache-maven">(Optional) Apache Maven</a></li>
-<li><a class="reference internal" href="#linux">Linux</a></li>
 </ul>
 </li>
 </ul>

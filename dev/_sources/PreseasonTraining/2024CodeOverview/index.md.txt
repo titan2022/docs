@@ -1,13 +1,12 @@
 # Lesson 8: 2024 Code overview
 
-```{toctree}
----
-maxdepth: 2
-caption: Contents
-titlesonly: true
----
-Setup.md
-```
+% ```{toctree}
+% ---
+% maxdepth: 2
+% caption: Contents
+% titlesonly: true
+% ---
+% ```
 
 ## Agenda
 
