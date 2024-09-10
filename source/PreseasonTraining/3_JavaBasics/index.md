@@ -31,7 +31,7 @@
 class Car {  
 	public Engine engine = new Engine();  
 public float fuel = 0; // Unit is gallons  
-public mileage = 0; // Unit is miles  
+public float mileage = 0; // Unit is miles  
 	  
 // The constructor  
 public Car(float fuel, float mileage) {  
@@ -58,8 +58,8 @@ public void driveCar(float miles) {
  
 // ...  
 Car hondaCivic = new Car(0, 0); // Brand new car with zero mileage  
-car.addFuel(10.0); // Filled it up  
-car.driveCar(30.0); // Drove the car to IMSA  
+hondaCivic.addFuel(10.0f); // Filled it up  
+hondaCivic.driveCar(30.0f); // Drove the car to IMSA  
 // ...  
 ```
 
