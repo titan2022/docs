@@ -90,7 +90,7 @@ When you install both Git and GitHub CLI, open a terminal window (preferably Pow
 :::{tab-item} Windows
 :sync: win
 
-There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose OpenJDK 16 (LTS) and HotSpot JVM.
+There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose [Temurin JDK 17 LTS (use the `.msi` installer)](https://adoptium.net/temurin/releases/?package=jdk&version=17&os=windows&arch=x64).
 :::
 
 :::{tab-item} Linux
