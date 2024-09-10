@@ -325,25 +325,43 @@ Windows</label><div class="sd-tab-content docutils">
 Linux</label><div class="sd-tab-content docutils">
 <p>Make sure you’re on a 64-bit (amd64 or arm64) distribution which uses glibc (which includes most popular distros such as Debian, Ubuntu, Mint, Arch, elementary OS, Fedora, Enterprise Linux, and SuSE).</p>
 </div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-2">
+macOS</label><div class="sd-tab-content docutils">
+<p>Make sure you’re on a recent macOS system. Both Intel Macs and Apple Silicon Macs are supported. Pre-2008 Macs are definitely not supported.</p>
+</div>
 </div>
 </section>
 <section id="git">
 <h2>Git<a class="headerlink" href="#git" title="Permalink to this heading">¶</a></h2>
 <p>Our choice of project-management software is Git.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-2">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-3">
 Windows</label><div class="sd-tab-content docutils">
 <p>If you do not have it installed already, do so at <a class="reference external" href="https://git-scm.com/download/win">its official website</a> (select the 64-bit standalone installer). All the default options are fine, feel free to spam “next”.</p>
 </div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-3">
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-4">
 Linux</label><div class="sd-tab-content docutils">
 <p>Download <code class="docutils literal notranslate"><span class="pre">git</span></code> from your distribution. If you don’t know how to do that, please ask Ethan or Georgi.</p>
 <p>On Debian, Ubuntu, Mint, and other distros that use <code class="docutils literal notranslate"><span class="pre">apt</span></code> or <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
 </pre></div>
 </div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-5">
+macOS</label><div class="sd-tab-content docutils">
+<p>If you use Homebrew, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+<p>If you use MacPorts, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+<p>Otherwise, install <a class="reference external" href="https://brew.sh/">Homebrew</a> and then follow the Homebrew instructions.</p>
 </div>
 </div>
 </section>
@@ -353,18 +371,18 @@ Linux</label><div class="sd-tab-content docutils">
 </section>
 <section id="git-login">
 <h2>Git login<a class="headerlink" href="#git-login" title="Permalink to this heading">¶</a></h2>
-<p>When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell) and type <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">auth</span> <span class="pre">login</span></code>. Select <code class="docutils literal notranslate"><span class="pre">Github.com</span></code>, <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">web</span> <span class="pre">browser</span></code>, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.</p>
+<p>When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell or Bash) and type <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">auth</span> <span class="pre">login</span></code>. Select <code class="docutils literal notranslate"><span class="pre">Github.com</span></code>, <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">web</span> <span class="pre">browser</span></code>, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.</p>
 </section>
 <section id="only-for-pre-season-java">
 <h2>(Only for pre-season) Java<a class="headerlink" href="#only-for-pre-season-java" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-6">
 Windows</label><div class="sd-tab-content docutils">
 <p>There are many JDKs (Java Development Kits) available online but <a class="reference external" href="https://adoptium.net/">Temurin</a> is a great option. Choose OpenJDK 16 (LTS) and HotSpot JVM.</p>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-5">
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-7">
 Linux</label><div class="sd-tab-content docutils">
 <p>Your distribution should have a JDK available to download. If not, you can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or other shell configuration file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
@@ -376,18 +394,27 @@ Linux</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-8">
+macOS</label><div class="sd-tab-content docutils">
+<p>You can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.zprofile</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="frc-game-tools">
 <h2>FRC Game Tools<a class="headerlink" href="#frc-game-tools" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-9">
 Windows</label><div class="sd-tab-content docutils">
 <p>The WPIlib suite is necessary to run robot code. Follow <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html">instructions in the official docs</a>. It might say that you have a limited free trial but in reality it will never run out (similar to WinRAR). When choosing the VSCode option, select standalone install. Java will be included, but if you already have it installed it shouldn’t interfere.</p>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-7">
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-10">
 Linux</label><div class="sd-tab-content docutils">
 <p>Please use my script to install these tools. Make sure that <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> is on your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
 <p>To run the script, you must have a display (X11 or Wayland) and a network connection.</p>
@@ -399,18 +426,31 @@ Linux</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-11">
+macOS</label><div class="sd-tab-content docutils">
+<p>Please use my script to install these tools. Make sure that <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> is on your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
+<p>To run the script, you must have a display (X11 or Wayland) and a network connection.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+<p>If you also want to install the WPILib extension into your main VSCode or VSCodium installation, please set the environment variable FLDK_INSTALL_EXT_DESTINATION to the name of the command that launches VSCode (which is <code class="docutils literal notranslate"><span class="pre">code</span></code> for Microsoft binaries, <code class="docutils literal notranslate"><span class="pre">code-oss</span></code> if you compiled it yourself, and <code class="docutils literal notranslate"><span class="pre">codium</span></code> for VSCodium; you must be able to run this command from your shell first). For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">FLDK_INSTALL_EXT_DESTINATION</span><span class="o">=</span>code<span class="w"> </span>bash
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="phoenix-tuner-x">
 <h2>Phoenix Tuner X<a class="headerlink" href="#phoenix-tuner-x" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-8">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-12">
 Windows</label><div class="sd-tab-content docutils">
 <p>Phoenix Tuner X is the diagnostics tool for CTRE devices (e.g. Falcon 500 motors). It is <a class="reference external" href="https://apps.microsoft.com/detail/9nvv4pwdw27z">available on the Microsoft Store</a>.</p>
 </div>
-<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-9">
+<input id="sd-tab-item-13" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-13">
 Linux</label><div class="sd-tab-content docutils">
 <p>This is <strong>completely optional</strong>. It’s a kind of involved process, and isn’t useful unless you need to debug the motor controllers or other CTRE peripherals.</p>
 <p>These instructions assume that you’re on a Debian/Ubuntu system and are currently in a Wayland session.</p>
@@ -430,20 +470,30 @@ waydroid<span class="w"> </span>app<span class="w"> </span>launch<span class="w"
 </pre></div>
 </div>
 </div>
+<input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-14">
+macOS</label><div class="sd-tab-content docutils">
+<p>Unfortunately, Phoenix Tuner X is currently not available for macOS.</p>
+</div>
 </div>
 </section>
 <section id="rev-hardware-client">
 <h2>REV Hardware Client<a class="headerlink" href="#rev-hardware-client" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-10">
+<input checked="checked" id="sd-tab-item-15" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-15">
 Windows</label><div class="sd-tab-content docutils">
 <p>REV Hardware Client is the REV-specific diagnostics tool for REV devices (e.g. SPARK MAX). Follow installation instructions on <a class="reference external" href="https://docs.revrobotics.com/rev-hardware-client/gs/install">its official page</a>.</p>
 </div>
-<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-11">
+<input id="sd-tab-item-16" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-16">
 Linux</label><div class="sd-tab-content docutils">
 <p>Unfortunately, REV Hardware Client is currently not available for Linux.</p>
+</div>
+<input id="sd-tab-item-17" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-17">
+macOS</label><div class="sd-tab-content docutils">
+<p>Unfortunately, REV Hardware Client is currently not available for macOS.</p>
 </div>
 </div>
 </section>

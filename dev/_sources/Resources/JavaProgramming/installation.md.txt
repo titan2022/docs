@@ -27,6 +27,12 @@ If System isn’t listed under Control Panel in the search results, click Contro
 Make sure you're on a 64-bit (amd64 or arm64) distribution which uses glibc (which includes most popular distros such as Debian, Ubuntu, Mint, Arch, elementary OS, Fedora, Enterprise Linux, and SuSE).
 :::
 
+:::{tab-item} macOS
+:sync: macos
+
+Make sure you're on a recent macOS system. Both Intel Macs and Apple Silicon Macs are supported. Pre-2008 Macs are definitely not supported.
+:::
+
 ::::
 
 ## Git
@@ -52,6 +58,22 @@ sudo apt install git
 ```
 :::
 
+:::{tab-item} macOS
+:sync: macos
+
+If you use Homebrew, run
+```bash
+brew install git
+```
+
+If you use MacPorts, run
+```bash
+sudo port install git
+```
+
+Otherwise, install [Homebrew](https://brew.sh/) and then follow the Homebrew instructions.
+:::
+
 ::::
 
 
@@ -59,7 +81,7 @@ sudo apt install git
 Create a GitHub account (username doesn't matter) or use an existing one. Send your username in the "GitHub Username" thread in `#programming` on Discord so I can add you to our organization. Afterwards, you need to login on your laptop. There are many ways but my most recommended is [GitHub CLI](https://cli.github.com/).
 
 ## Git login
-When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell) and type `gh auth login`. Select `Github.com`, `HTTPS`, `Y`, `Login with a web browser`, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.
+When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell or Bash) and type `gh auth login`. Select `Github.com`, `HTTPS`, `Y`, `Login with a web browser`, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.
 
 ## (Only for pre-season) Java
 
@@ -84,6 +106,16 @@ export JAVA_HOME="$HOME/wpilib/2024/jdk/bin/"
 If you're on Debian, Ubuntu, Mint, or some other `apt`-based distribution, you can install the system-recommended JDK using
 ```bash
 sudo apt install default-jdk
+```
+:::
+
+:::{tab-item} macOS
+:sync: macos
+
+You can use WPILib's JDK by adding the following to your `~/.bash_profile` and `~/.zprofile`:
+```bash
+export PATH="$HOME/wpilib/2024/jdk/bin/:$PATH"
+export JAVA_HOME="$HOME/wpilib/2024/jdk/bin/"
 ```
 :::
 
@@ -115,6 +147,24 @@ If you also want to install the WPILib extension into your main VSCode or VSCodi
 
 ```bash
 curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh | FLDK_INSTALL_EXT_DESTINATION=code bash
+```
+:::
+
+:::{tab-item} macOS
+:sync: macos
+
+Please use my script to install these tools. Make sure that `~/.local/bin` is on your `$PATH`.
+
+To run the script, you must have a display (X11 or Wayland) and a network connection.
+
+```bash
+curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | bash
+```
+
+If you also want to install the WPILib extension into your main VSCode or VSCodium installation, please set the environment variable FLDK_INSTALL_EXT_DESTINATION to the name of the command that launches VSCode (which is `code` for Microsoft binaries, `code-oss` if you compiled it yourself, and `codium` for VSCodium; you must be able to run this command from your shell first). For example:
+
+```bash
+curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | FLDK_INSTALL_EXT_DESTINATION=code bash
 ```
 :::
 
@@ -158,6 +208,12 @@ waydroid app launch com.ctre.phoenix_tuner
 ```
 :::
 
+:::{tab-item} macOS
+:sync: macos
+
+Unfortunately, Phoenix Tuner X is currently not available for macOS.
+:::
+
 ::::
 
 ## REV Hardware Client
@@ -175,6 +231,12 @@ REV Hardware Client is the REV-specific diagnostics tool for REV devices (e.g. S
 :sync: linux
 
 Unfortunately, REV Hardware Client is currently not available for Linux.
+:::
+
+:::{tab-item} macOS
+:sync: macos
+
+Unfortunately, REV Hardware Client is currently not available for macOS.
 :::
 
 ::::
