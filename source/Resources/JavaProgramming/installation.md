@@ -24,14 +24,13 @@ If System isn’t listed under Control Panel in the search results, click Contro
 :::{tab-item} Linux
 :sync: linux
 
-Make sure you're on a 64-bit (amd64 or arm64) distribution which uses glibc (which includes most popular distros such as Debian, Ubuntu, Mint, Arch, elementary OS, Fedora, Enterprise Linux, and SuSE).
+Make sure you're on a 64-bit (amd64 or arm64) distribution which uses glibc and was released in 2022 or later (which includes most popular distros such as Debian, Ubuntu, Mint, Arch, elementary OS, Fedora, Enterprise Linux, and SuSE).
 :::
 
 :::{tab-item} macOS
 :sync: macos
 
-Make sure you're on a recent macOS system. Both Intel Macs and Apple Silicon Macs are supported. Pre-2008 Macs are definitely not supported.
-:::
+Make sure you're on macOS 12 or higher. Both Intel Macs and Apple Silicon Macs are supported.
 
 ::::
 
