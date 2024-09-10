@@ -153,9 +153,11 @@ curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/inst
 :::{tab-item} macOS
 :sync: macos
 
+This is **super experimental**, please tell Georgi and Ethan that you are trying this out if you do try it.
+
 Please use my script to install these tools. Make sure that `~/.local/bin` is on your `$PATH`.
 
-To run the script, you must have a display (X11 or Wayland) and a network connection.
+To run the script, you must have a display and a network connection.
 
 ```bash
 curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | bash
