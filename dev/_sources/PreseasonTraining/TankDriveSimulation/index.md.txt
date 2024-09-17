@@ -21,6 +21,7 @@ A (software) subsystem serves one purpose of only controlling one physical subsy
 * Driving subsystem: controls the drive base
 * Arm subsystem: controls the arm
 * Shooter subsystem: controls the shooting mechanism
+
 A command serves one function and utilizes subsystems to do this function. Examples include:
 * Intake command: picks up a game piece using the arm subsystem and the vision subsystem
 * Balance command: balances the robot on a platform using the drive subsystem and the localization subsystem
