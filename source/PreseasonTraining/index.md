@@ -11,7 +11,7 @@ LEDProgramming/index.md
 OpenCV_ColorSegmentation/index.md
 JavaBasics/index.md
 TankDriveSimulation/index.md
-AutonomousSimulation/index.md
+TankAutonomous/index.md
 ArmSimulation/index.md
 Mock/index.md
 2024CodeOverview/index.md
