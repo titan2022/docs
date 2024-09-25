@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Lesson 8: 2024 Code overview" href="../2024CodeOverview/index.html" /><link rel="prev" title="Tank Drive Simulation" href="../TankDriveSimulation/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Lesson 4: Autonomous Simulation - Titan Robotics 2024 documentation</title>
+        <title>Tank Autonomous - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -201,15 +201,15 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Preseason Training</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Preseason Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Preseason Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Preseason Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Overview/index.html">Programming Subteam Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LEDProgramming/index.html">LED Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../OpenCV_ColorSegmentation/index.html">Color-based segmentation in OpenCV Python</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../TankDriveSimulation/index.html">Tank Drive Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Tank Drive Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../TankAutonomous/index.html">Tank Autonomous</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Tank Autonomous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2024CodeOverview/index.html">Lesson 8: 2024 Code overview</a></li>
 </ul>
 </li>
@@ -258,12 +258,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/PreseasonTraining/5_AutonomousSimulation/index.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/PreseasonTraining/TankAutonomous/index.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/PreseasonTraining/5_AutonomousSimulation/index.md" title="Edit this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/PreseasonTraining/TankAutonomous/index.md" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -276,20 +276,32 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="lesson-4-autonomous-simulation">
-<h1>Lesson 4: Autonomous Simulation<a class="headerlink" href="#lesson-4-autonomous-simulation" title="Permalink to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Arm Simulation: Tutorial</a></li>
-</ul>
-</div>
+          <section id="tank-autonomous">
+<h1>Tank Autonomous<a class="headerlink" href="#tank-autonomous" title="Permalink to this heading">¶</a></h1>
+<section id="getting-code">
+<h2>Getting code<a class="headerlink" href="#getting-code" title="Permalink to this heading">¶</a></h2>
+<p>Clone the <a class="reference external" href="https://github.com/titan2022/Training2024">titan2022/Training2024</a> repository if you haven’t done so in the previous lesson. Afterwards, create a branch from the <code class="docutils literal notranslate"><span class="pre">auton-lesson-template</span></code> branch and call it <code class="docutils literal notranslate"><span class="pre">auton-lesson-&lt;USERNAME&gt;</span></code>.</p>
+</section>
+<section id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">¶</a></h2>
+<p>This branch should contain a <code class="docutils literal notranslate"><span class="pre">TankDriveSubsystem</span></code> with three public methods: <code class="docutils literal notranslate"><span class="pre">driveLeft(double)</span></code>, <code class="docutils literal notranslate"><span class="pre">driveRight(double)</span></code>, and <code class="docutils literal notranslate"><span class="pre">stop()</span></code>. Utilize these (look more into the file for more information) in your commands to control the drivebase. <code class="docutils literal notranslate"><span class="pre">Robot.java</span></code> should have a <code class="docutils literal notranslate"><span class="pre">TankDriveSubsystem</span></code> initialized as <code class="docutils literal notranslate"><span class="pre">drive</span></code> on the line 18.</p>
+<p>There will also be a <code class="docutils literal notranslate"><span class="pre">TankControlCommand</span></code> and <code class="docutils literal notranslate"><span class="pre">MoveCommand</span></code>. <code class="docutils literal notranslate"><span class="pre">TankControlCommand</span></code> is the teleop control command that we covered in the previous lesson. <code class="docutils literal notranslate"><span class="pre">MoveCommand</span></code> is simple: it sets all four motors to specified output, with no end condition. This means that the command will run forever without a timeout, which you can call through <code class="docutils literal notranslate"><span class="pre">.withTimeout(double)</span></code>.</p>
+<p>Now, there’s also a new way to call commands: <code class="docutils literal notranslate"><span class="pre">SequentialCommandGroup</span></code>. Initialize a new <code class="docutils literal notranslate"><span class="pre">SequentialCommandGroup</span></code> and pass the commands you want to run in order (don’t schedule commands inside the group, see example). Since the next command can only start when the first finishes, make sure to add a terminating statement like <code class="docutils literal notranslate"><span class="pre">.withTimeout(double)</span></code>. Schedule the command group inside <code class="docutils literal notranslate"><span class="pre">autonomousInit()</span></code>—this will be your autonomous routine. Final example of how to use these elements can be found there already.</p>
+</section>
+<section id="the-task">
+<h2>The Task<a class="headerlink" href="#the-task" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Create a 90 degree rotation command. This should be done in a similar fashion to <code class="docutils literal notranslate"><span class="pre">MoveCommand</span></code> but the opposite sides should drive in opposite directions but same speed. As we do not have any input measurements, rotate the robot based on the amount of time it takes to do a 90 degree rotation (you will have to guess this).</p></li>
+<li><p>Use a combination of <code class="docutils literal notranslate"><span class="pre">MoveCommand</span></code> and you rotation command inside a <code class="docutils literal notranslate"><span class="pre">SequentialCommandGroup</span></code> with <code class="docutils literal notranslate"><span class="pre">.withTimeout(double)</span></code> statements to create an autonomous cycle.</p></li>
+<li><p>Your goal is to make the robot complete a square.</p></li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -297,8 +309,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../2024CodeOverview/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Lesson 8: 2024 Code overview</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../TankDriveSimulation/index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tank Drive Simulation</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -317,8 +347,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tank Autonomous</a><ul>
+<li><a class="reference internal" href="#getting-code">Getting code</a></li>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#the-task">The Task</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
