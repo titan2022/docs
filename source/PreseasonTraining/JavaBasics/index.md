@@ -1,4 +1,4 @@
-# Lesson 2: Java Basics
+# Java Basics
 
 ## Agenda
 
