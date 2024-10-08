@@ -70,7 +70,7 @@ cv.destroyAllWindows()
 
 ### Showing image
 
-Use the `cv.imshow` function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating.
+Use the `cv.imshow` function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating. The window will take in BGR, just like the camera feed, so you don't need to convert the stream to show it properly.
 
 ```py
 cv.imshow("Window Title", your_frame)
