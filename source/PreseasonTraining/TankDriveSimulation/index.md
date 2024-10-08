@@ -1,13 +1,8 @@
 # Tank Drive Simulation
 
-```{toctree}
----
-maxdepth: 2
-caption: Contents
-titlesonly: true
----
-Tutorial.md
-```
+2024 September 17
+
+[Slideshow](https://docs.google.com/presentation/d/1IZbXYiPjMQjJu4bXix9ZmeVV-gaZXx29eIUZOU1ICE4/edit#slide=id.p)
 
 ## Getting code
 
@@ -182,6 +177,10 @@ SmartDashboard.putNumber("key", 5);
 SmartDashboard.putBooleam("key", true);
 SmartDashboard.putString("key", "value");
 ```
+
+## Final code (from after the lesson)
+
+[branch tank-drive-template](https://github.com/titan2022/Training2024/tree/tank-drive-template)
 
 ## The Task
 

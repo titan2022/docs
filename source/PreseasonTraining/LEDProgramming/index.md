@@ -1,5 +1,7 @@
 # LED Programming
 
+2024 September 4, 2 hours
+
 ## Setup
 
 This lesson is about programming an LED strip using a microcontroller, such as an Arduino Uno. [Wokwi](https://wokwi.com/) is an online emulator that will substitute a real board.

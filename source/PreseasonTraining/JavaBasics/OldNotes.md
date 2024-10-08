@@ -1,4 +1,5 @@
-# Lesson 2: Java Basics
+# Old notes from 2023
+
 
 ## Agenda
 
