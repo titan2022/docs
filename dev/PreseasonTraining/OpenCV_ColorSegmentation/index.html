@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -285,7 +285,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -293,6 +293,117 @@
         <article role="main" id="furo-main-content">
           <section id="color-based-segmentation-in-opencv-python">
 <h1>Color-based segmentation in OpenCV Python<a class="headerlink" href="#color-based-segmentation-in-opencv-python" title="Permalink to this heading">¶</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p>Install Python (&gt;=3.8) and the following packages using pip. You can install OpenCV with Python bindings another way, <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code> is provided for simplicity of installation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>opencv-python
+pip3<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+</section>
+<section id="overivew">
+<h2>Overivew<a class="headerlink" href="#overivew" title="Permalink to this heading">¶</a></h2>
+<section id="segmentation">
+<h3>Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this heading">¶</a></h3>
+<p>In computer vision, image segmentation is the partitioning of the frame into several groups of pixels. Each segment typically represents a separate entity. Common application is separating a specific object from the background—a method of object detection. For this lesson, we will attempt image segmentation in Python OpenCV using colors.</p>
+<p>Color can be represented in various formats, most common of which in software is Red Green Blue (RGB). Although it is convinient as monitors take RGB as input, it is not ideal for human interaction. For this, hue-based representations such as Hue Saturation Value (HSV) are more appropriate. For this lesson, we will use specific hue ranges to segment our frame.</p>
+</section>
+<section id="opencv">
+<h3>OpenCV<a class="headerlink" href="#opencv" title="Permalink to this heading">¶</a></h3>
+<p>OpenCV is the largest computer vision library with an extensive set of features, meaning that there will always be multiple ways to achieve something. For this lesson, we will utilize OpenCV for our camera stream, access to data, and conditional segmentation.</p>
+</section>
+<section id="numpy">
+<h3>NumPy<a class="headerlink" href="#numpy" title="Permalink to this heading">¶</a></h3>
+<p>NumPy is one of the most commonly used Python libraries. Its main purpose is to be an extended math module so you will have to use it often with other libraries. To note, the its types (Python has types but they’re hidden and implied) are different from the standard types so you will have to initiate the NumPy specific types over the standard ones. Some types will be automatically converted but it is best to specify NumPy, as you will see later in this guide.</p>
+</section>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this heading">¶</a></h3>
+<p>Although we have not covered Python in our pre-season training, it is designed to not be difficult to use. Unlike Java, Python does not have explicit types and you will not be required to write them. The biggest differences will be the syntax and the standard library. Look up information online (I recommend <a class="reference external" href="https://www.w3schools.com/python/">W3Schools</a>) or ask others for help.</p>
+<p>To run a Python program in Visual Studio Code, you can use the same “Run” button or shortcuts. Unlike Java, there is no explicit structure needed so you will have to have the file you’re working on opened.</p>
+</section>
+</section>
+<section id="the-problem">
+<h2>The problem<a class="headerlink" href="#the-problem" title="Permalink to this heading">¶</a></h2>
+<section id="instructions">
+<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h3>
+<p>Use the following info to help you achieve image segmentation using hue. Your goal is to create and calibrate a program that draws an outline accross your segmented object. Choose something bright with a unique hue and calibrate your hue ranges for it.</p>
+</section>
+<section id="importing-packages">
+<h3>Importing packages<a class="headerlink" href="#importing-packages" title="Permalink to this heading">¶</a></h3>
+<p>To import pacakges in Python, we use the <code class="docutils literal notranslate"><span class="pre">import</span></code> keyword. You can also use <code class="docutils literal notranslate"><span class="pre">as</span></code> to shorten the name for readibility.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># NumPy</span>
+<span class="kn">import</span> <span class="nn">cv2</span> <span class="k">as</span> <span class="nn">cv</span>   <span class="c1"># OpenCV</span>
+<span class="kn">import</span> <span class="nn">math</span>        <span class="c1"># Standard math module</span>
+</pre></div>
+</div>
+</section>
+<section id="camera-stream">
+<h3>Camera stream<a class="headerlink" href="#camera-stream" title="Permalink to this heading">¶</a></h3>
+<p>To get frames from your webcam, you need to “open” the stream. This means claiming the stream to this program and reading the data using the capture object in OpenCV. The first integer argument is the index of the camera. Unless you have multiple connected, it should be zero. Almost all OpenCV code starts with this template.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+    <span class="c1"># Get frame</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># TODO: Do all your things with the frame here</span>
+
+    <span class="c1"># Quit if Q is pressed (necessary, otherwise you would have to kill the program externally)</span>
+    <span class="k">if</span> <span class="n">cv</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+        <span class="k">break</span>
+
+<span class="c1"># Close window if `cap.isOpened()` is false, which typically occurs after an error</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="numpy-arrays">
+<h3>NumPy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">¶</a></h3>
+<p>In Python, you can initiate an array using this syntax:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For NumPy arrays, use the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This is pretty much as much NumPy as you would need to know in this lesson.</p>
+</section>
+<section id="converting-frames">
+<h3>Converting frames<a class="headerlink" href="#converting-frames" title="Permalink to this heading">¶</a></h3>
+<p>Here are some functions useful for converting frames from the standard BGR. See more at <a class="reference external" href="https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html">this page</a>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">new_frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>  <span class="c1"># BGR to RGB</span>
+<span class="n">new_frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span> <span class="c1"># BGR to Grayscale</span>
+<span class="n">new_frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>  <span class="c1"># BGR to HSV</span>
+</pre></div>
+</div>
+</section>
+<section id="masking">
+<h3>Masking<a class="headerlink" href="#masking" title="Permalink to this heading">¶</a></h3>
+<p>In graphic design and computer vision, masking is the action of hiding unnecessary part of an image. In a sense, it is image segmentation in our program. You can create a color based mask using this function.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">your_frame</span><span class="p">,</span> <span class="n">lower_threshold</span><span class="p">,</span> <span class="n">upper_threshold</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">your_frame</span></code> has to be an OpenCV frame, <code class="docutils literal notranslate"><span class="pre">lower_threshold</span></code> and <code class="docutils literal notranslate"><span class="pre">upper_threshold</span></code> have to be a 3-sized <code class="docutils literal notranslate"><span class="pre">np.array</span></code>. This will return an image where every included pixel is white (full values) and every excluded is black (zero values).</p>
+</section>
+<section id="contours">
+<h3>Contours<a class="headerlink" href="#contours" title="Permalink to this heading">¶</a></h3>
+<p>To visualize our mask on top of the existing imaage, we can get the countours of our mask and draw them on top of the original image. The <code class="docutils literal notranslate"><span class="pre">cv.drawContours</span></code> function’s first two arguments are your frame and contours respectively, the fourth argument is your RGB color of the line, and the last argument is the line width.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">contours</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">your_frame</span><span class="p">,</span> <span class="n">contours</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="showing-image">
+<h3>Showing image<a class="headerlink" href="#showing-image" title="Permalink to this heading">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">cv.imshow</span></code> function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Mask&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Feed&quot;</span><span class="p">,</span> <span class="n">final_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
         </article>
@@ -338,8 +449,45 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Color-based segmentation in OpenCV Python</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#overivew">Overivew</a><ul>
+<li><a class="reference internal" href="#segmentation">Segmentation</a></li>
+<li><a class="reference internal" href="#opencv">OpenCV</a></li>
+<li><a class="reference internal" href="#numpy">NumPy</a></li>
+<li><a class="reference internal" href="#python">Python</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-problem">The problem</a><ul>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#importing-packages">Importing packages</a></li>
+<li><a class="reference internal" href="#camera-stream">Camera stream</a></li>
+<li><a class="reference internal" href="#numpy-arrays">NumPy arrays</a></li>
+<li><a class="reference internal" href="#converting-frames">Converting frames</a></li>
+<li><a class="reference internal" href="#masking">Masking</a></li>
+<li><a class="reference internal" href="#contours">Contours</a></li>
+<li><a class="reference internal" href="#showing-image">Showing image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
