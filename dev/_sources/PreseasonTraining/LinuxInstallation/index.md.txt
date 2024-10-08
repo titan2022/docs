@@ -18,4 +18,21 @@ Debian will ask you which session to boot into. Select the "Live system" using t
 
 After installation, you can reboot and remove the USB stick. It will ask you which operating system you want to boot -- you can use the arrow keys to select, and use Enter to boot the selected OS. If you wait too long, it will 
 
+## Changing GRUB settings
+
 If you want to change the settings of the boot screen, boot into Debian, and use `sudo nano /etc/default/grub` to edit the settings file. Save the settings file with Ctrl-X, and then run `sudo update-grub` in order to merge the settings file with the other configuration files and apply it to the bootloader.
+
+## Installing a newer kernel/firmware
+
+Sometimes, the computer might need a newer Linux kernel in order to support newer hardware.
+
+You should download the most recent `linux-image-`*\** and `firmware-linux`, `firmware-linux-free`, `firmware-linux-nonfree`, `firmware-amd-graphics`, `firmware-misc-nonfree`, `firmware-intel-graphics`, `firmware-intel-misc`, `firmware-nvidia-graphics`, `firmware-mediatek` packages from buster-backports onto a USB stick (find them on https://packages.debian.org/).
+
+On the target device, boot into a shell. Use `ls -l /dev/disk/by-id` to figure out what the USB stick device is called (I got `/dev/sda`, but be careful to use the right one). Then run `USBSTICK=/dev/sda` or the appropriate one.
+
+```bash
+sudo mkdir -p /mnt/usbstick
+sudo mount $USBSTICK /mnt/usbstick
+cd /mnt/usbstick
+sudo apt install ./*.deb
+```

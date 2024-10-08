@@ -303,7 +303,22 @@
 <p>Plug in the USB stick with the Debian image. Reboot the computer, and spam the appropriate hotkey to open the BIOS settings as soon as the power light comes on. On most laptops, this is ESC, F2, or F10. In the BIOS, make the USB stick the default boot target, and disable Secure Boot (Secure Boot causes technical issues, since it prevents you from running any OS that has not been approved by Microsoft or someone Microsoft sold a signing key to). Then, save the BIOS changes.</p>
 <p>Debian will ask you which session to boot into. Select the “Live system” using the Enter key and wait for it to boot. Open the installer, which should be on the desktop at the top left (but you can search for “Calamares” in the start menu or run <code class="docutils literal notranslate"><span class="pre">calamares</span></code> in the terminal if it’s not there). Follow the installer’s prompts. If the computer goes to sleep, the username for the live system is <code class="docutils literal notranslate"><span class="pre">live</span></code> and the password is also <code class="docutils literal notranslate"><span class="pre">live</span></code>.</p>
 <p>After installation, you can reboot and remove the USB stick. It will ask you which operating system you want to boot – you can use the arrow keys to select, and use Enter to boot the selected OS. If you wait too long, it will</p>
+</section>
+<section id="changing-grub-settings">
+<h2>Changing GRUB settings<a class="headerlink" href="#changing-grub-settings" title="Permalink to this heading">¶</a></h2>
 <p>If you want to change the settings of the boot screen, boot into Debian, and use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/default/grub</span></code> to edit the settings file. Save the settings file with Ctrl-X, and then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">update-grub</span></code> in order to merge the settings file with the other configuration files and apply it to the bootloader.</p>
+</section>
+<section id="installing-a-newer-kernel-firmware">
+<h2>Installing a newer kernel/firmware<a class="headerlink" href="#installing-a-newer-kernel-firmware" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes, the computer might need a newer Linux kernel in order to support newer hardware.</p>
+<p>You should download the most recent <code class="docutils literal notranslate"><span class="pre">linux-image-</span></code><em>*</em> and <code class="docutils literal notranslate"><span class="pre">firmware-linux</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-linux-free</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-linux-nonfree</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-amd-graphics</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-misc-nonfree</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-intel-graphics</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-intel-misc</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-nvidia-graphics</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware-mediatek</span></code> packages from buster-backports onto a USB stick (find them on https://packages.debian.org/).</p>
+<p>On the target device, boot into a shell. Use <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/dev/disk/by-id</span></code> to figure out what the USB stick device is called (I got <code class="docutils literal notranslate"><span class="pre">/dev/sda</span></code>, but be careful to use the right one). Then run <code class="docutils literal notranslate"><span class="pre">USBSTICK=/dev/sda</span></code> or the appropriate one.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/usbstick
+sudo<span class="w"> </span>mount<span class="w"> </span><span class="nv">$USBSTICK</span><span class="w"> </span>/mnt/usbstick
+<span class="nb">cd</span><span class="w"> </span>/mnt/usbstick
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./*.deb
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -364,6 +379,8 @@
             <ul>
 <li><a class="reference internal" href="#">Linux installation</a><ul>
 <li><a class="reference internal" href="#installing-debian">Installing Debian</a></li>
+<li><a class="reference internal" href="#changing-grub-settings">Changing GRUB settings</a></li>
+<li><a class="reference internal" href="#installing-a-newer-kernel-firmware">Installing a newer kernel/firmware</a></li>
 </ul>
 </li>
 </ul>
