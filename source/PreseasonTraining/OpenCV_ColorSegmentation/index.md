@@ -68,6 +68,15 @@ cap.release()
 cv.destroyAllWindows()
 ```
 
+### Showing image
+
+Use the `cv.imshow` function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating.
+
+```py
+cv.imshow("Mask", mask)
+cv.imshow("Feed", final_image)
+```
+
 ### NumPy arrays
 
 In Python, you can initiate an array using this syntax:
@@ -111,13 +120,4 @@ To visualize our mask on top of the existing imaage, we can get the countours of
 ```py
 contours, _ = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cv.drawContours(your_frame, contours, -1, (0, 255, 0), 3)
-```
-
-### Showing image
-
-Use the `cv.imshow` function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating.
-
-```py
-cv.imshow("Mask", mask)
-cv.imshow("Feed", final_image)
 ```
