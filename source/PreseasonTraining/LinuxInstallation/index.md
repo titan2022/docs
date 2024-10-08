@@ -36,3 +36,11 @@ sudo mount $USBSTICK /mnt/usbstick
 cd /mnt/usbstick
 sudo apt install ./*.deb
 ```
+
+After rebooting, set up backports:
+
+```bash
+sudo tee /etc/apt/sources.list.d/backports.list > /dev/null <<EOF
+deb http://deb.debian.org/debian bookworm-backports main 
+EOF
+```
