@@ -73,8 +73,7 @@ cv.destroyAllWindows()
 Use the `cv.imshow` function to show image with the first argument corresponding to window title and the second being the frame. Make sure this is inside your while loop so it keeps updating.
 
 ```py
-cv.imshow("Mask", mask)
-cv.imshow("Feed", final_image)
+cv.imshow("Window Title", your_frame)
 ```
 
 ### NumPy arrays
