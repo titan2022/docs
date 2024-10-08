@@ -1,4 +1,4 @@
-# Lesson 8: 2024 Code overview
+# 2024 Code overview
 
 % ```{toctree}
 % ---

@@ -1,14 +1,5 @@
 # Tank Drive Simulation
 
-```{toctree}
----
-maxdepth: 2
-caption: Contents
-titlesonly: true
----
-Tutorial.md
-```
-
 ## Getting code
 
 Clone the [titan2022/Training2024](https://github.com/titan2022/Training2024) repository. Afterwards, create a branch from the `tank-drive-template` branch and call it `tank-drive-<USERNAME>`. All of the simulator code can be found in the `sim` folder, which you should not worry about or edit. Our editing entry point will be `src/main/java/frc/robot/Robot.java` (not the typical `Main.java`), which mimics the actual structure of a real Java FRC project.
