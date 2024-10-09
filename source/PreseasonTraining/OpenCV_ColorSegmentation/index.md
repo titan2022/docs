@@ -2,11 +2,14 @@
 
 ## Installation
 
-Install Python (>=3.8) and the following packages using pip. You can install OpenCV with Python bindings another way, `opencv-python` is provided for simplicity of installation.
+On Windows, install Python 3.12 from the Microsoft Store. On Linux, Python should be preinstalled. Ping Georgi and Ethan if you need help.
+
+Then install OpenCV:
 ```bash
-pip3 install opencv-python
-pip3 install numpy
+pip install opencv-python opencv-contrib-python numpy
 ```
+
+(there are also other ways to install it, but this is the simplest.)
 
 ## Overivew
 
@@ -22,7 +25,7 @@ OpenCV is the largest computer vision library with an extensive set of features,
 
 ### NumPy
 
-NumPy is one of the most commonly used Python libraries. Its main purpose is to be an extended math module so you will have to use it often with other libraries. To note, the its types (Python has types but they're hidden and implied) are different from the standard types so you will have to initiate the NumPy specific types over the standard ones. Some types will be automatically converted but it is best to specify NumPy, as you will see later in this guide.
+NumPy is one of the most commonly used Python libraries. Its main purpose is to be an extended math module so you will have to use it often with other libraries. To note, its types (Python has types but they're hidden and implied) are different from the standard types so you will have to initiate the NumPy specific types over the standard ones. Some types will be automatically converted but it is best to specify NumPy, as you will see later in this guide.
 
 ### Python
 
