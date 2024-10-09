@@ -107,7 +107,7 @@ new_frame = cv.cvtColor(frame, cv.COLOR_BGR2HSV)  # BGR to HSV
 
 ### Masking
 
-In graphic design and computer vision, masking is the action of hiding unnecessary part of an image. In a sense, it is image segmentation in our program. You can create a color based mask using this function.
+In graphic design and computer vision, masking is the action of hiding unnecessary part of an image. In a sense, it is image segmentation in our program. You can create a color based mask using this function. Note that all three values are the size of a byte, meaning the values should be unsigned integers from 0 to 255 inclusive.
 
 ```py
 mask = cv.inRange(your_frame, lower_threshold, upper_threshold)
@@ -123,3 +123,27 @@ To visualize our mask on top of the existing imaage, we can get the countours of
 contours, _ = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 cv.drawContours(your_frame, contours, -1, (0, 255, 0), 3)
 ```
+
+## Calibration
+
+### Intro
+
+Since each camera has different physical properties and lenses, they need to be calibrated individually. More often than not, constants such as field of view of a specific webcam are not available online. For this reason, we use a calibration script that scans images of an AruCo chessboard with known dimentions to calculate these constants. For this lesson, you will only need to calibrate your camera for the distance challenge.
+
+### Running
+
+Download the `opencv-python-contrib` package using pip and run [this file](https://github.com/titan2022/Training2024/blob/calibration/calib.py) to calibrate your camera. The console output will show your X and Y field of view in degrees. More data such as the camera matrix and distortion coefficients are available in the script.
+
+When running the program, show your AruCo chessboard (which should be taped to a flat surface) at various angles and press SPACE key to take a picture. Take approximately 10 to 20 pictures. Press ESC key to exit and copy the values printed to the console.
+
+## Challenges
+
+After completing your initial problem, feel free to try the following challenges to expand your program.
+
+### Finding the center
+
+For use in locating the specific object, its position in the frame needs to be obtained. The best representation of the position would be the center of the contour in pixels on the image frame. For this challenge, use the available contour data to calculate its center in pixels. The `contours` object is an array that contains each contour (often you might have multiple) in a form of another array of 2D vertices. Print it to the console or [read more about it online](https://docs.opencv.org/3.4/d4/d73/tutorial_py_contours_begin.html) to figure out the structure of the array and use the data points to calculate the center.
+
+### Calculating object distance
+
+Given that the object you want to detect is a near perfect sphere with constant radius, you can use trigonometry to calculate the distance of the sphere from the camera. Use the calibration script to get your field of view of your webcam and use all your known variables to calculate for depth. In a sense, you are trying to translate 2D pixel input (radius of circle in pixels) to 3D distance output. Read this [Wikipedia article](https://en.wikipedia.org/wiki/3D_projection) about perspective or search more online resources for help.
