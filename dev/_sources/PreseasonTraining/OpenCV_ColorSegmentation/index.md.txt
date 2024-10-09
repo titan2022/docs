@@ -136,7 +136,7 @@ Since each camera has different physical properties and lenses, they need to be 
 
 ### Running
 
-Download the `opencv-python-contrib` package using pip and run [this file](https://github.com/titan2022/Training2024/blob/calibration/calib.py) to calibrate your camera. The console output will show your X and Y field of view in degrees. More data such as the camera matrix and distortion coefficients are available in the script.
+Download the `opencv-contrib-python` package using pip and run [this file](https://github.com/titan2022/Training2024/blob/calibration/calib.py) to calibrate your camera. The console output will show your X and Y field of view in degrees. More data such as the camera matrix and distortion coefficients are available in the script.
 
 When running the program, show your AruCo chessboard (which should be taped to a flat surface) at various angles and press SPACE key to take a picture. Take approximately 10 to 20 pictures. Press ESC key to exit and copy the values printed to the console.
 
