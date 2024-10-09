@@ -1,5 +1,9 @@
 # Color-based segmentation in OpenCV Python
 
+2024 October 8/9
+
+[Slideshow (color-based segmentation)](https://docs.google.com/presentation/d/1IMgoiuJn4d6MBo8bgtqWCU0rHaVIX8sB9S1IGK5x0JQ/edit?usp=sharing)
+
 ## Installation
 
 On Windows, install Python 3.12 from the Microsoft Store. On Linux, Python should be preinstalled. Ping Georgi and Ethan if you need help.
