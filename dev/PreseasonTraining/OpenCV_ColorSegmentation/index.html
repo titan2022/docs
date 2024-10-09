@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Java Basics" href="../JavaBasics/index.html" /><link rel="prev" title="LED Programming" href="../LEDProgramming/index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="2024 Code overview" href="../2024CodeOverview/index.html" /><link rel="prev" title="Linux installation" href="../LinuxInstallation/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Color-based segmentation in OpenCV Python - Titan Robotics 2024 documentation</title>
@@ -205,7 +205,6 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Preseason Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Preseason Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Overview/index.html">Programming Subteam Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LEDProgramming/index.html">LED Programming</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Color-based segmentation in OpenCV Python</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../JavaBasics/index.html">Java Basics</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Java Basics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../JavaBasics/InventoryManager.html">1 - Inventory Manager</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../JavaBasics/WordleClone.html">2 - Wordle Clone</a></li>
@@ -217,6 +216,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../TankAutonomous/index.html">Tank Autonomous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ElectricalOverview/index.html">Electrical overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LinuxInstallation/index.html">Linux installation</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Color-based segmentation in OpenCV Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2024CodeOverview/index.html">2024 Code overview</a></li>
 </ul>
 </li>
@@ -295,11 +295,12 @@
 <h1>Color-based segmentation in OpenCV Python<a class="headerlink" href="#color-based-segmentation-in-opencv-python" title="Permalink to this heading">¶</a></h1>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
-<p>Install Python (&gt;=3.8) and the following packages using pip. You can install OpenCV with Python bindings another way, <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code> is provided for simplicity of installation.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>opencv-python
-pip3<span class="w"> </span>install<span class="w"> </span>numpy
+<p>On Windows, install Python 3.12 from the Microsoft Store. On Linux, Python should be preinstalled. Ping Georgi and Ethan if you need help.</p>
+<p>Then install OpenCV:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>opencv-python<span class="w"> </span>opencv-contrib-python<span class="w"> </span>numpy
 </pre></div>
 </div>
+<p>(there are also other ways to install it, but this is the simplest.)</p>
 </section>
 <section id="overivew">
 <h2>Overivew<a class="headerlink" href="#overivew" title="Permalink to this heading">¶</a></h2>
@@ -314,7 +315,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>numpy
 </section>
 <section id="numpy">
 <h3>NumPy<a class="headerlink" href="#numpy" title="Permalink to this heading">¶</a></h3>
-<p>NumPy is one of the most commonly used Python libraries. Its main purpose is to be an extended math module so you will have to use it often with other libraries. To note, the its types (Python has types but they’re hidden and implied) are different from the standard types so you will have to initiate the NumPy specific types over the standard ones. Some types will be automatically converted but it is best to specify NumPy, as you will see later in this guide.</p>
+<p>NumPy is one of the most commonly used Python libraries. Its main purpose is to be an extended math module so you will have to use it often with other libraries. To note, its types (Python has types but they’re hidden and implied) are different from the standard types so you will have to initiate the NumPy specific types over the standard ones. Some types will be automatically converted but it is best to specify NumPy, as you will see later in this guide.</p>
 </section>
 <section id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this heading">¶</a></h3>
@@ -410,23 +411,23 @@ pip3<span class="w"> </span>install<span class="w"> </span>numpy
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../JavaBasics/index.html">
+          <a class="next-page" href="../2024CodeOverview/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Java Basics</div>
+                <div class="title">2024 Code overview</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../LEDProgramming/index.html">
+          <a class="prev-page" href="../LinuxInstallation/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">LED Programming</div>
+                <div class="title">Linux installation</div>
                 
               </div>
             </a>

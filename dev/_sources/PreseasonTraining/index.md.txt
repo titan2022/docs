@@ -8,12 +8,12 @@ titlesonly: true
 ---
 Overview/index.md
 LEDProgramming/index.md
-OpenCV_ColorSegmentation/index.md
 JavaBasics/index.md
 TankDriveSimulation/index.md
 TankAutonomous/index.md
 ElectricalOverview/index.md
 LinuxInstallation/index.md
+OpenCV_ColorSegmentation/index.md
 2024CodeOverview/index.md
 ```
 
@@ -29,3 +29,4 @@ LinuxInstallation/index.md
 * [2024 September 24 - Coding an autonomous routine](TankAutonomous/index.md)
 * [2024 September 25 - Electrical overview](ElectricalOverview/index.md)
 * [2024 October 1/2 - Linux installation](LinuxInstallation/index.md)
+* [2024 October 8/9 - OpenCV-based segmentation](OpenCV_ColorSegmentation/index.md)
