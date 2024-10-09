@@ -295,9 +295,21 @@
 <h1>AprilTag Detection<a class="headerlink" href="#apriltag-detection" title="Permalink to this heading">¶</a></h1>
 <section id="reading-configuration">
 <h2>Reading Configuration<a class="headerlink" href="#reading-configuration" title="Permalink to this heading">¶</a></h2>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h3>
+<p>Initiate a <code class="docutils literal notranslate"><span class="pre">ConfigReader</span></code> object without a constructor and call the <code class="docutils literal notranslate"><span class="pre">readFromFile(std::string</span> <span class="pre">path)</span></code> method with specified directory path with the config to load it.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigReader</span><span class="w"> </span><span class="n">config</span><span class="p">;</span>
+<span class="n">config</span><span class="p">.</span><span class="n">readFromFile</span><span class="p">(</span><span class="s">&quot;./example/&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Relative to project root directory but absolute paths work too</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="detection">
 <h2>Detection<a class="headerlink" href="#detection" title="Permalink to this heading">¶</a></h2>
+<p>TitanProcessing library provides an <code class="docutils literal notranslate"><span class="pre">ApriltagDetector</span></code> class which processes the specified stream and sends pose packets over UDP. Initialize <code class="docutils literal notranslate"><span class="pre">ConfigReader</span></code>, <code class="docutils literal notranslate"><span class="pre">NetworkingClient</span></code>, <code class="docutils literal notranslate"><span class="pre">PoseFilter</span></code>, and <code class="docutils literal notranslate"><span class="pre">Localizer</span></code> and pass these objects to the <code class="docutils literal notranslate"><span class="pre">ApriltagDetector</span></code> constructor. The first <code class="docutils literal notranslate"><span class="pre">int</span></code> argument specified is the index of <code class="docutils literal notranslate"><span class="pre">/dev/video*</span></code> feed. The second <code class="docutils literal notranslate"><span class="pre">bool</span></code> argument specified whether or not to open the stream with a window (opens through X11 by default).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 <section id="multithreading">
 <h2>Multithreading<a class="headerlink" href="#multithreading" title="Permalink to this heading">¶</a></h2>
@@ -360,7 +372,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">AprilTag Detection</a><ul>
-<li><a class="reference internal" href="#reading-configuration">Reading Configuration</a></li>
+<li><a class="reference internal" href="#reading-configuration">Reading Configuration</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#detection">Detection</a></li>
 <li><a class="reference internal" href="#multithreading">Multithreading</a></li>
 </ul>
