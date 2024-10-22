@@ -14,6 +14,7 @@ TankAutonomous/index.md
 ElectricalOverview/index.md
 LinuxInstallation/index.md
 OpenCV_ColorSegmentation/index.md
+ControlTheoryBasics/index.md
 2024CodeOverview/index.md
 ```
 
