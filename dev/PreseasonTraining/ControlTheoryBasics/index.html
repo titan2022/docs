@@ -294,7 +294,7 @@
         <article role="main" id="furo-main-content">
           <section id="control-theory-basics">
 <h1>Control Theory Basics<a class="headerlink" href="#control-theory-basics" title="Permalink to this heading">¶</a></h1>
-<p>2024 October 22/23</p>
+<p>2024 October 22/23 (2.5 hours)</p>
 <p><a class="reference internal" href="#"><span class="xref myst">Slideshow (Control theory basics)</span></a></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
@@ -308,16 +308,48 @@
 <h2>What is Control Theory<a class="headerlink" href="#what-is-control-theory" title="Permalink to this heading">¶</a></h2>
 <section id="open-loop-vs-closed-loop">
 <h3>Open-Loop vs. Closed-Loop<a class="headerlink" href="#open-loop-vs-closed-loop" title="Permalink to this heading">¶</a></h3>
-<p>Control theory is a field of applied mathematics regarding optimizing control systems for accuracy and response time. There are two types of control: open-loop (feedforward) and closed-loop (feedback). As the names suggest, open-loop control utilizes inputs to determine an output without considering the output. Closed-loop control utilizes output back into the system, hence its second name “feedback”. An example of an open-loop system is timed water boiling. The boiling of the water does not depend on its temperature, so there is no feedback loop in-between. Temperature regulating air conditioners and HVAC systems are an example of a closed-loop system: the temperature is fed back into the control system to determine the new output, eventually adjusting the room to the desired temperature.</p>
-<p>There are many systems that depend on closed-loop control to function. Reliably controlling DC motors to be at certain rotational speed is not possible without taking into account its rotational output measured by an encoder. The motor controller would use this value to compute a close-enough voltage to feed into the motor. The accuracy of this system is not as meaningful because it is self-adjusting.</p>
+<p>Control theory is a field of applied mathematics regarding optimizing control systems for accuracy and response time. There are two types of control: open-loop (feedforward) and closed-loop (feedback). As the names suggest, open-loop control utilizes inputs to determine an output without considering the output. Closed-loop control utilizes output back into the system, hence its second name “feedback”. An example of an open-loop system is boiling water on a gas stove for a certain time. The gas stove only cares about the volume of gas that the user selects, and does not care about whether or not the water is boiling or what the temperature of the water is. Temperature-regulating air conditioners and HVAC systems are an example of a closed-loop system: the temperature is fed back into the control system to determine the new output, eventually adjusting the room to the desired temperature.</p>
+<p>There are many systems that depend on closed-loop control to function. Reliably controlling DC motors to be at certain rotational speed is not possible without taking into account its rotational output measured by an encoder. The motor controller uses this value to compute a close-enough voltage to feed into the motor.</p>
+</section>
 </section>
 <section id="pid-controllers">
-<h3>PID Controllers<a class="headerlink" href="#pid-controllers" title="Permalink to this heading">¶</a></h3>
-<p>PID (proportional–integral–derivative) controllers are the most common form of an adjustable closed-loop controller. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting. There is a PID controller implemented in every Falcon 500 motor. WPILib includes a <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html">class implementation</a> for general use. Any PID controller will have two variable inputs: your target output and your current output. See an <a class="reference external" href="https://eliottwiener.github.io/pidcontroldemo/">interactive example here</a> that shows a circle attempting to position itself under the cursor. Here is another <a class="reference external" href="https://sparshg.dev/pid-balancer/">interesting website</a> that shows a simulation of a cart balancing an arm using PID. There are many strategies for tuning PID, but <a class="reference external" href="https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops">this</a> is the one I have bookmarked and use for FRC. Try to tune the PID constants of the first example for optimal behavior.</p>
-<p>Every output on the robot—this being the swerve drivebase wheels and rotators, the arm, the elevator, etc—should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn’t necessary to learn to use one, but <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html">this article</a> on the WPILib documentation explains it well.</p>
+<h2>PID Controllers<a class="headerlink" href="#pid-controllers" title="Permalink to this heading">¶</a></h2>
+<p>PID (proportional–integral–derivative) controllers are the most common form of adjustable closed-loop controllers. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting.</p>
+<p>Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination’s location $r(t)$ (also called the <strong>setpoint</strong>). At time $t$, you know that your car is located at $y(t)$. These are the two variable inputs to the PID controller. The <strong>process variable</strong>, $e(t) = r(t) - y(t)$, is the difference between the destination and the car’s current position.</p>
+<p>The constant inputs to the PID controller are $K_p$, $K_i$, and $K_d$, three coefficients that go into the equation $u(t) = K_p e(t) + K_i \int_0^t e(\tau),d\tau + K_d \frac{de(t)}{dt}$, where $u(t)$ is the distance that we tell the car to go at time $t$. (It isn’t too important to understand this math.) We send $u(t)$ to the motor, and wait until we figure out where the car is after we tried to drive $u(t)$. Then we repeat this process.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/PID_en.svg" src="../../_images/PID_en.svg" /><figcaption>
+<p><span class="caption-text">The basic idea of a PID controller</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="the-effect-of-changing-k-p-k-i-and-k-d">
+<h3>The effect of changing $K_p$, $K_i$, and $K_d$<a class="headerlink" href="#the-effect-of-changing-k-p-k-i-and-k-d" title="Permalink to this heading">¶</a></h3>
+<p>Say we want to drive our car to the campground 1 mile down the road. We use a PID controller to control the acceleration of the car, but we don’t know the optimal $K_p$, $K_i$, and $K_d$, so we try driving our car using the PID controller a few times.</p>
+<p>This is what happens when we change $K_p$:</p>
+<figure class="align-default">
+<img alt="../../_images/PID_varyingP.jpg" src="../../_images/PID_varyingP.jpg" />
+</figure>
+<p>This is what happens when we change $K_i$:</p>
+<figure class="align-default">
+<img alt="../../_images/Change_with_Ki.png" src="../../_images/Change_with_Ki.png" />
+</figure>
+<p>This is what happens when we change $K_d$:</p>
+<figure class="align-default">
+<img alt="../../_images/Change_with_Kd.png" src="../../_images/Change_with_Kd.png" />
+</figure>
+<p>In general, we usually set $K_i = 0$, and we manually tune $K_p$ and $K_d$. None of these constants should usually be significantly more than 1.0, as that tends to cause drastic overshooting.</p>
 <blockquote>
 <div><p>NOTE: Another less-regarded factor in PID loops is data frequency. Since it’s a discrete model, lower delta time results in better calculations.</p>
 </div></blockquote>
+</section>
+<section id="using-the-pid-controller-on-the-robot">
+<h3>Using the PID controller on the robot<a class="headerlink" href="#using-the-pid-controller-on-the-robot" title="Permalink to this heading">¶</a></h3>
+<p>There is a PID controller implemented in every Falcon 500 motor. Every output on the robot—this being the swerve drivebase wheels and rotators, the arm, the elevator, etc—should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn’t necessary to learn to use one, but <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html">this article</a> on the WPILib documentation explains it well. WPILib includes a <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html">class implementation</a> for general use.</p>
+</section>
+<section id="exercise-1-tuning-a-pid-controller">
+<h3>Exercise 1 - Tuning a PID controller<a class="headerlink" href="#exercise-1-tuning-a-pid-controller" title="Permalink to this heading">¶</a></h3>
+<p>See an <a class="reference external" href="https://eliottwiener.github.io/pidcontroldemo/">interactive example here</a> that shows a circle attempting to position itself under the cursor. Here is another <a class="reference external" href="https://sparshg.dev/pid-balancer/">interesting website</a> that shows a simulation of a cart balancing an arm by changing its velocity using PID. There are many strategies for tuning PID, but <a class="reference external" href="https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops">this</a> is the one I have bookmarked and use for FRC.</p>
+<p><strong>Exercise 1:</strong> Try to tune the PID constants of <a class="reference internal" href="#(https://eliottwiener.github.io/pidcontroldemo/)"><span class="xref myst">the first example</span></a> for optimal behavior.</p>
 </section>
 <section id="pid-with-feedforward">
 <h3>PID with feedforward<a class="headerlink" href="#pid-with-feedforward" title="Permalink to this heading">¶</a></h3>
@@ -335,7 +367,7 @@
 </section>
 <section id="what-typically-happens">
 <h3>What Typically Happens<a class="headerlink" href="#what-typically-happens" title="Permalink to this heading">¶</a></h3>
-<p>On the software side, the raw encoder output can (and often is already by your library) be filtered through various methods to separate the desired signal from the noise. We will cover some of these methods later. But ultimately, it is also important to direct robot output in such a way that accounts for physical aspects without the need to model unpredictable complexity. When you create a plan on how to program a rotating arm, the first instinct of us is to recreate a geometric model of the arm from the motor output. We are used to drawing diagrams and solving problems through simulations in physics and math classes at IMSA and previously. But the real world is too complex for inverse kinematics based on torque equations to be accurate enough. Some of these equations weren’t even defined for ranges of values appearing in production. Although it is important to consider that theoretical models are still very applicable in FRC, but require more consideration regarding their utility. Combining those models with control theory methods of reducing impact of noise (such as adding a PID controller as the last step) leads to great results.</p>
+<p>On the software side, the raw encoder output can (and often is already by your library) be filtered through various methods to separate the desired signal from the noise. We will cover some of these methods later. But ultimately, it is also important to direct robot output in such a way that accounts for physical aspects without the need to model unpredictable complexity. When you create a plan on how to program a rotating arm, the first instinct of us is to recreate a geometric model of the arm from the motor output. We are used to drawing diagrams and solving problems through simulations in physics and math classes at IMSA and previously. But the real world is too complex for inverse kinematics based on torque equations to be accurate enough. Some of these equations weren’t even defined for ranges of values appearing in production. Although theoretical models are still very applicable in FRC, many systems used in FRC are hard to describe using these theoretical models, or have so much potential for error that the theoretical model won’t accurately predict how the system will be have in the real world. Combining those models with control theory methods for reducing the impact of noise (such as adding a PID controller as the last step) leads to great results.</p>
 </section>
 <section id="design-decisions-first">
 <h3>Design Decisions First<a class="headerlink" href="#design-decisions-first" title="Permalink to this heading">¶</a></h3>
@@ -343,14 +375,23 @@
 </section>
 <section id="implications-of-complexity">
 <h3>Implications of Complexity<a class="headerlink" href="#implications-of-complexity" title="Permalink to this heading">¶</a></h3>
-<p>Although, sometimes you might have to be stuck with programming a rotating arm. In which case, you can predetermine the necessary motor values beforehand. Create a table for the arm to be static at a certain angle and also that angle but with a weighted object. Seems simple in theory, but once you realize that the battery voltage affects motor output, the problem gets exponentially more difficult. Now imagine if you still decided to stick with your old inverse kinematics equation. Your equation would now have to consider battery strain, on top of drivebase movement and other factors. And now, consider this but with the typical occurrence: you only have two hours a week to test it and competition is coming up. What about other subsystems? You have code for them too and you need to test it (your drivebase code should be consistent over the years for this reason). Well, what if the member who singlehandedly wrote the arm subsystem and every command for it gets sick? It is far simpler to debug a close-enough estimation of the real world than complex equations that model it.</p>
-<p>But this section is an exaggeration: most FRC teams do not encounter every possible negative outcome in one season. Simply, it is to state that robot design and programming should account for unforeseen challenges. The pandemic has taken a toll on this team as significant amount of knowledge and connections have been lost. But with each season, there are improvements. The arm example is a retelling of the events that occurred during the 2022-2023 FRC season when our knowledge regarding creating reliable designs and writing reliable code was limited. I encourage reading ChiefDelphi posts for the purpose fo regaining these skills. What separates consistently well-performing teams and everyone else is proper documentation and long-term connections.</p>
+<p>Although, sometimes you might have to be stuck with programming a rotating arm. In which case, you can predetermine the necessary motor values beforehand. Create a table for the arm to be static at a certain angle and also that angle but with a weighted object. It seems simple in theory, but once you realize that the battery voltage affects motor output, the problem gets exponentially more difficult. Now imagine if you still decided to stick with your old inverse kinematics equation. Your equation would now have to consider battery strain, on top of drivebase movement and other factors. And now, consider this but with the typical occurrence: you only have two hours a week to test it and competition is coming up. What about other subsystems? You have code for them too and you need to test it (your drivebase code should be consistent over the years for this reason). Well, what if the member who singlehandedly wrote the arm subsystem and every command for it gets sick? It is far simpler to debug a close-enough estimation of the real world than complex equations that model it.</p>
+<p>But this section is an exaggeration: most FRC teams do not encounter every possible negative outcome in one season. Simply, it is to state that robot design and programming should account for unforeseen challenges. The pandemic has taken a toll on this team as significant amount of knowledge and connections have been lost. But with each season, there are improvements. The arm example is a retelling of the events that occurred during the 2022-2023 FRC season when our knowledge regarding creating reliable designs and writing reliable code was limited. I encourage reading ChiefDelphi posts for the purpose of regaining these skills. What separates consistently well-performing teams and everyone else is proper documentation and long-term connections.</p>
 </section>
 </section>
 <section id="further-reading">
 <h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">¶</a></h2>
 <p>I strongly recommend reading at least some chapters of this <a class="reference external" href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf">FRC-specific book on control theory</a> for more information. This manual contains the essential knowledge of classical control theory, specific examples of modeling many mechanisms present in FRC, inverse kinematics, calculus and linear algebra prerequisites needed to learn about Kalman Filters (BC sequence + MVC + LinAlg level math), different types of Kalman Filters, and much more. Reading the book in its entirety would set your control theory and mathematical knowledge above majority of FRC programmers, even on top performing teams.</p>
 <p><a class="reference external" href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">This particular repository about Kalman Filters</a> is another great source to learn about Kalman Filters. This repo provided the knowledge to implement the Extended Kalman Filter used in <a class="reference external" href="https://github.com/titan2022/Titan-Processing">Titan Processing</a>.</p>
+<section id="image-credits">
+<h3>Image credits<a class="headerlink" href="#image-credits" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>https://commons.wikimedia.org/wiki/File:PID_en.svg by Arturo Urquizo</p></li>
+<li><p>https://commons.wikimedia.org/wiki/File:PID_varyingP.jpg by User:TimmmyK</p></li>
+<li><p>https://commons.wikimedia.org/wiki/File:Change_with_Ki.png by User:Skorkmaz</p></li>
+<li><p>https://commons.wikimedia.org/wiki/File:Change_with_Kd.png by User:Skorkmaz</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -416,7 +457,12 @@
 </li>
 <li><a class="reference internal" href="#what-is-control-theory">What is Control Theory</a><ul>
 <li><a class="reference internal" href="#open-loop-vs-closed-loop">Open-Loop vs. Closed-Loop</a></li>
-<li><a class="reference internal" href="#pid-controllers">PID Controllers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pid-controllers">PID Controllers</a><ul>
+<li><a class="reference internal" href="#the-effect-of-changing-k-p-k-i-and-k-d">The effect of changing $K_p$, $K_i$, and $K_d$</a></li>
+<li><a class="reference internal" href="#using-the-pid-controller-on-the-robot">Using the PID controller on the robot</a></li>
+<li><a class="reference internal" href="#exercise-1-tuning-a-pid-controller">Exercise 1 - Tuning a PID controller</a></li>
 <li><a class="reference internal" href="#pid-with-feedforward">PID with feedforward</a></li>
 </ul>
 </li>
@@ -427,7 +473,10 @@
 <li><a class="reference internal" href="#implications-of-complexity">Implications of Complexity</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#further-reading">Further Reading</a></li>
+<li><a class="reference internal" href="#further-reading">Further Reading</a><ul>
+<li><a class="reference internal" href="#image-credits">Image credits</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

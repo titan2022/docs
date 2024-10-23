@@ -1,6 +1,6 @@
 # Control Theory Basics
 
-2024 October 22/23
+2024 October 22/23 (2.5 hours)
 
 [Slideshow (Control theory basics)]()
 
@@ -16,17 +16,55 @@ The biggest obstacle in robotics, which prevents us from completely solving ever
 
 ### Open-Loop vs. Closed-Loop
 
-Control theory is a field of applied mathematics regarding optimizing control systems for accuracy and response time. There are two types of control: open-loop (feedforward) and closed-loop (feedback). As the names suggest, open-loop control utilizes inputs to determine an output without considering the output. Closed-loop control utilizes output back into the system, hence its second name "feedback". An example of an open-loop system is timed water boiling. The boiling of the water does not depend on its temperature, so there is no feedback loop in-between. Temperature regulating air conditioners and HVAC systems are an example of a closed-loop system: the temperature is fed back into the control system to determine the new output, eventually adjusting the room to the desired temperature.
+Control theory is a field of applied mathematics regarding optimizing control systems for accuracy and response time. There are two types of control: open-loop (feedforward) and closed-loop (feedback). As the names suggest, open-loop control utilizes inputs to determine an output without considering the output. Closed-loop control utilizes output back into the system, hence its second name "feedback". An example of an open-loop system is boiling water on a gas stove for a certain time. The gas stove only cares about the volume of gas that the user selects, and does not care about whether or not the water is boiling or what the temperature of the water is. Temperature-regulating air conditioners and HVAC systems are an example of a closed-loop system: the temperature is fed back into the control system to determine the new output, eventually adjusting the room to the desired temperature.
 
-There are many systems that depend on closed-loop control to function. Reliably controlling DC motors to be at certain rotational speed is not possible without taking into account its rotational output measured by an encoder. The motor controller would use this value to compute a close-enough voltage to feed into the motor. The accuracy of this system is not as meaningful because it is self-adjusting.
+There are many systems that depend on closed-loop control to function. Reliably controlling DC motors to be at certain rotational speed is not possible without taking into account its rotational output measured by an encoder. The motor controller uses this value to compute a close-enough voltage to feed into the motor.
 
-### PID Controllers
+## PID Controllers
 
-PID (proportional–integral–derivative) controllers are the most common form of an adjustable closed-loop controller. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting. There is a PID controller implemented in every Falcon 500 motor. WPILib includes a `PIDController` [class implementation](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html) for general use. Any PID controller will have two variable inputs: your target output and your current output. See an [interactive example here](https://eliottwiener.github.io/pidcontroldemo/) that shows a circle attempting to position itself under the cursor. Here is another [interesting website](https://sparshg.dev/pid-balancer/) that shows a simulation of a cart balancing an arm using PID. There are many strategies for tuning PID, but [this](https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops) is the one I have bookmarked and use for FRC. Try to tune the PID constants of the first example for optimal behavior.
+PID (proportional–integral–derivative) controllers are the most common form of adjustable closed-loop controllers. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting.
 
-Every output on the robot---this being the swerve drivebase wheels and rotators, the arm, the elevator, etc---should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn't necessary to learn to use one, but [this article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html) on the WPILib documentation explains it well.
+Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination's location $r(t)$ (also called the **setpoint**). At time $t$, you know that your car is located at $y(t)$. These are the two variable inputs to the PID controller. The **process variable**, $e(t) = r(t) - y(t)$, is the difference between the destination and the car's current position.
+
+The constant inputs to the PID controller are $K_p$, $K_i$, and $K_d$, three coefficients that go into the equation $u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}$, where $u(t)$ is the distance that we tell the car to go at time $t$. (It isn't too important to understand this math.) We send $u(t)$ to the motor, and wait until we figure out where the car is after we tried to drive $u(t)$. Then we repeat this process.
+
+```{figure} PID_en.svg
+
+The basic idea of a PID controller
+```
+
+### The effect of changing $K_p$, $K_i$, and $K_d$
+
+Say we want to drive our car to the campground 1 mile down the road. We use a PID controller to control the acceleration of the car, but we don't know the optimal $K_p$, $K_i$, and $K_d$, so we try driving our car using the PID controller a few times.
+
+This is what happens when we change $K_p$:
+
+```{figure} PID_varyingP.jpg
+```
+
+This is what happens when we change $K_i$:
+
+```{figure} Change_with_Ki.png
+```
+
+This is what happens when we change $K_d$:
+
+```{figure} Change_with_Kd.png
+```
+
+In general, we usually set $K_i = 0$, and we manually tune $K_p$ and $K_d$. None of these constants should usually be significantly more than 1.0, as that tends to cause drastic overshooting.
 
 > NOTE: Another less-regarded factor in PID loops is data frequency. Since it's a discrete model, lower delta time results in better calculations.
+
+### Using the PID controller on the robot
+
+There is a PID controller implemented in every Falcon 500 motor. Every output on the robot---this being the swerve drivebase wheels and rotators, the arm, the elevator, etc---should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn't necessary to learn to use one, but [this article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html) on the WPILib documentation explains it well. WPILib includes a `PIDController` [class implementation](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html) for general use. 
+
+### Exercise 1 - Tuning a PID controller
+
+See an [interactive example here](https://eliottwiener.github.io/pidcontroldemo/) that shows a circle attempting to position itself under the cursor. Here is another [interesting website](https://sparshg.dev/pid-balancer/) that shows a simulation of a cart balancing an arm by changing its velocity using PID. There are many strategies for tuning PID, but [this](https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops) is the one I have bookmarked and use for FRC. 
+
+**Exercise 1:** Try to tune the PID constants of [the first example]((https://eliottwiener.github.io/pidcontroldemo/)) for optimal behavior.
 
 ### PID with feedforward
 
@@ -42,7 +80,7 @@ A common example of affected software input is when you introduce an encoder to 
 
 ### What Typically Happens
 
-On the software side, the raw encoder output can (and often is already by your library) be filtered through various methods to separate the desired signal from the noise. We will cover some of these methods later. But ultimately, it is also important to direct robot output in such a way that accounts for physical aspects without the need to model unpredictable complexity. When you create a plan on how to program a rotating arm, the first instinct of us is to recreate a geometric model of the arm from the motor output. We are used to drawing diagrams and solving problems through simulations in physics and math classes at IMSA and previously. But the real world is too complex for inverse kinematics based on torque equations to be accurate enough. Some of these equations weren't even defined for ranges of values appearing in production. Although it is important to consider that theoretical models are still very applicable in FRC, but require more consideration regarding their utility. Combining those models with control theory methods of reducing impact of noise (such as adding a PID controller as the last step) leads to great results.
+On the software side, the raw encoder output can (and often is already by your library) be filtered through various methods to separate the desired signal from the noise. We will cover some of these methods later. But ultimately, it is also important to direct robot output in such a way that accounts for physical aspects without the need to model unpredictable complexity. When you create a plan on how to program a rotating arm, the first instinct of us is to recreate a geometric model of the arm from the motor output. We are used to drawing diagrams and solving problems through simulations in physics and math classes at IMSA and previously. But the real world is too complex for inverse kinematics based on torque equations to be accurate enough. Some of these equations weren't even defined for ranges of values appearing in production. Although theoretical models are still very applicable in FRC, many systems used in FRC are hard to describe using these theoretical models, or have so much potential for error that the theoretical model won't accurately predict how the system will be have in the real world. Combining those models with control theory methods for reducing the impact of noise (such as adding a PID controller as the last step) leads to great results.
 
 ### Design Decisions First
 
@@ -50,12 +88,19 @@ More often than not, the simplest solutions are also the best, most reliable. Go
 
 ### Implications of Complexity
 
-Although, sometimes you might have to be stuck with programming a rotating arm. In which case, you can predetermine the necessary motor values beforehand. Create a table for the arm to be static at a certain angle and also that angle but with a weighted object. Seems simple in theory, but once you realize that the battery voltage affects motor output, the problem gets exponentially more difficult. Now imagine if you still decided to stick with your old inverse kinematics equation. Your equation would now have to consider battery strain, on top of drivebase movement and other factors. And now, consider this but with the typical occurrence: you only have two hours a week to test it and competition is coming up. What about other subsystems? You have code for them too and you need to test it (your drivebase code should be consistent over the years for this reason). Well, what if the member who singlehandedly wrote the arm subsystem and every command for it gets sick? It is far simpler to debug a close-enough estimation of the real world than complex equations that model it.
+Although, sometimes you might have to be stuck with programming a rotating arm. In which case, you can predetermine the necessary motor values beforehand. Create a table for the arm to be static at a certain angle and also that angle but with a weighted object. It seems simple in theory, but once you realize that the battery voltage affects motor output, the problem gets exponentially more difficult. Now imagine if you still decided to stick with your old inverse kinematics equation. Your equation would now have to consider battery strain, on top of drivebase movement and other factors. And now, consider this but with the typical occurrence: you only have two hours a week to test it and competition is coming up. What about other subsystems? You have code for them too and you need to test it (your drivebase code should be consistent over the years for this reason). Well, what if the member who singlehandedly wrote the arm subsystem and every command for it gets sick? It is far simpler to debug a close-enough estimation of the real world than complex equations that model it.
 
-But this section is an exaggeration: most FRC teams do not encounter every possible negative outcome in one season. Simply, it is to state that robot design and programming should account for unforeseen challenges. The pandemic has taken a toll on this team as significant amount of knowledge and connections have been lost. But with each season, there are improvements. The arm example is a retelling of the events that occurred during the 2022-2023 FRC season when our knowledge regarding creating reliable designs and writing reliable code was limited. I encourage reading ChiefDelphi posts for the purpose fo regaining these skills. What separates consistently well-performing teams and everyone else is proper documentation and long-term connections.
+But this section is an exaggeration: most FRC teams do not encounter every possible negative outcome in one season. Simply, it is to state that robot design and programming should account for unforeseen challenges. The pandemic has taken a toll on this team as significant amount of knowledge and connections have been lost. But with each season, there are improvements. The arm example is a retelling of the events that occurred during the 2022-2023 FRC season when our knowledge regarding creating reliable designs and writing reliable code was limited. I encourage reading ChiefDelphi posts for the purpose of regaining these skills. What separates consistently well-performing teams and everyone else is proper documentation and long-term connections.
 
 ## Further Reading
 
 I strongly recommend reading at least some chapters of this [FRC-specific book on control theory](https://file.tavsys.net/control/controls-engineering-in-frc.pdf) for more information. This manual contains the essential knowledge of classical control theory, specific examples of modeling many mechanisms present in FRC, inverse kinematics, calculus and linear algebra prerequisites needed to learn about Kalman Filters (BC sequence + MVC + LinAlg level math), different types of Kalman Filters, and much more. Reading the book in its entirety would set your control theory and mathematical knowledge above majority of FRC programmers, even on top performing teams.
 
 [This particular repository about Kalman Filters](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) is another great source to learn about Kalman Filters. This repo provided the knowledge to implement the Extended Kalman Filter used in [Titan Processing](https://github.com/titan2022/Titan-Processing).
+
+### Image credits
+
+* https://commons.wikimedia.org/wiki/File:PID_en.svg by Arturo Urquizo
+* https://commons.wikimedia.org/wiki/File:PID_varyingP.jpg by User:TimmmyK
+* https://commons.wikimedia.org/wiki/File:Change_with_Ki.png by User:Skorkmaz
+* https://commons.wikimedia.org/wiki/File:Change_with_Kd.png by User:Skorkmaz
