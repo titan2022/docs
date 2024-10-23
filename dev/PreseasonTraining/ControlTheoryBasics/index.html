@@ -346,24 +346,65 @@
 <h3>Using the PID controller on the robot<a class="headerlink" href="#using-the-pid-controller-on-the-robot" title="Permalink to this heading">¶</a></h3>
 <p>There is a PID controller implemented in every Falcon 500 motor. Every output on the robot—this being the swerve drivebase wheels and rotators, the arm, the elevator, etc—should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn’t necessary to learn to use one, but <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html">this article</a> on the WPILib documentation explains it well. WPILib includes a <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html">class implementation</a> for general use.</p>
 </section>
-<section id="exercise-1-tuning-a-pid-controller">
-<h3>Exercise 1 - Tuning a PID controller<a class="headerlink" href="#exercise-1-tuning-a-pid-controller" title="Permalink to this heading">¶</a></h3>
-<p>See an <a class="reference external" href="https://eliottwiener.github.io/pidcontroldemo/">interactive example here</a> that shows a circle attempting to position itself under the cursor. Here is another <a class="reference external" href="https://sparshg.dev/pid-balancer/">interesting website</a> that shows a simulation of a cart balancing an arm by changing its velocity using PID. There are many strategies for tuning PID, but <a class="reference external" href="https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops">this</a> is the one I have bookmarked and use for FRC.</p>
-<p><strong>Exercise 1:</strong> Try to tune the PID constants of <a class="reference internal" href="#(https://eliottwiener.github.io/pidcontroldemo/)"><span class="xref myst">the first example</span></a> for optimal behavior.</p>
-</section>
 <section id="pid-with-feedforward">
 <h3>PID with feedforward<a class="headerlink" href="#pid-with-feedforward" title="Permalink to this heading">¶</a></h3>
 <p>Sometimes it is beneficial to add a feedforward component to a PID control system to compensate for variables in specific circumstances. We utilized PIDf in our old swerve subsystem code to account for friction. In practice, the implementation is incredibly simple. Add the desired amount of feedforward output multiplied by a coefficient to the PID output. <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/combining-feedforward-feedback.html">This WPILib article</a> shows PIDf in practice.</p>
 </section>
+</section>
+<section id="exercise-1-tuning-a-pid-controller">
+<h2>Exercise 1 - Tuning a PID controller<a class="headerlink" href="#exercise-1-tuning-a-pid-controller" title="Permalink to this heading">¶</a></h2>
+<p>See an <a class="reference external" href="https://eliottwiener.github.io/pidcontroldemo/">interactive example here</a> that shows a circle attempting to position itself under the cursor. Here is another <a class="reference external" href="https://sparshg.dev/pid-balancer/">interesting website</a> that shows a simulation of a cart balancing an arm by changing its velocity using PID. There are many strategies for tuning PID, but <a class="reference external" href="https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops">this</a> is the one I have bookmarked and use for FRC.</p>
+<p><strong>Exercise 1:</strong> Try to tune the PID constants of <a class="reference internal" href="#(https://eliottwiener.github.io/pidcontroldemo/)"><span class="xref myst">the first example</span></a> for optimal behavior.</p>
+</section>
+<section id="exercise-2-using-pid-in-java">
+<h2>Exercise 2 - Using PID in Java<a class="headerlink" href="#exercise-2-using-pid-in-java" title="Permalink to this heading">¶</a></h2>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h3>
+<p>The simulation includes a gravity-affected elevator that can be controlled through its acceleration. For this assignment, your goal is to pass the target position and target velocity through two <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> class instances (each should have their own) with well-tuned parameters. The result should use the PID controller implementation to make the elevator as responsive as possible. Manually adjust the values until results are satisfactory.</p>
+<p>The PID implementation is identical to the one from WPILib. Create a new class instance and use the first three arguments as your PID parameters. The class has a method called <code class="docutils literal notranslate"><span class="pre">calculate</span></code> that will provide you with the PID output. Set the derivative of the value you’re trying to reach as this output.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Pseudo code</span>
+<span class="n">value_derivative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">measured_value</span><span class="p">,</span><span class="w"> </span><span class="n">target_value</span><span class="p">);</span>
+<span class="n">acceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">measured_velocity</span><span class="p">,</span><span class="w"> </span><span class="n">target_velocity</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Only the <code class="docutils literal notranslate"><span class="pre">elevator.setMotorAcceleration</span></code> method will actually control the elevator. <code class="docutils literal notranslate"><span class="pre">elevator.setTargetVelocity</span></code> and <code class="docutils literal notranslate"><span class="pre">elevator.setTargetPosition</span></code> are what you should use in your PID calculations. Here are all available elevator methods. All unites are arbitrary.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getInput</span></code>: from -1.0 to 1.0, use left and right arrow keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMotorAcceleration</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getTargetVelocity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getTargetPosition</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAcceleration</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getVelocity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getPosition</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setTargetPosition</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setTargetVelocity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setMotorAcceleration</span></code></p></li>
+</ul>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h3>
+<p>Clone the <a class="reference external" href="https://github.com/titan2022/training2024">Training2024</a> repository and checkout into the <code class="docutils literal notranslate"><span class="pre">control-theory-template</span></code> branch.</p>
+</section>
+<section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">¶</a></h3>
+<p>All relevant code should be written inside <code class="docutils literal notranslate"><span class="pre">ElevatorPlayground.java</span></code>. <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">update</span></code> methods are provided to control the elevator.</p>
+</section>
+<section id="challenge">
+<h3>Challenge<a class="headerlink" href="#challenge" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Start only after completing the main task</p>
+</div></blockquote>
+<p>For this challenge, your goal is to tune the PID parameters automatically. Use any method you want to optimize the three PID coefficients by minimizing the residual between target and real positions of the stick.</p>
+</section>
+</section>
 <section id="further-reading-on-pid">
-<h3>Further reading on PID<a class="headerlink" href="#further-reading-on-pid" title="Permalink to this heading">¶</a></h3>
+<h2>Further reading on PID<a class="headerlink" href="#further-reading-on-pid" title="Permalink to this heading">¶</a></h2>
 <p>If you want more to read, or are a bit confused, see:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller">Wikipedia article on PID controllers</a></p></li>
 <li><p><a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html">WPILib docs article on PID controllers</a></p></li>
 <li><p>Chapters 1 and 2 of <a class="reference external" href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf"><em>Controls Engineering in FRC</em></a></p></li>
 </ul>
-</section>
 </section>
 <section id="more-on-robot-control">
 <h2>More On Robot Control<a class="headerlink" href="#more-on-robot-control" title="Permalink to this heading">¶</a></h2>
@@ -471,11 +512,18 @@
 <li><a class="reference internal" href="#pid-controllers">PID Controllers</a><ul>
 <li><a class="reference internal" href="#the-effect-of-changing-k-p-k-i-and-k-d">The effect of changing <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span></a></li>
 <li><a class="reference internal" href="#using-the-pid-controller-on-the-robot">Using the PID controller on the robot</a></li>
-<li><a class="reference internal" href="#exercise-1-tuning-a-pid-controller">Exercise 1 - Tuning a PID controller</a></li>
 <li><a class="reference internal" href="#pid-with-feedforward">PID with feedforward</a></li>
-<li><a class="reference internal" href="#further-reading-on-pid">Further reading on PID</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#exercise-1-tuning-a-pid-controller">Exercise 1 - Tuning a PID controller</a></li>
+<li><a class="reference internal" href="#exercise-2-using-pid-in-java">Exercise 2 - Using PID in Java</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#code">Code</a></li>
+<li><a class="reference internal" href="#challenge">Challenge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#further-reading-on-pid">Further reading on PID</a></li>
 <li><a class="reference internal" href="#more-on-robot-control">More On Robot Control</a><ul>
 <li><a class="reference internal" href="#the-problem-in-practice">The Problem: In Practice</a></li>
 <li><a class="reference internal" href="#what-typically-happens">What Typically Happens</a></li>

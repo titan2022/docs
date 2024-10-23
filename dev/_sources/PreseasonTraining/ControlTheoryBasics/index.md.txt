@@ -60,17 +60,58 @@ In general, we usually set $K_i = 0$, and we manually tune $K_p$ and $K_d$. None
 
 There is a PID controller implemented in every Falcon 500 motor. Every output on the robot---this being the swerve drivebase wheels and rotators, the arm, the elevator, etc---should ideally go through a PID controller with correctly tuned PID constants. The math behind it isn't necessary to learn to use one, but [this article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html) on the WPILib documentation explains it well. WPILib includes a `PIDController` [class implementation](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html) for general use. 
 
-### Exercise 1 - Tuning a PID controller
+### PID with feedforward
+
+Sometimes it is beneficial to add a feedforward component to a PID control system to compensate for variables in specific circumstances. We utilized PIDf in our old swerve subsystem code to account for friction. In practice, the implementation is incredibly simple. Add the desired amount of feedforward output multiplied by a coefficient to the PID output. [This WPILib article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/combining-feedforward-feedback.html) shows PIDf in practice.
+
+## Exercise 1 - Tuning a PID controller
 
 See an [interactive example here](https://eliottwiener.github.io/pidcontroldemo/) that shows a circle attempting to position itself under the cursor. Here is another [interesting website](https://sparshg.dev/pid-balancer/) that shows a simulation of a cart balancing an arm by changing its velocity using PID. There are many strategies for tuning PID, but [this](https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops) is the one I have bookmarked and use for FRC. 
 
 **Exercise 1:** Try to tune the PID constants of [the first example]((https://eliottwiener.github.io/pidcontroldemo/)) for optimal behavior.
 
-### PID with feedforward
+## Exercise 2 - Using PID in Java
 
-Sometimes it is beneficial to add a feedforward component to a PID control system to compensate for variables in specific circumstances. We utilized PIDf in our old swerve subsystem code to account for friction. In practice, the implementation is incredibly simple. Add the desired amount of feedforward output multiplied by a coefficient to the PID output. [This WPILib article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/combining-feedforward-feedback.html) shows PIDf in practice.
+### Overview
 
-### Further reading on PID
+The simulation includes a gravity-affected elevator that can be controlled through its acceleration. For this assignment, your goal is to pass the target position and target velocity through two `PIDController` class instances (each should have their own) with well-tuned parameters. The result should use the PID controller implementation to make the elevator as responsive as possible. Manually adjust the values until results are satisfactory.
+
+The PID implementation is identical to the one from WPILib. Create a new class instance and use the first three arguments as your PID parameters. The class has a method called `calculate` that will provide you with the PID output. Set the derivative of the value you're trying to reach as this output.
+
+```java
+// Pseudo code
+value_derivative = pid.calculate(measured_value, target_value);
+acceleration = pid.calculate(measured_velocity, target_velocity);
+```
+
+Only the `elevator.setMotorAcceleration` method will actually control the elevator. `elevator.setTargetVelocity` and `elevator.setTargetPosition` are what you should use in your PID calculations. Here are all available elevator methods. All unites are arbitrary.
+
+* `getInput`: from -1.0 to 1.0, use left and right arrow keys
+* `getMotorAcceleration`
+* `getTargetVelocity`
+* `getTargetPosition`
+* `getAcceleration`
+* `getVelocity`
+* `getPosition`
+* `setTargetPosition`
+* `setTargetVelocity`
+* `setMotorAcceleration`
+
+### Installation
+
+Clone the [Training2024](https://github.com/titan2022/training2024) repository and checkout into the `control-theory-template` branch.
+
+### Code
+
+All relevant code should be written inside `ElevatorPlayground.java`. `start` and `update` methods are provided to control the elevator.
+
+### Challenge
+
+> Start only after completing the main task
+
+For this challenge, your goal is to tune the PID parameters automatically. Use any method you want to optimize the three PID coefficients by minimizing the residual between target and real positions of the stick.
+
+## Further reading on PID
 
 If you want more to read, or are a bit confused, see:
 * [Wikipedia article on PID controllers](https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller)
