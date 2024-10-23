@@ -70,6 +70,13 @@ See an [interactive example here](https://eliottwiener.github.io/pidcontroldemo/
 
 Sometimes it is beneficial to add a feedforward component to a PID control system to compensate for variables in specific circumstances. We utilized PIDf in our old swerve subsystem code to account for friction. In practice, the implementation is incredibly simple. Add the desired amount of feedforward output multiplied by a coefficient to the PID output. [This WPILib article](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/combining-feedforward-feedback.html) shows PIDf in practice.
 
+### Further reading on PID
+
+If you want more to read, or are a bit confused, see:
+* [Wikipedia article on PID controllers](https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller)
+* [WPILib docs article on PID controllers](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html)
+* Chapters 1 and 2 of [*Controls Engineering in FRC*](https://file.tavsys.net/control/controls-engineering-in-frc.pdf)
+
 ## More On Robot Control
 
 > CW: long yapathon ahead
