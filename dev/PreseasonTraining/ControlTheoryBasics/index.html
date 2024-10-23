@@ -292,7 +292,7 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="control-theory-basics">
+          <section class="tex2jax_ignore mathjax_ignore" id="control-theory-basics">
 <h1>Control Theory Basics<a class="headerlink" href="#control-theory-basics" title="Permalink to this heading">¶</a></h1>
 <p>2024 October 22/23 (2.5 hours)</p>
 <p><a class="reference internal" href="#"><span class="xref myst">Slideshow (Control theory basics)</span></a></p>
@@ -315,29 +315,29 @@
 <section id="pid-controllers">
 <h2>PID Controllers<a class="headerlink" href="#pid-controllers" title="Permalink to this heading">¶</a></h2>
 <p>PID (proportional–integral–derivative) controllers are the most common form of adjustable closed-loop controllers. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting.</p>
-<p>Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination’s location $r(t)$ (also called the <strong>setpoint</strong>). At time $t$, you know that your car is located at $y(t)$. These are the two variable inputs to the PID controller. The <strong>process variable</strong>, $e(t) = r(t) - y(t)$, is the difference between the destination and the car’s current position.</p>
-<p>The constant inputs to the PID controller are $K_p$, $K_i$, and $K_d$, three coefficients that go into the equation $u(t) = K_p e(t) + K_i \int_0^t e(\tau),d\tau + K_d \frac{de(t)}{dt}$, where $u(t)$ is the distance that we tell the car to go at time $t$. (It isn’t too important to understand this math.) We send $u(t)$ to the motor, and wait until we figure out where the car is after we tried to drive $u(t)$. Then we repeat this process.</p>
+<p>Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination’s location <span class="math notranslate nohighlight">\(r(t)\)</span> (also called the <strong>setpoint</strong>). At time <span class="math notranslate nohighlight">\(t\)</span>, you know that your car is located at <span class="math notranslate nohighlight">\(y(t)\)</span>. These are the two variable inputs to the PID controller. The <strong>process variable</strong>, <span class="math notranslate nohighlight">\(e(t) = r(t) - y(t)\)</span>, is the difference between the destination and the car’s current position.</p>
+<p>The constant inputs to the PID controller are <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>, three coefficients that go into the equation <span class="math notranslate nohighlight">\(u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}\)</span>, where <span class="math notranslate nohighlight">\(u(t)\)</span> is the distance that we tell the car to go at time <span class="math notranslate nohighlight">\(t\)</span>. (It isn’t too important to understand this math.) We send <span class="math notranslate nohighlight">\(u(t)\)</span> to the motor, and wait until we figure out where the car is after we tried to drive <span class="math notranslate nohighlight">\(u(t)\)</span>. Then we repeat this process.</p>
 <figure class="align-default" id="id1">
 <img alt="../../_images/PID_en.svg" src="../../_images/PID_en.svg" /><figcaption>
 <p><span class="caption-text">The basic idea of a PID controller</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="the-effect-of-changing-k-p-k-i-and-k-d">
-<h3>The effect of changing $K_p$, $K_i$, and $K_d$<a class="headerlink" href="#the-effect-of-changing-k-p-k-i-and-k-d" title="Permalink to this heading">¶</a></h3>
-<p>Say we want to drive our car to the campground 1 mile down the road. We use a PID controller to control the acceleration of the car, but we don’t know the optimal $K_p$, $K_i$, and $K_d$, so we try driving our car using the PID controller a few times.</p>
-<p>This is what happens when we change $K_p$:</p>
+<h3>The effect of changing <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span><a class="headerlink" href="#the-effect-of-changing-k-p-k-i-and-k-d" title="Permalink to this heading">¶</a></h3>
+<p>Say we want to drive our car to the campground 1 mile down the road. We use a PID controller to control the acceleration of the car, but we don’t know the optimal <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>, so we try driving our car using the PID controller a few times.</p>
+<p>This is what happens when we change <span class="math notranslate nohighlight">\(K_p\)</span>:</p>
 <figure class="align-default">
 <img alt="../../_images/PID_varyingP.jpg" src="../../_images/PID_varyingP.jpg" />
 </figure>
-<p>This is what happens when we change $K_i$:</p>
+<p>This is what happens when we change <span class="math notranslate nohighlight">\(K_i\)</span>:</p>
 <figure class="align-default">
 <img alt="../../_images/Change_with_Ki.png" src="../../_images/Change_with_Ki.png" />
 </figure>
-<p>This is what happens when we change $K_d$:</p>
+<p>This is what happens when we change <span class="math notranslate nohighlight">\(K_d\)</span>:</p>
 <figure class="align-default">
 <img alt="../../_images/Change_with_Kd.png" src="../../_images/Change_with_Kd.png" />
 </figure>
-<p>In general, we usually set $K_i = 0$, and we manually tune $K_p$ and $K_d$. None of these constants should usually be significantly more than 1.0, as that tends to cause drastic overshooting.</p>
+<p>In general, we usually set <span class="math notranslate nohighlight">\(K_i = 0\)</span>, and we manually tune <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_d\)</span>. None of these constants should usually be significantly more than 1.0, as that tends to cause drastic overshooting.</p>
 <blockquote>
 <div><p>NOTE: Another less-regarded factor in PID loops is data frequency. Since it’s a discrete model, lower delta time results in better calculations.</p>
 </div></blockquote>
@@ -460,7 +460,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#pid-controllers">PID Controllers</a><ul>
-<li><a class="reference internal" href="#the-effect-of-changing-k-p-k-i-and-k-d">The effect of changing $K_p$, $K_i$, and $K_d$</a></li>
+<li><a class="reference internal" href="#the-effect-of-changing-k-p-k-i-and-k-d">The effect of changing <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span></a></li>
 <li><a class="reference internal" href="#using-the-pid-controller-on-the-robot">Using the PID controller on the robot</a></li>
 <li><a class="reference internal" href="#exercise-1-tuning-a-pid-controller">Exercise 1 - Tuning a PID controller</a></li>
 <li><a class="reference internal" href="#pid-with-feedforward">PID with feedforward</a></li>
@@ -495,5 +495,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>
