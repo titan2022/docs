@@ -389,6 +389,81 @@
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">¶</a></h3>
 <p>All relevant code should be written inside <code class="docutils literal notranslate"><span class="pre">ElevatorPlayground.java</span></code>. <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">update</span></code> methods are provided to control the elevator.</p>
 </section>
+<section id="hints-what-we-did-during-the-lesson">
+<h3>Hints (what we did during the lesson)<a class="headerlink" href="#hints-what-we-did-during-the-lesson" title="Permalink to this heading">¶</a></h3>
+<section id="setting-up-the-velocity-pid-and-binding-it-to-the-left-right-keys">
+<h4>Setting up the velocity PID and binding it to the left/right keys<a class="headerlink" href="#setting-up-the-velocity-pid-and-binding-it-to-the-left-right-keys" title="Permalink to this heading">¶</a></h4>
+<p>This sets up the velocity PID to try to attain the speed specified by the arrow keys (no keys pressed = 0 m/s, right key pressed = 1 m/s, left key pressed = -1 m/s).</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">ElevatorPlayground.java</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.Elevator</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.PIDController</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.PlaygroundBase</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ElevatorPlayground</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">PlaygroundBase</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">velocityPID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="cm">/**</span>
+<span class="linenos"> 8</span><span class="cm">     * This function runs once on the first frame. (like `-init` in WPILib)</span>
+<span class="linenos"> 9</span><span class="cm">     */</span>
+<span class="linenos">10</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">11</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="n">Elevator</span><span class="w"> </span><span class="n">elevator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setMotorAcceleration</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetVelocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">    </span><span class="cm">/**</span>
+<span class="linenos">18</span><span class="cm">     * This function runs every frame. (like `-periodic` in WPILib)</span>
+<span class="linenos">19</span><span class="cm">     */</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Elevator</span><span class="w"> </span><span class="n">elevator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetVelocity</span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getInput</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setMotorAcceleration</span><span class="p">(</span><span class="n">velocityPID</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">(),</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTargetVelocity</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">9.8</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; error: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTargetVelocity</span><span class="p">()));</span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="now-the-task">
+<h4>Now, the task<a class="headerlink" href="#now-the-task" title="Permalink to this heading">¶</a></h4>
+<p>The task is to make a position PID, in order to make the block go to position 1 m. If you’re stuck, use this template code:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">ElevatorPlayground.java</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.Elevator</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.PIDController</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kn">import</span><span class="w"> </span><span class="nn">sim.PlaygroundBase</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ElevatorPlayground</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">PlaygroundBase</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">velocityPID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="c1">// You need to tune the position PID yourself</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">positionPID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="cm">/**</span>
+<span class="linenos">10</span><span class="cm">     * This function runs once on the first frame. (like `-init` in WPILib)</span>
+<span class="linenos">11</span><span class="cm">     */</span>
+<span class="linenos">12</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">13</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="n">Elevator</span><span class="w"> </span><span class="n">elevator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setMotorAcceleration</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetVelocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">    </span><span class="cm">/**</span>
+<span class="linenos">20</span><span class="cm">     * This function runs every frame. (like `-periodic` in WPILib)</span>
+<span class="linenos">21</span><span class="cm">     */</span>
+<span class="linenos">22</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Elevator</span><span class="w"> </span><span class="n">elevator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setTargetVelocity</span><span class="p">(</span><span class="cm">/* Use the position PID to figure out the target velocity here */</span><span class="p">);</span>
+<span class="linenos">25</span><span class="w">        </span><span class="n">elevator</span><span class="p">.</span><span class="na">setMotorAcceleration</span><span class="p">(</span><span class="n">velocityPID</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">(),</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTargetVelocity</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">9.8</span><span class="p">);</span>
+<span class="linenos">26</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; error: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">elevator</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">elevator</span><span class="p">.</span><span class="na">getTargetVelocity</span><span class="p">()));</span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">28</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
 <section id="challenge">
 <h3>Challenge<a class="headerlink" href="#challenge" title="Permalink to this heading">¶</a></h3>
 <blockquote>
@@ -520,6 +595,11 @@
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#code">Code</a></li>
+<li><a class="reference internal" href="#hints-what-we-did-during-the-lesson">Hints (what we did during the lesson)</a><ul>
+<li><a class="reference internal" href="#setting-up-the-velocity-pid-and-binding-it-to-the-left-right-keys">Setting up the velocity PID and binding it to the left/right keys</a></li>
+<li><a class="reference internal" href="#now-the-task">Now, the task</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#challenge">Challenge</a></li>
 </ul>
 </li>

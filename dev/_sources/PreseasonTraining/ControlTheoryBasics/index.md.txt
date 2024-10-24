@@ -105,6 +105,82 @@ Clone the [Training2024](https://github.com/titan2022/training2024) repository a
 
 All relevant code should be written inside `ElevatorPlayground.java`. `start` and `update` methods are provided to control the elevator.
 
+### Hints (what we did during the lesson)
+
+#### Setting up the velocity PID and binding it to the left/right keys
+
+This sets up the velocity PID to try to attain the speed specified by the arrow keys (no keys pressed = 0 m/s, right key pressed = 1 m/s, left key pressed = -1 m/s).
+
+```{code-block} java
+:caption: ElevatorPlayground.java
+:lineno-start: 1
+
+import sim.Elevator;
+import sim.PIDController;
+import sim.PlaygroundBase;
+
+public class ElevatorPlayground extends PlaygroundBase {
+    private PIDController velocityPID = new PIDController(40, 0, 0.3);
+    /**
+     * This function runs once on the first frame. (like `-init` in WPILib)
+     */
+    @Override
+    public void start(Elevator elevator) {
+        elevator.setMotorAcceleration(0);
+        elevator.setTargetVelocity(0);
+        elevator.setTargetPosition(0);
+    }
+
+    /**
+     * This function runs every frame. (like `-periodic` in WPILib)
+     */
+    @Override
+    public void update(Elevator elevator) {
+        elevator.setTargetVelocity(elevator.getInput() * 1);
+        elevator.setMotorAcceleration(velocityPID.calculate(elevator.getVelocity(), elevator.getTargetVelocity()) + 9.8);
+        System.out.println(elevator.getVelocity() + " error: " + (elevator.getVelocity() - elevator.getTargetVelocity()));
+    }
+}
+```
+
+#### Now, the task
+
+The task is to make a position PID, in order to make the block go to position 1 m. If you're stuck, use this template code:
+
+```{code-block} java
+:caption: ElevatorPlayground.java
+:lineno-start: 1
+
+import sim.Elevator;
+import sim.PIDController;
+import sim.PlaygroundBase;
+
+public class ElevatorPlayground extends PlaygroundBase {
+    private PIDController velocityPID = new PIDController(40, 0, 0.3);
+    // You need to tune the position PID yourself
+    private PIDController positionPID = new PIDController(1, 0, 0);
+    /**
+     * This function runs once on the first frame. (like `-init` in WPILib)
+     */
+    @Override
+    public void start(Elevator elevator) {
+        elevator.setMotorAcceleration(0);
+        elevator.setTargetVelocity(0);
+        elevator.setTargetPosition(0);
+    }
+
+    /**
+     * This function runs every frame. (like `-periodic` in WPILib)
+     */
+    @Override
+    public void update(Elevator elevator) {
+        elevator.setTargetVelocity(/* Use the position PID to figure out the target velocity here */);
+        elevator.setMotorAcceleration(velocityPID.calculate(elevator.getVelocity(), elevator.getTargetVelocity()) + 9.8);
+        System.out.println(elevator.getVelocity() + " error: " + (elevator.getVelocity() - elevator.getTargetVelocity()));
+    }
+}
+```
+
 ### Challenge
 
 > Start only after completing the main task
