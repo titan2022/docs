@@ -398,13 +398,16 @@ macOS</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="frc-game-tools">
-<h2>FRC Game Tools<a class="headerlink" href="#frc-game-tools" title="Permalink to this heading">¶</a></h2>
+<section id="frc-game-tools-and-wpilib">
+<h2>FRC Game Tools and WPILib<a class="headerlink" href="#frc-game-tools-and-wpilib" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-9">
 Windows</label><div class="sd-tab-content docutils">
-<p>The WPIlib suite is necessary to run robot code. Follow <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html">instructions in the official docs</a>. It might say that you have a limited free trial but in reality it will never run out (similar to WinRAR). When choosing the VSCode option, select standalone install. Java will be included, but if you already have it installed it shouldn’t interfere.</p>
+<h3 class="rubric" id="ni-frc-game-tools">NI FRC Game Tools</h3>
+<p>Follow <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html">instructions in the official docs</a>. It might say that you have a limited free trial but in reality it will never run out (similar to WinRAR).</p>
+<h3 class="rubric" id="wpilib">WPILib</h3>
+<p>Follow the <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html">instructions in the official docs</a>. When choosing the VSCode option, select standalone install. Java will be included, but if you already have it installed it shouldn’t interfere.</p>
 </div>
 <input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-10">
@@ -435,16 +438,37 @@ macOS</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="phoenix-tuner-x">
-<h2>Phoenix Tuner X<a class="headerlink" href="#phoenix-tuner-x" title="Permalink to this heading">¶</a></h2>
+<section id="pathplanner">
+<h2>PathPlanner<a class="headerlink" href="#pathplanner" title="Permalink to this heading">¶</a></h2>
+<p>PathPlanner is the app we use to make our autonomous routines.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-12">
 Windows</label><div class="sd-tab-content docutils">
-<p>Phoenix Tuner X is the diagnostics tool for CTRE devices (e.g. Falcon 500 motors). It is <a class="reference external" href="https://apps.microsoft.com/detail/9nvv4pwdw27z">available on the Microsoft Store</a>.</p>
+<p>Install the app from <a class="reference external" href="https://www.microsoft.com/en-us/p/frc-pathplanner/9nqbkb5dw909?cid=storebadge&amp;amp;ocid=badge&amp;amp;rtc=1&amp;amp;activetab=pivot:overviewtab">Microsoft Store</a>.</p>
 </div>
 <input id="sd-tab-item-13" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-13">
+Linux</label><div class="sd-tab-content docutils">
+<p>Download <a class="reference external" href="https://github.com/mjansen4857/pathplanner/releases/tag/2024.1.7">the zip</a> and put it somewhere. Make sure you remember where you put it! I’ll eventually try to add it to the script, so that it can be put on your start menu etc.</p>
+</div>
+<input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-14">
+macOS</label><div class="sd-tab-content docutils">
+<p>Install the app from the <a class="reference external" href="https://apps.apple.com/us/app/frc-pathplanner/id1593046876">App Store</a>.</p>
+</div>
+</div>
+</section>
+<section id="phoenix-tuner-x">
+<h2>Phoenix Tuner X<a class="headerlink" href="#phoenix-tuner-x" title="Permalink to this heading">¶</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-15" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-15">
+Windows</label><div class="sd-tab-content docutils">
+<p>Phoenix Tuner X is the diagnostics tool for CTRE devices (e.g. Falcon 500 motors). It is <a class="reference external" href="https://apps.microsoft.com/detail/9nvv4pwdw27z">available on the Microsoft Store</a>.</p>
+</div>
+<input id="sd-tab-item-16" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-16">
 Linux</label><div class="sd-tab-content docutils">
 <p>This is <strong>completely optional</strong>. It’s a kind of involved process, and isn’t useful unless you need to debug the motor controllers or other CTRE peripherals.</p>
 <p>These instructions assume that you’re on a Debian/Ubuntu system and are currently in a Wayland session.</p>
@@ -464,8 +488,8 @@ waydroid<span class="w"> </span>app<span class="w"> </span>launch<span class="w"
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-14">
+<input id="sd-tab-item-17" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-17">
 macOS</label><div class="sd-tab-content docutils">
 <p>Unfortunately, Phoenix Tuner X is currently not available for macOS.</p>
 </div>
@@ -474,18 +498,18 @@ macOS</label><div class="sd-tab-content docutils">
 <section id="rev-hardware-client">
 <h2>REV Hardware Client<a class="headerlink" href="#rev-hardware-client" title="Permalink to this heading">¶</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-15" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-15">
+<input checked="checked" id="sd-tab-item-18" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-18">
 Windows</label><div class="sd-tab-content docutils">
 <p>REV Hardware Client is the REV-specific diagnostics tool for REV devices (e.g. SPARK MAX). Follow installation instructions on <a class="reference external" href="https://docs.revrobotics.com/rev-hardware-client/gs/install">its official page</a>.</p>
 </div>
-<input id="sd-tab-item-16" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-16">
+<input id="sd-tab-item-19" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-19">
 Linux</label><div class="sd-tab-content docutils">
 <p>Unfortunately, REV Hardware Client is currently not available for Linux.</p>
 </div>
-<input id="sd-tab-item-17" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-17">
+<input id="sd-tab-item-20" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-20">
 macOS</label><div class="sd-tab-content docutils">
 <p>Unfortunately, REV Hardware Client is currently not available for macOS.</p>
 </div>
@@ -558,7 +582,8 @@ macOS</label><div class="sd-tab-content docutils">
 <li><a class="reference internal" href="#github-cli">GitHub CLI</a></li>
 <li><a class="reference internal" href="#git-login">Git login</a></li>
 <li><a class="reference internal" href="#only-for-pre-season-java">(Only for pre-season) Java</a></li>
-<li><a class="reference internal" href="#frc-game-tools">FRC Game Tools</a></li>
+<li><a class="reference internal" href="#frc-game-tools-and-wpilib">FRC Game Tools and WPILib</a></li>
+<li><a class="reference internal" href="#pathplanner">PathPlanner</a></li>
 <li><a class="reference internal" href="#phoenix-tuner-x">Phoenix Tuner X</a></li>
 <li><a class="reference internal" href="#rev-hardware-client">REV Hardware Client</a></li>
 <li><a class="reference internal" href="#optional-apache-maven">(Optional) Apache Maven</a></li>
