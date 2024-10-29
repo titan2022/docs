@@ -120,7 +120,7 @@ export JAVA_HOME="$HOME/wpilib/2024/jdk/bin/"
 
 ::::
 
-## FRC Game Tools
+## FRC Game Tools and WPILib
 
 ::::{tab-set}
 :sync-group: os
@@ -167,6 +167,34 @@ If you also want to install the WPILib extension into your main VSCode or VSCodi
 ```bash
 curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | FLDK_INSTALL_EXT_DESTINATION=code bash
 ```
+:::
+
+::::
+
+## PathPlanner
+
+PathPlanner is the app we use to make our autonomous routines.
+
+::::{tab-set}
+:sync-group: os
+
+:::{tab-item} Windows
+:sync: win
+
+Install the app from [Microsoft Store](https://www.microsoft.com/en-us/p/frc-pathplanner/9nqbkb5dw909?cid=storebadge&ocid=badge&rtc=1&activetab=pivot:overviewtab).
+
+:::
+
+:::{tab-item} Linux
+:sync: linux
+
+Download [the zip](https://github.com/mjansen4857/pathplanner/releases/tag/2024.1.7) and put it somewhere. Make sure you remember where you put it! I'll eventually try to add it to the script, so that it can be put on your start menu etc.
+:::
+
+:::{tab-item} macOS
+:sync: macos
+
+Install the app from the [App Store](https://apps.apple.com/us/app/frc-pathplanner/id1593046876).
 :::
 
 ::::
