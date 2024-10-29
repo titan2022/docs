@@ -2,7 +2,7 @@
 
 2024 October 22/23 (2.5 hours)
 
-[Slideshow (Control theory basics)]()
+[Slideshow (Control theory basics)](https://docs.google.com/presentation/d/10E05vzLZ4Q0vNykStGBuF8ifXJ0WljdmRp-LhtN5MRs/edit)
 
 ## Introduction
 
