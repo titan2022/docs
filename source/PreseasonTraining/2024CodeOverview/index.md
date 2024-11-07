@@ -7,7 +7,7 @@
 * [Oct 28 - 2024 game and bot intro, Shooter](https://docs.google.com/presentation/d/10jF_pbO6ip2r9X4MZxg0tLX1JjQzYbYDpz4nknqmKeo/edit#slide=id.p)
 * [Oct 30 - PathPlanner](https://docs.google.com/presentation/d/155NYhF3G_ufj5y1ddz4OqoGMcWBNf7-JaRvy4Aub-7A/edit#slide=id.g30f9ed95fb7_1_0)
 * [Oct 31 - 2024 game and bot intro, Shooter](https://docs.google.com/presentation/d/1c8ceNy9UJJGBAT-FtwqXHuwoa7FPv28tdTdbEkj11TI/edit#slide=id.g30f91c001d7_0_39)
-* Nov 5 - Robot.java, Localization
+* [Nov 5 - Robot.java, Localization/AprilTags](https://docs.google.com/presentation/d/1aEbDArgdgu6aI7Y6Uy55-Hp4dijDrrkktF2DBGtIg1M/edit#slide=id.g31071c5d512_0_13)
 
 ## Download the code
 
