@@ -8,6 +8,7 @@
 * [Oct 30 - PathPlanner](https://docs.google.com/presentation/d/155NYhF3G_ufj5y1ddz4OqoGMcWBNf7-JaRvy4Aub-7A/edit#slide=id.g30f9ed95fb7_1_0)
 * [Oct 31 - 2024 game and bot intro, Shooter](https://docs.google.com/presentation/d/1c8ceNy9UJJGBAT-FtwqXHuwoa7FPv28tdTdbEkj11TI/edit#slide=id.g30f91c001d7_0_39)
 * [Nov 5 - Robot.java, Localization/AprilTags](https://docs.google.com/presentation/d/1aEbDArgdgu6aI7Y6Uy55-Hp4dijDrrkktF2DBGtIg1M/edit#slide=id.g31071c5d512_0_13)
+* [Nov 7 - Running code on the robot, Swerve](https://docs.google.com/presentation/d/1LWdcddufTQ0CI7-QtIQCzRV_msl2xoMnj8mPKvTPZB0/edit?usp=sharing)
 
 ## Download the code
 
