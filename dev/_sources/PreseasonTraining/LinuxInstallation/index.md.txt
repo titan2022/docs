@@ -44,3 +44,10 @@ sudo tee /etc/apt/sources.list.d/backports.list > /dev/null <<EOF
 deb http://deb.debian.org/debian bookworm-backports main 
 EOF
 ```
+
+## Installing the mainline kernel/firmware
+
+* Download mainline kernel from https://kernel.ubuntu.com/mainline/
+* Set up https://github.com/bkw777/mainline
+* linux-firmware needs to be manually installed
+* Actually should use https://xanmod.org/ instead
