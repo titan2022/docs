@@ -17,6 +17,7 @@ OpenCV_ColorSegmentation/index.md
 ControlTheoryBasics/index.md
 2024CodeOverview/index.md
 Specializations/index.md
+BreakHomework.md
 ```
 
 ## Index by date
@@ -40,6 +41,7 @@ Specializations/index.md
 * [2024 Nov 20, Dec 4, Dec 11 - C++ introduction](Specializations/Algorithms/C++/index.md)
 * [2024 December 4 - Machine learning intro](Specializations/MachineLearning/Dec4.md)
 * [2024 December 11 - Machine learning: Convolutional Neural Networks](Specializations/MachineLearning/Dec11.md)
+* [Homework over break](BreakHomework.md)
 
 
 ## Index by topic
