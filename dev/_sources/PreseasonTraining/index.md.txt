@@ -37,8 +37,14 @@ Specializations/index.md
 * 2024 November 13 - calculus and packaging
   * [Basic calculus](Specializations/MathPhysics/Calculus/index.md)
   * [Packaging](Specializations/Coprocessor/Packaging/Nov13.md)
+* [2024 Nov 20, Dec 4, Dec 11 - C++ introduction](Specializations/Algorithms/C++/index.md)
+* [2024 December 4 - Machine learning intro](Specializations/MachineLearning/Dec4.md)
+* [2024 December 11 - Machine learning: Convolutional Neural Networks](Specializations/MachineLearning/Dec11.md)
+
 
 ## Index by topic
+
+See also the [specializations](Specializations/index.md).
 
 ### Introductory programming
 
@@ -48,6 +54,7 @@ Specializations/index.md
   * We split up into two groups
   * [easy task - Wordle clone](JavaBasics/WordleClone.md)
   * [harder task - Brainf interpreter](JavaBasics/BrainfInterpreter.md)
+* [2024 Nov 20, Dec 4, Dec 11 - C++ introduction](Specializations/Algorithms/C++/index.md)
 
 ### Robot control
 
