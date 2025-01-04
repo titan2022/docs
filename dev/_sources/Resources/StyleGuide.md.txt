@@ -5,7 +5,7 @@ This guide aims to keep our team's code style consistent, so please follow it as
 ## Naming
 
 ### Java
-* Public variables: PascalCase
+* Public variables: `PascalCase`
 * Public/private top level constant variables: `MACRO_CASE`
 * Private top level members: `m_camelCase`
 * Private local (including constant) variables: `camelCase`
@@ -32,7 +32,7 @@ This guide aims to keep our team's code style consistent, so please follow it as
 * Test files: `test_camelCase.cpp`
 * CMake modules: `PascalCase.cmake`
 
-## Structure
+## Java Structure
 
 The following outlines the file structure in a WPILib projecct.
 
