@@ -55,6 +55,11 @@ On Debian, Ubuntu, Mint, and other distros that use `apt` or `apt-get`:
 ```bash
 sudo apt install git
 ```
+
+On openSUSE:
+```bash
+sudo zypper in git
+```
 :::
 
 :::{tab-item} macOS
@@ -90,31 +95,38 @@ When you install both Git and GitHub CLI, open a terminal window (preferably Pow
 :::{tab-item} Windows
 :sync: win
 
-There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose [Temurin JDK 17 LTS (use the `.msi` installer)](https://adoptium.net/temurin/releases/?package=jdk&version=17&os=windows&arch=x64).
+There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose [Temurin JDK 21 LTS (use the `.msi` installer)](https://adoptium.net/temurin/releases/?package=jdk&version=21&os=windows&arch=x64).
 :::
 
 :::{tab-item} Linux
 :sync: linux
 
-Your distribution should have a JDK available to download. If not, you can use WPILib's JDK by adding the following to your `~/.bashrc` or other shell configuration file:
-```bash
-export PATH="$HOME/wpilib/2024/jdk/bin/:$PATH"
-export JAVA_HOME="$HOME/wpilib/2024/jdk/bin/"
-```
-
-If you're on Debian, Ubuntu, Mint, or some other `apt`-based distribution, you can install the system-recommended JDK using
+Your distribution should have a JDK available to download. If you're on Debian, Ubuntu, Mint, or some other `apt`-based distribution, you can install the system-recommended JDK using
 ```bash
 sudo apt install default-jdk
+```
+
+If you're on openSUSE:
+```bash
+sudo zypper in java-21-openjdk java-21-openjdk-devel
+```
+
+If your distro doesn't have a JDK, you can use WPILib's JDK by adding the following to your `~/.bashrc` or other shell configuration file:
+```bash
+export PATH="$HOME/wpilib/2025/jdk/bin/:$PATH"
+export JAVA_HOME="$HOME/wpilib/2025/jdk/bin/"
 ```
 :::
 
 :::{tab-item} macOS
 :sync: macos
 
-You can use WPILib's JDK by adding the following to your `~/.bash_profile` and `~/.zprofile`:
+There are many JDKs (Java Development Kits) available online but [Temurin](https://adoptium.net/) is a great option. Choose [Temurin JDK 21 LTS (use the `.pkg` installer)](https://adoptium.net/temurin/releases/?package=jdk&version=21&os=mac&arch=any).
+
+Alternatively, you can use WPILib's JDK by adding the following to your `~/.bash_profile` and `~/.zprofile`:
 ```bash
-export PATH="$HOME/wpilib/2024/jdk/bin/:$PATH"
-export JAVA_HOME="$HOME/wpilib/2024/jdk/bin/"
+export PATH="$HOME/wpilib/2025/jdk/bin/:$PATH"
+export JAVA_HOME="$HOME/wpilib/2025/jdk/bin/"
 ```
 :::
 
@@ -143,13 +155,13 @@ Please use my script to install these tools. Make sure that `~/.local/bin` is on
 To run the script, you must have a display (X11 or Wayland) and a network connection.
 
 ```bash
-curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh | bash
+curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | bash
 ```
 
 If you also want to install the WPILib extension into your main VSCode or VSCodium installation, please set the environment variable FLDK_INSTALL_EXT_DESTINATION to the name of the command that launches VSCode (which is `code` for Microsoft binaries, `code-oss` if you compiled it yourself, and `codium` for VSCodium). For example:
 
 ```bash
-curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh | FLDK_INSTALL_EXT_DESTINATION=code bash
+curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh | FLDK_INSTALL_EXT_DESTINATION=code bash
 ```
 :::
 
@@ -192,13 +204,13 @@ Install the app from [Microsoft Store](https://www.microsoft.com/en-us/p/frc-pat
 :::{tab-item} Linux
 :sync: linux
 
-Download [the zip](https://github.com/mjansen4857/pathplanner/releases/tag/2024.1.7) and put it somewhere. Make sure you remember where you put it! I'll eventually try to add it to the script, so that it can be put on your start menu etc.
+The WPILib installation script also installs PathPlanner, so you don't need to do anything else.
 :::
 
 :::{tab-item} macOS
 :sync: macos
 
-Install the app from the [App Store](https://apps.apple.com/us/app/frc-pathplanner/id1593046876).
+The WPILib installation script also installs PathPlanner, so you don't need to do anything else.
 :::
 
 ::::

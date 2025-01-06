@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Installation - Titan Robotics 2024 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -370,6 +370,10 @@ Linux</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
 </pre></div>
 </div>
+<p>On openSUSE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>git
+</pre></div>
+</div>
 </div>
 <input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-5">
@@ -400,27 +404,32 @@ macOS</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" data-sync-id="win" for="sd-tab-item-6">
 Windows</label><div class="sd-tab-content docutils">
-<p>There are many JDKs (Java Development Kits) available online but <a class="reference external" href="https://adoptium.net/">Temurin</a> is a great option. Choose <a class="reference external" href="https://adoptium.net/temurin/releases/?package=jdk&amp;amp;version=17&amp;amp;os=windows&amp;amp;arch=x64">Temurin JDK 17 LTS (use the <code class="docutils literal notranslate"><span class="pre">.msi</span></code> installer)</a>.</p>
+<p>There are many JDKs (Java Development Kits) available online but <a class="reference external" href="https://adoptium.net/">Temurin</a> is a great option. Choose <a class="reference external" href="https://adoptium.net/temurin/releases/?package=jdk&amp;amp;version=21&amp;amp;os=windows&amp;amp;arch=x64">Temurin JDK 21 LTS (use the <code class="docutils literal notranslate"><span class="pre">.msi</span></code> installer)</a>.</p>
 </div>
 <input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-7">
 Linux</label><div class="sd-tab-content docutils">
-<p>Your distribution should have a JDK available to download. If not, you can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or other shell configuration file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/&quot;</span>
+<p>Your distribution should have a JDK available to download. If you’re on Debian, Ubuntu, Mint, or some other <code class="docutils literal notranslate"><span class="pre">apt</span></code>-based distribution, you can install the system-recommended JDK using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>default-jdk
 </pre></div>
 </div>
-<p>If you’re on Debian, Ubuntu, Mint, or some other <code class="docutils literal notranslate"><span class="pre">apt</span></code>-based distribution, you can install the system-recommended JDK using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>default-jdk
+<p>If you’re on openSUSE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>java-21-openjdk<span class="w"> </span>java-21-openjdk-devel
+</pre></div>
+</div>
+<p>If your distro doesn’t have a JDK, you can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or other shell configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2025/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2025/jdk/bin/&quot;</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-8">
 macOS</label><div class="sd-tab-content docutils">
-<p>You can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.zprofile</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2024/jdk/bin/&quot;</span>
+<p>There are many JDKs (Java Development Kits) available online but <a class="reference external" href="https://adoptium.net/">Temurin</a> is a great option. Choose <a class="reference external" href="https://adoptium.net/temurin/releases/?package=jdk&amp;amp;version=21&amp;amp;os=mac&amp;amp;arch=any">Temurin JDK 21 LTS (use the <code class="docutils literal notranslate"><span class="pre">.pkg</span></code> installer)</a>.</p>
+<p>Alternatively, you can use WPILib’s JDK by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.zprofile</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2025/jdk/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/wpilib/2025/jdk/bin/&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -442,11 +451,11 @@ Windows</label><div class="sd-tab-content docutils">
 Linux</label><div class="sd-tab-content docutils">
 <p>Please use my script to install these tools. Make sure that <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> is on your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
 <p>To run the script, you must have a display (X11 or Wayland) and a network connection.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </pre></div>
 </div>
 <p>If you also want to install the WPILib extension into your main VSCode or VSCodium installation, please set the environment variable FLDK_INSTALL_EXT_DESTINATION to the name of the command that launches VSCode (which is <code class="docutils literal notranslate"><span class="pre">code</span></code> for Microsoft binaries, <code class="docutils literal notranslate"><span class="pre">code-oss</span></code> if you compiled it yourself, and <code class="docutils literal notranslate"><span class="pre">codium</span></code> for VSCodium). For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/master/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">FLDK_INSTALL_EXT_DESTINATION</span><span class="o">=</span>code<span class="w"> </span>bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o-<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/install-online.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">FLDK_INSTALL_EXT_DESTINATION</span><span class="o">=</span>code<span class="w"> </span>bash
 </pre></div>
 </div>
 </div>
@@ -478,12 +487,12 @@ Windows</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-13" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" data-sync-id="linux" for="sd-tab-item-13">
 Linux</label><div class="sd-tab-content docutils">
-<p>Download <a class="reference external" href="https://github.com/mjansen4857/pathplanner/releases/tag/2024.1.7">the zip</a> and put it somewhere. Make sure you remember where you put it! I’ll eventually try to add it to the script, so that it can be put on your start menu etc.</p>
+<p>The WPILib installation script also installs PathPlanner, so you don’t need to do anything else.</p>
 </div>
 <input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-14">
 macOS</label><div class="sd-tab-content docutils">
-<p>Install the app from the <a class="reference external" href="https://apps.apple.com/us/app/frc-pathplanner/id1593046876">App Store</a>.</p>
+<p>The WPILib installation script also installs PathPlanner, so you don’t need to do anything else.</p>
 </div>
 </div>
 </section>
