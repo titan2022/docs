@@ -197,7 +197,7 @@ PathPlanner is the app we use to make our autonomous routines.
 :::{tab-item} Windows
 :sync: win
 
-Install the app from [Microsoft Store](https://www.microsoft.com/en-us/p/frc-pathplanner/9nqbkb5dw909?cid=storebadge&ocid=badge&rtc=1&activetab=pivot:overviewtab).
+Download the EXE from <https://github.com/mjansen4857/pathplanner/releases/download/v2025.1.1/PathPlanner-Windows-v2025.1.1-setup.exe>.
 
 :::
 
