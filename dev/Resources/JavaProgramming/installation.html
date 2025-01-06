@@ -518,12 +518,23 @@ waydroid<span class="w"> </span>prop<span class="w"> </span><span class="nb">set
 waydroid<span class="w"> </span>session<span class="w"> </span>stop
 </pre></div>
 </div>
-<p>Now, download and install Phoenix Tuner X:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/ethanc8/someblobs/releases/download/phoenix-tuner-x-2024.6.1.0/Tuner.X_2024.6.1.0_apkcombo.com.apk
-waydroid<span class="w"> </span>app<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;./Tuner X*.apk&quot;</span>
-waydroid<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>com.ctre.phoenix_tuner
+<p>Download and install the SAI app so that we can install split APKs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://f-droid.org/repo/com.aefyr.sai.fdroid_60.apk
+waydroid<span class="w"> </span>app<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;./com.aefyr.sai.fdroid_60.apk&quot;</span>
 </pre></div>
 </div>
+<p>Now, download Phoenix Tuner X:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/ethanc8/someblobs/releases/download/phoenix-tuner-x-2025.2.0/Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks
+sudo<span class="w"> </span>mv<span class="w"> </span>Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks<span class="w"> </span>~/.local/share/waydroid/data/media/0/Documents/
+sudo<span class="w"> </span>chmod<span class="w"> </span>a+rwx<span class="w"> </span>~/.local/share/waydroid/data/media/0/Documents/Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks
+</pre></div>
+</div>
+<p>Launch SAI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>waydroid<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>com.aefyr.sai.fdroid
+</pre></div>
+</div>
+<p>Click the “Install APKs” button, use the “Internal file picker”, and navigate to <code class="docutils literal notranslate"><span class="pre">~/Documents</span></code> (<code class="docutils literal notranslate"><span class="pre">/storage/emulated/0/Documents</span></code>) and select the Phoenix Tuner split APK. Leave the default options and install the APKs. If prompted, allow SAI to “install unknown apps”.</p>
+<p>(<strong>Warning:</strong> For me, Phoenix Tuner 2025.2.0 immediately crashes upon opening.)</p>
 </div>
 <input id="sd-tab-item-17" name="sd-tab-set-5" type="radio">
 </input><label class="sd-tab-label" data-sync-id="macos" for="sd-tab-item-17">
