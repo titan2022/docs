@@ -244,31 +244,13 @@ waydroid prop set persist.waydroid.multi_windows true
 waydroid session stop
 ```
 
-Download and install the SAI app so that we can install split APKs:
+Now, download and install Phoenix Tuner X:
 
 ```bash
-wget https://f-droid.org/repo/com.aefyr.sai.fdroid_60.apk
-waydroid app install "./com.aefyr.sai.fdroid_60.apk"
+wget https://github.com/ethanc8/someblobs/releases/download/phoenix-tuner-x-2024.6.1.0/Tuner.X_2024.6.1.0_apkcombo.com.apk
+waydroid app install "./Tuner X*.apk"
+waydroid app launch com.ctre.phoenix_tuner
 ```
-
-
-Now, download Phoenix Tuner X:
-
-```bash
-wget https://github.com/ethanc8/someblobs/releases/download/phoenix-tuner-x-2025.2.0/Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks
-sudo mv Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks ~/.local/share/waydroid/data/media/0/Documents/
-sudo chmod a+rwx ~/.local/share/waydroid/data/media/0/Documents/Phoenix.Tuner.X_com.ctre.phoenix_tuner_2025.2.0.apks
-```
-
-Launch SAI:
-
-```bash
-waydroid app launch com.aefyr.sai.fdroid
-```
-
-Click the "Install APKs" button, use the "Internal file picker", and navigate to `~/Documents` (`/storage/emulated/0/Documents`) and select the Phoenix Tuner split APK. Leave the default options and install the APKs. If prompted, allow SAI to "install unknown apps".
-
-(**Warning:** For me, Phoenix Tuner 2025.2.0 immediately crashes upon opening.)
 :::
 
 :::{tab-item} macOS
