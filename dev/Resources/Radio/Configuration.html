@@ -327,6 +327,7 @@
           <section class="tex2jax_ignore mathjax_ignore" id="radio-configuration-and-upgrade">
 <h1>Radio configuration and upgrade<a class="headerlink" href="#radio-configuration-and-upgrade" title="Permalink to this heading">¶</a></h1>
 <p>The radio configuration page is at <a class="reference external" href="http://192.168.69.1/">http://192.168.69.1/</a>. Unfortunately, some radios on older firmware versions do not respond. Try to connect to <a class="reference external" href="http://10.0.1.1/">http://10.0.1.1/</a> instead.</p>
+<p>Once the radio is configured as a team 2022 radio, the configuration page will move to <a class="reference external" href="http://10.20.22.1">http://10.20.22.1</a>.</p>
 <p>The firmware version is at the bottom of the configuration page. If there is no firmware version on the configuration page, the firmware version can be found at <a class="reference external" href="http://10.0.1.1/status">http://10.0.1.1/status</a> or <a class="reference external" href="http://192.168.69.1/status">http://192.168.69.1/status</a>.</p>
 <p><strong>Any radio with firmware version less than 1.2.6 has bugs that can brick the radio. Upgrade the firmware as soon as possible.</strong></p>
 <p><strong>Unless you can’t connect normally, don’t set a static IP.</strong></p>
@@ -336,7 +337,12 @@
 <li><p>Download firmware from <a class="reference external" href="https://frc-radio.vivid-hosting.net/miscellaneous/firmware-releases">Vivid Hosting</a></p></li>
 <li><p>Power on the radio</p>
 <ul>
-<li><p>You can power it via PoE or from the robot</p></li>
+<li><p>You can power it via PoE or from the robot</p>
+<ul>
+<li><p>PoE is “Power-over-Ethernet”</p></li>
+<li><p>To set up PoE, plug a PoE-supporting Ethernet cable into the wall power supply and plug in the other end to the RIO port on the radio</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>Plug an Ethernet cable in to your laptop</p></li>
