@@ -26,3 +26,7 @@ The firmware version is at the bottom of the configuration page. If there is no 
 * WPA key: see the other radios
 
 Make sure to label the SSID and WPA key on the radio.
+
+## Enabling 2.4GHz Wi-Fi AP
+
+Robot radios can work as 2.4GHz Wi-Fi APs, just like the old OMP radios. To set this up, flip the 3rd dip switch on the back of the radio to ON. On newer radios there's a label next to this switch that says "2.4GHz AP".
