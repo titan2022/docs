@@ -6,13 +6,23 @@ The firmware version is at the bottom of the configuration page. If there is no 
 
 **Any radio with firmware version less than 1.2.6 has bugs that can brick the radio. Upgrade the firmware as soon as possible.**
 
+**Unless you can't connect normally, don't set a static IP.**
+
 ## Upgrade instructions
 
 * Download firmware from [Vivid Hosting](https://frc-radio.vivid-hosting.net/miscellaneous/firmware-releases)
 * Power on the radio
-    * You can power it via PoE or from the robot
+  * You can power it via PoE or from the robot
 * Plug an Ethernet cable in to your laptop
 * Plug the Ethernet cable into the "DS" (driver station) port of the radio
 * Go to the radio configuration page (<http://192.168.69.1/> or <http://10.0.1.1/>)
 * Upload the firmware file to the configuration page (see [the Vivid Hosting docs](https://frc-radio.vivid-hosting.net/miscellaneous/upgrading-firmware) for more info)
 
+## Standard configuration for FRC#2022
+
+* Team number: 2022
+* SSID suffix: `VH#` where # is a number
+  * Do it in order - see [the list](index.md#Radios)
+* WPA key: see the other radios
+
+Make sure to label the SSID and WPA key on the radio.

@@ -329,6 +329,7 @@
 <p>The radio configuration page is at <a class="reference external" href="http://192.168.69.1/">http://192.168.69.1/</a>. Unfortunately, some radios on older firmware versions do not respond. Try to connect to <a class="reference external" href="http://10.0.1.1/">http://10.0.1.1/</a> instead.</p>
 <p>The firmware version is at the bottom of the configuration page. If there is no firmware version on the configuration page, the firmware version can be found at <a class="reference external" href="http://10.0.1.1/status">http://10.0.1.1/status</a> or <a class="reference external" href="http://192.168.69.1/status">http://192.168.69.1/status</a>.</p>
 <p><strong>Any radio with firmware version less than 1.2.6 has bugs that can brick the radio. Upgrade the firmware as soon as possible.</strong></p>
+<p><strong>Unless you can’t connect normally, don’t set a static IP.</strong></p>
 <section id="upgrade-instructions">
 <h2>Upgrade instructions<a class="headerlink" href="#upgrade-instructions" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
@@ -343,6 +344,19 @@
 <li><p>Go to the radio configuration page (<a class="reference external" href="http://192.168.69.1/">http://192.168.69.1/</a> or <a class="reference external" href="http://10.0.1.1/">http://10.0.1.1/</a>)</p></li>
 <li><p>Upload the firmware file to the configuration page (see <a class="reference external" href="https://frc-radio.vivid-hosting.net/miscellaneous/upgrading-firmware">the Vivid Hosting docs</a> for more info)</p></li>
 </ul>
+</section>
+<section id="standard-configuration-for-frc-2022">
+<h2>Standard configuration for FRC#2022<a class="headerlink" href="#standard-configuration-for-frc-2022" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Team number: 2022</p></li>
+<li><p>SSID suffix: <code class="docutils literal notranslate"><span class="pre">VH#</span></code> where # is a number</p>
+<ul>
+<li><p>Do it in order - see <a class="reference internal" href="index.html#Radios"><span class="std std-ref">the list</span></a></p></li>
+</ul>
+</li>
+<li><p>WPA key: see the other radios</p></li>
+</ul>
+<p>Make sure to label the SSID and WPA key on the radio.</p>
 </section>
 </section>
 
@@ -403,6 +417,7 @@
             <ul>
 <li><a class="reference internal" href="#">Radio configuration and upgrade</a><ul>
 <li><a class="reference internal" href="#upgrade-instructions">Upgrade instructions</a></li>
+<li><a class="reference internal" href="#standard-configuration-for-frc-2022">Standard configuration for FRC#2022</a></li>
 </ul>
 </li>
 </ul>
