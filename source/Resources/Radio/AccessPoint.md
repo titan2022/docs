@@ -13,7 +13,8 @@ Follow the [configuration instructions](Configuration.md), except that you shoul
 ## Standard configuration for FRC#2022
 
 * Team number: 2022
-* SSID suffix: `AP#` where # is a number
+* SSID: `FRC-2022-AP#-@` where # is a number and @ is `R1` for Red 1, `B1` for Blue 1, etc.
   * Do it in order - see [the list](index.md#Radios)
-* WPA key: see the other radios
 * Wi-Fi channel: 93
+* Red VLANs: 10, 20, 30
+* Blue VLANs: 40, 50, 60
