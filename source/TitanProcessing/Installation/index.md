@@ -63,7 +63,15 @@ ninja
 
 ## Instructions (old - Debian packages)
 
-1. Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib [here](https://github.com/opencv/opencv_contrib), but only the ArUco submodule is used.
+**Warning:** These instructions are not being updated. Although many team members used these instructions before the Conda builds were set up, it is difficult to support installations using our custom Debian packages.
+
+1. Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib [here](https://github.com/opencv/opencv_contrib), but only the ArUco submodule is used. To install OpenCV with our own Debian binaries, execute the following.
+
+```bash
+# Install OpenCV from FRC#2022 binaries
+curl -OL https://github.com/ethanc8/titanian-repo/raw/master/debian/pool/main/o/opencv/libopencv-titanian_4.8.1-1+deb12_amd64.deb
+sudo apt install ./libopencv-titanian_4.8.1-1+deb12_amd64.deb
+```
 2. (Optional) Install [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense) to build RealSense modules.
 3. Install [GoogleTest testing framework](https://github.com/google/googletest/blob/main/googletest/README.md).
 4. Install [JSON for Modern C++](https://github.com/nlohmann/json) using [vcpkg](https://github.com/Microsoft/vcpkg) or build it from scratch.
