@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Installation" href="Installation/index.html" /><link rel="prev" title="Titan Algorithms" href="../TitanAlgorithms/index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Building" href="Installation/index.html" /><link rel="prev" title="Titan Algorithms" href="../TitanAlgorithms/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Titan Processing - Titan Robotics 2024 documentation</title>
+        <title>Titan-Processing - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -274,12 +274,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../TitanAlgorithms/index.html">Titan Algorithms</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Titan Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Installation/index.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Calibration/index.html">Calibration</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Titan-Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan-Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Installation/index.html">Building</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Setup/index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Setup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Setup/Configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Setup/Calibration.html">Calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="AprilTags/index.html">AprilTag Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Localization/index.html">Localization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Networking/index.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeploymentScripts/index.html">Deployment scripts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../TitanDashboard/index.html">Titan Dashboard</a></li>
@@ -329,25 +334,53 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="titan-processing">
-<h1>Titan Processing<a class="headerlink" href="#titan-processing" title="Permalink to this heading">¶</a></h1>
+<h1>Titan-Processing<a class="headerlink" href="#titan-processing" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p><a class="reference external" href="https://github.com/titan2022/Titan-Processing">Titan Processing</a> is the official vision library created and used by Titan Robotics since the 2023-2024 season. It is targetted for compilation on a coprocessor, and for this reason it includes a networking module. The main capability is detecting AprilTags and determining the robot pose through localization and filtering it using an Extended Kalman Filter.</p>
+<p><a class="reference external" href="https://github.com/titan2022/Titan-Processing">Titan-Processing</a> is the official vision library created and used by Titan Robotics since the 2023-2024 season. It is targetted for compilation on a coprocessor, and for this reason it includes a networking module. The main capability is detecting AprilTags and determining the robot pose through localization and filtering it using an Extended Kalman Filter.</p>
 <p>Unlike Titan Algorithms, Titan Processing operates on a rolling release model, meaning that there is no explicit versioning. This is because most of vision code in production is written in this library. This requires frequent bug fixes and modifications, so try to rebuild this library as often as possible. You can refer to specific Titan Processing installations with their respective Git commit messages or codes.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Calibration/index.html">Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation/index.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup/index.html">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Setup/Configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setup/Calibration.html">Calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="AprilTags/index.html">AprilTag Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Localization/index.html">Localization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Networking/index.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DeploymentScripts/index.html">Deployment scripts</a></li>
 </ul>
 </div>
 </section>
 <section id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">¶</a></h2>
 <p>To contribute, create your own branch or fork with necessary modifications and initiate a merge or pull request into <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+</section>
+<section id="other-tools">
+<h2>Other Tools<a class="headerlink" href="#other-tools" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/azeam/camset">Camset</a></p>
+<ul>
+<li><p>Quick way to calibrate camera parameters like exposure</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="Setup/Calibration.html"><span class="std std-doc">calibration.py</span></a></p>
+<ul>
+<li><p>Calibrating camera matrix and distortion coefficients</p></li>
+<li><p>Use ChArUco board generator and print it</p></li>
+<li><p>Take pictures with <code class="docutils literal notranslate"><span class="pre">[space]</span></code> (best to try multiple angles, 20+ photos)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/titan2022/Titan-Processing/blob/main/test/server/NetworkingServer.java">Java networking server example</a></p>
+<ul>
+<li><p>UDP server for networking values</p></li>
+<li><p>All types implimented</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 
@@ -361,7 +394,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Installation</div>
+                <div class="title">Building</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -406,9 +439,10 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Titan Processing</a><ul>
+<li><a class="reference internal" href="#">Titan-Processing</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#contributing">Contributing</a></li>
+<li><a class="reference internal" href="#other-tools">Other Tools</a></li>
 </ul>
 </li>
 </ul>

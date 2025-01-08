@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Calibration" href="../Calibration/index.html" /><link rel="prev" title="Titan Processing" href="../index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Setup" href="../Setup/index.html" /><link rel="prev" title="Titan-Processing" href="../index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Installation - Titan Robotics 2024 documentation</title>
+        <title>Building - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -274,12 +274,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Calibration/index.html">Calibration</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan-Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan-Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Building</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Setup/index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Setup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Setup/Configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Setup/Calibration.html">Calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../AprilTags/index.html">AprilTag Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Localization/index.html">Localization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Networking/index.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DeploymentScripts/index.html">Deployment scripts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanDashboard/index.html">Titan Dashboard</a></li>
@@ -328,16 +333,63 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="building">
+<h1>Building<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h1>
 <section id="os-support">
 <h2>OS Support<a class="headerlink" href="#os-support" title="Permalink to this heading">¶</a></h2>
-<p>Currently, Titan Processing only supports Linux builds for AArch64 and x86_64 with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.</p>
+<p>Currently, Titan Processing only supports Linux/glibc builds for AArch64 and x86_64 with no plans to support Windows or MacOS, but feel free to try. All package requirements should be cross-platform. There are issues with configuring CMake using Visual Studio solutions and building with MSVC so consider using MinGW or Clang.</p>
+<p>The conda packages are only built for Linux/glibc on AArch64 and x86_64. See <a class="reference external" href="https://github.com/titan2022/titan-forge-feedstocks">titan-forge-feedstocks</a> for the package recipes. You can try to update the recipes to build on Windows or macOS.</p>
 </section>
-<section id="building">
-<h2>Building<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h2>
-<section id="instructions">
-<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h3>
+<section id="instructions-new-conda-mamba">
+<h2>Instructions (new - Conda/Mamba)<a class="headerlink" href="#instructions-new-conda-mamba" title="Permalink to this heading">¶</a></h2>
+<section id="installing-the-conda-environment">
+<h3>Installing the Conda environment<a class="headerlink" href="#installing-the-conda-environment" title="Permalink to this heading">¶</a></h3>
+<p>First, please have Conda or Mamba installed on your computer. If it’s not installed, please install <a class="reference external" href="https://conda-forge.org/miniforge/">Miniforge3</a>, which includes Conda, Mamba and a conda-forge based Python environment. You can install Miniforge3 using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh&quot;</span>
+bash<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
+rm<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
+</pre></div>
+</div>
+<p>Close and reopen your shell, and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prevent Conda from polluting your environment when you&#39;re not working on Conda-managed projects.</span>
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
+</pre></div>
+</div>
+<p>Now, you can use Conda to install the dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+mamba<span class="w"> </span>activate<span class="w"> </span>Titan-Processing
+</pre></div>
+</div>
+<p>If you modify <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>, please run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+<p>Occassionally, you should update all the packages to the latest versions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>Titan-Processing
+mamba<span class="w"> </span>update<span class="w"> </span>--all<span class="w"> </span>-c<span class="w"> </span>https://repo.prefix.dev/titan-forge
+</pre></div>
+</div>
+</section>
+<section id="building-the-library-and-examples">
+<h3>Building the library and examples<a class="headerlink" href="#building-the-library-and-examples" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>activate<span class="w"> </span>Titan-Processing
+
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span>clang
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>clang++
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-pthread&quot;</span>
+
+<span class="c1"># Configure the build</span>
+cmake<span class="w"> </span>-B<span class="w"> </span>.<span class="w"> </span>-S<span class="w"> </span>..<span class="w"> </span>-DCMAKE_EXPORT_COMPILE_COMMANDS<span class="o">=</span><span class="m">1</span><span class="w"> </span>-DBUILD_EXAMPLES<span class="o">=</span><span class="m">1</span><span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>RelWithDebInfo<span class="w"> </span>-GNinja
+
+<span class="c1"># Actually run the build</span>
+ninja
+</pre></div>
+</div>
+</section>
+</section>
+<section id="instructions-old-debian-packages">
+<h2>Instructions (old - Debian packages)<a class="headerlink" href="#instructions-old-debian-packages" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib <a class="reference external" href="https://github.com/opencv/opencv_contrib">here</a>, but only the ArUco submodule is used.</p></li>
 <li><p>(Optional) Install <a class="reference external" href="https://github.com/IntelRealSense/librealsense">Intel RealSense SDK</a> to build RealSense modules.</p></li>
@@ -382,7 +434,6 @@ ninja
 sudo<span class="w"> </span>ninja<span class="w"> </span>install
 </pre></div>
 </div>
-</section>
 <section id="build-options">
 <h3>Build Options<a class="headerlink" href="#build-options" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
@@ -391,55 +442,6 @@ sudo<span class="w"> </span>ninja<span class="w"> </span>install
 </ul>
 </section>
 </section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
-<p>Edit the config inside <code class="docutils literal notranslate"><span class="pre">config.json</span></code> of your project or inside the <code class="docutils literal notranslate"><span class="pre">example</span></code> directory.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>: UDP server IP/port</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">threads</span></code>: threads per camera stream</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">quadDecimate</span></code>: n/a</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">quadSigma</span></code>: n/a</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">decodeSharpening</span></code>: n/a</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cameras</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: keyword that will be matched when selecting camera stream</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, <code class="docutils literal notranslate"><span class="pre">fps</span></code>, <code class="docutils literal notranslate"><span class="pre">exposure</span></code>: stream parameters (Camset is helpful)</p></li>
-<li><p>Everything else is generated by <code class="docutils literal notranslate"><span class="pre">calibration.py</span></code></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">apriltags</span></code></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: id</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code>: field position in meters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code>: field rotation in degrees</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Apriltag size in meters</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="other-tools">
-<h2>Other Tools<a class="headerlink" href="#other-tools" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/azeam/camset">Camset</a></p>
-<ul>
-<li><p>Quick way to calibrate camera parameters like exposure</p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="../Calibration/index.html"><span class="std std-doc">calibration.py</span></a></p>
-<ul>
-<li><p>Calibrating camera matrix and distortion coefficients</p></li>
-<li><p>Use ChArUco board generator and print it</p></li>
-<li><p>Take pictures with <code class="docutils literal notranslate"><span class="pre">[space]</span></code> (best to try multiple angles, 20+ photos)</p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#test/java/NetworkingServer.java"><span class="xref myst">Java networking server example</span></a></p>
-<ul>
-<li><p>UDP server for networking values</p></li>
-<li><p>All types implimented</p></li>
-</ul>
-</li>
-</ul>
-</section>
 </section>
 
         </article>
@@ -447,12 +449,12 @@ sudo<span class="w"> </span>ninja<span class="w"> </span>install
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../Calibration/index.html">
+          <a class="next-page" href="../Setup/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Calibration</div>
+                <div class="title">Setup</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -463,7 +465,7 @@ sudo<span class="w"> </span>ninja<span class="w"> </span>install
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Titan Processing</div>
+                <div class="title">Titan-Processing</div>
                 
               </div>
             </a>
@@ -497,15 +499,17 @@ sudo<span class="w"> </span>ninja<span class="w"> </span>install
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#">Building</a><ul>
 <li><a class="reference internal" href="#os-support">OS Support</a></li>
-<li><a class="reference internal" href="#building">Building</a><ul>
-<li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#instructions-new-conda-mamba">Instructions (new - Conda/Mamba)</a><ul>
+<li><a class="reference internal" href="#installing-the-conda-environment">Installing the Conda environment</a></li>
+<li><a class="reference internal" href="#building-the-library-and-examples">Building the library and examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instructions-old-debian-packages">Instructions (old - Debian packages)</a><ul>
 <li><a class="reference internal" href="#build-options">Build Options</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#configuration">Configuration</a></li>
-<li><a class="reference internal" href="#other-tools">Other Tools</a></li>
 </ul>
 </li>
 </ul>

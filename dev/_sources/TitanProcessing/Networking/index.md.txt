@@ -51,7 +51,7 @@ Receiving a reply is the only way to get data back from the server due to server
 
 ## C Client
 
-Follow the same setup as with the C++ client, since the same header includes C bindings. All methods and types are replaced. The C client was intended to only be used as Python bindings.
+Follow the same setup as with the C++ client, since the same header includes C bindings. All methods and types are replaced. The C client was intended to only be used as Python bindings. The APIs are kinda Apple-style, but they should be easy to consume by any C codebase.
 
 ```cpp
 TRBNetworkingClientRef client = TRBNetworkingClientCreate("10.20.22.9", 5800);
@@ -119,7 +119,9 @@ NOTE: Although Python does not explicitly show the type, all numerical values ar
 
 ### Setup
 
-Copy the `util` folder in `midwest` branch in `FRC-2024-JAVA` into your project (temporary solution). Then, initiate the `NetworkingServer` object in `robot.java` or another file with specified port (leave blank for default of 5800)
+% TODO - Update this for 2025 code
+
+Copy the `util` folder in `midwest` branch in `FRC-2024-JAVA` into your project (temporary solution). Then, initiate the `NetworkingServer` object in `Robot.java` or another file with specified port (leave blank for default of 5800)
 
 ```java
 NetworkingServer server = new NetworkingServer(5801);

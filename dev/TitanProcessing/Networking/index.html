@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Titan Dashboard" href="../../TitanDashboard/index.html" /><link rel="prev" title="Localization" href="../Localization/index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Deployment scripts" href="../DeploymentScripts/index.html" /><link rel="prev" title="Localization" href="../Localization/index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Networking - Titan Robotics 2024 documentation</title>
@@ -274,12 +274,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Installation/index.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Calibration/index.html">Calibration</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan-Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan-Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Installation/index.html">Building</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Setup/index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Setup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Setup/Configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Setup/Calibration.html">Calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../AprilTags/index.html">AprilTag Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Localization/index.html">Localization</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DeploymentScripts/index.html">Deployment scripts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanDashboard/index.html">Titan Dashboard</a></li>
@@ -378,7 +383,7 @@
 </section>
 <section id="id1">
 <h2>C Client<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
-<p>Follow the same setup as with the C++ client, since the same header includes C bindings. All methods and types are replaced. The C client was intended to only be used as Python bindings.</p>
+<p>Follow the same setup as with the C++ client, since the same header includes C bindings. All methods and types are replaced. The C client was intended to only be used as Python bindings. The APIs are kinda Apple-style, but they should be easy to consume by any C codebase.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TRBNetworkingClientRef</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRBNetworkingClientCreate</span><span class="p">(</span><span class="s">&quot;10.20.22.9&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5800</span><span class="p">);</span>
 
 <span class="c1">// Vectors</span>
@@ -441,7 +446,7 @@
 <h2>Java Server<a class="headerlink" href="#java-server" title="Permalink to this heading">¶</a></h2>
 <section id="id5">
 <h3>Setup<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
-<p>Copy the <code class="docutils literal notranslate"><span class="pre">util</span></code> folder in <code class="docutils literal notranslate"><span class="pre">midwest</span></code> branch in <code class="docutils literal notranslate"><span class="pre">FRC-2024-JAVA</span></code> into your project (temporary solution). Then, initiate the <code class="docutils literal notranslate"><span class="pre">NetworkingServer</span></code> object in <code class="docutils literal notranslate"><span class="pre">robot.java</span></code> or another file with specified port (leave blank for default of 5800)</p>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">util</span></code> folder in <code class="docutils literal notranslate"><span class="pre">midwest</span></code> branch in <code class="docutils literal notranslate"><span class="pre">FRC-2024-JAVA</span></code> into your project (temporary solution). Then, initiate the <code class="docutils literal notranslate"><span class="pre">NetworkingServer</span></code> object in <code class="docutils literal notranslate"><span class="pre">Robot.java</span></code> or another file with specified port (leave blank for default of 5800)</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">NetworkingServer</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NetworkingServer</span><span class="p">(</span><span class="mi">5801</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -472,12 +477,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../../TitanDashboard/index.html">
+          <a class="next-page" href="../DeploymentScripts/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Titan Dashboard</div>
+                <div class="title">Deployment scripts</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

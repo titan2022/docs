@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="AprilTag Detection" href="../AprilTags/index.html" /><link rel="prev" title="Installation" href="../Installation/index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Calibration" href="Calibration.html" /><link rel="prev" title="Setup" href="index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Calibration - Titan Robotics 2024 documentation</title>
+        <title>Configuration - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -180,7 +180,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -274,12 +274,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Installation/index.html">Installation</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Calibration</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Titan-Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Titan-Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Installation/index.html">Building</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Setup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Setup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../AprilTags/index.html">AprilTag Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Localization/index.html">Localization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Networking/index.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DeploymentScripts/index.html">Deployment scripts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../TitanDashboard/index.html">Titan Dashboard</a></li>
@@ -304,12 +309,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/TitanProcessing/Calibration/index.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/TitanProcessing/Setup/Configuration.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/TitanProcessing/Calibration/index.md" title="Edit this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/TitanProcessing/Setup/Configuration.md" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -322,29 +327,39 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="calibration">
-<h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading">¶</a></h1>
-<section id="how-to-run">
-<h2>How to run<a class="headerlink" href="#how-to-run" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Print the pattern on letter sized paper</p></li>
-<li><p>Check that dimentions of the squares or/and markers match the script (in cm)</p></li>
-<li><p>Start the script with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/TYPE_calibration.py</span> <span class="pre">PATH/TO/processing.cfg</span></code></p></li>
-<li><p>Hold the pattern on a flat surface in front of the camera</p></li>
-<li><p>Make sure the camera recognizes the pattern and displays a colorful overlay</p></li>
-<li><p>All changes will be saved to the specified config file</p></li>
-</ol>
-</section>
-<section id="what-it-does">
-<h2>What it does<a class="headerlink" href="#what-it-does" title="Permalink to this heading">¶</a></h2>
-<p>This script utilizes the basic <a class="reference external" href="https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html">camera calibration</a> logic provided by the documentation. It uses the pattern to determine focal size of the camera in pixels for specified resolution in the config. The focal x and y values should be <a class="reference external" href="https://ksimek.github.io/2013/08/13/intrinsic/#:~:text=In%20practice%2C,number%20of%20reasons">close to each other</a>. The script also calibrates the optical center and distortion coefficients. The first four values are necessary for accurate Apriltag pose estimation, while all distortion coefficients may be left at 0.</p>
-</section>
+          <section class="tex2jax_ignore mathjax_ignore" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
+<p>Get the camera ID from <code class="docutils literal notranslate"><span class="pre">/dev/v4l/by-id</span></code>.</p>
+<p>Edit the config inside <code class="docutils literal notranslate"><span class="pre">example/config.json</span></code>. Run the <a class="reference internal" href="Calibration.html"><span class="std std-doc">calibration</span></a>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>: UDP server IP/port</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">threads</span></code>: threads per camera stream</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quadDecimate</span></code>: n/a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quadSigma</span></code>: n/a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decodeSharpening</span></code>: n/a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cameras</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: keyword that will be matched when selecting camera stream</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usbName</span></code>: the name of the webcam, from <code class="docutils literal notranslate"><span class="pre">/dev/v4l/by-id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, <code class="docutils literal notranslate"><span class="pre">fps</span></code>, <code class="docutils literal notranslate"><span class="pre">exposure</span></code>: stream parameters (Camset is helpful)</p></li>
+<li><p>Everything else is generated by <a class="reference internal" href="Calibration.html"><span class="std std-doc">calibration</span></a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">apriltags</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: id</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code>: field position in meters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code>: field rotation in degrees</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: Apriltag size in meters</p></li>
+</ul>
+</li>
+</ul>
 </section>
 
         </article>
@@ -352,23 +367,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../AprilTags/index.html">
+          <a class="next-page" href="Calibration.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">AprilTag Detection</div>
+                <div class="title">Calibration</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../Installation/index.html">
+          <a class="prev-page" href="index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Installation</div>
+                <div class="title">Setup</div>
                 
               </div>
             </a>
@@ -390,28 +405,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Calibration</a><ul>
-<li><a class="reference internal" href="#how-to-run">How to run</a></li>
-<li><a class="reference internal" href="#what-it-does">What it does</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
