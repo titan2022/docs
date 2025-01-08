@@ -390,8 +390,16 @@ ninja
 </section>
 <section id="instructions-old-debian-packages">
 <h2>Instructions (old - Debian packages)<a class="headerlink" href="#instructions-old-debian-packages" title="Permalink to this heading">¶</a></h2>
+<p><strong>Warning:</strong> These instructions are not being updated. Although many team members used these instructions before the Conda builds were set up, it is difficult to support installations using our custom Debian packages.</p>
 <ol class="arabic simple">
-<li><p>Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib <a class="reference external" href="https://github.com/opencv/opencv_contrib">here</a>, but only the ArUco submodule is used.</p></li>
+<li><p>Install OpenCV 4.8.x or above with the Aruco contrib module. Python 3.8.x or above support is optional but necessary to run calibration scripts. Follow the official guide to build OpenCV contrib <a class="reference external" href="https://github.com/opencv/opencv_contrib">here</a>, but only the ArUco submodule is used. To install OpenCV with our own Debian binaries, execute the following.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install OpenCV from FRC#2022 binaries</span>
+curl<span class="w"> </span>-OL<span class="w"> </span>https://github.com/ethanc8/titanian-repo/raw/master/debian/pool/main/o/opencv/libopencv-titanian_4.8.1-1+deb12_amd64.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./libopencv-titanian_4.8.1-1+deb12_amd64.deb
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li><p>(Optional) Install <a class="reference external" href="https://github.com/IntelRealSense/librealsense">Intel RealSense SDK</a> to build RealSense modules.</p></li>
 <li><p>Install <a class="reference external" href="https://github.com/google/googletest/blob/main/googletest/README.md">GoogleTest testing framework</a>.</p></li>
 <li><p>Install <a class="reference external" href="https://github.com/nlohmann/json">JSON for Modern C++</a> using <a class="reference external" href="https://github.com/Microsoft/vcpkg">vcpkg</a> or build it from scratch.
