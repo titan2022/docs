@@ -28,6 +28,14 @@ wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/apps/More%20R
 
 ### Connecting to Wi-Fi from terminal
 
+:::{note}
+On PhotonVision and WPILibPi images, Wi-Fi is disabled due to a blacklist in `/etc/modprobe.d/`. To fix this, you can do:
+
+```bash
+sudo mv /etc/modprobe.d /etc/modprobe.d.backup
+```
+:::
+
 Show the available Wi-Fi networks:
 
 ```bash
@@ -39,6 +47,8 @@ Connect to IMSApublic (example):
 ```bash
 nmcli dev wifi connect IMSApublic password IMSAfall24
 ```
+
+More info: [Ubuntu Core documentation](https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections) | [RHEL 9 documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_connecting-to-a-wifi-network-by-using-nmcli_assembly_managing-wifi-connections)
 
 ### Specify preferred IP address
 

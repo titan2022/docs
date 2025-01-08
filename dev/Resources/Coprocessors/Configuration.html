@@ -358,6 +358,13 @@
 <h2>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
 <section id="connecting-to-wi-fi-from-terminal">
 <h3>Connecting to Wi-Fi from terminal<a class="headerlink" href="#connecting-to-wi-fi-from-terminal" title="Permalink to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On PhotonVision and WPILibPi images, Wi-Fi is disabled due to a blacklist in <code class="docutils literal notranslate"><span class="pre">/etc/modprobe.d/</span></code>. To fix this, you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mv<span class="w"> </span>/etc/modprobe.d<span class="w"> </span>/etc/modprobe.d.backup
+</pre></div>
+</div>
+</div>
 <p>Show the available Wi-Fi networks:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nmcli<span class="w"> </span>dev<span class="w"> </span>wifi
 </pre></div>
@@ -366,6 +373,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nmcli<span class="w"> </span>dev<span class="w"> </span>wifi<span class="w"> </span>connect<span class="w"> </span>IMSApublic<span class="w"> </span>password<span class="w"> </span>IMSAfall24
 </pre></div>
 </div>
+<p>More info: <a class="reference external" href="https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections">Ubuntu Core documentation</a> | <a class="reference external" href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_connecting-to-a-wifi-network-by-using-nmcli_assembly_managing-wifi-connections">RHEL 9 documentation</a></p>
 </section>
 <section id="specify-preferred-ip-address">
 <h3>Specify preferred IP address<a class="headerlink" href="#specify-preferred-ip-address" title="Permalink to this heading">¶</a></h3>
