@@ -33,6 +33,7 @@ On PhotonVision and WPILibPi images, Wi-Fi is disabled due to a blacklist in `/e
 
 ```bash
 sudo mv /etc/modprobe.d /etc/modprobe.d.backup
+sudo reboot
 ```
 :::
 
