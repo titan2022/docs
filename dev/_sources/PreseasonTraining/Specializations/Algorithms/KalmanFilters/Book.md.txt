@@ -29,7 +29,7 @@ Now, you can use Conda to install the dependencies.
 
 ```bash
 mamba env create -f environment.yml
-mamba activate KalmanFiltersBook
+mamba activate kf_bf
 ```
 
 If you modify `environment.yml`, please run
@@ -41,7 +41,7 @@ mamba env update -f environment.yml
 Occassionally, you should update all the packages to the latest versions:
 
 ```bash
-mamba activate KalmanFiltersBook
+mamba activate kf_bf
 mamba update --all
 ```
 
