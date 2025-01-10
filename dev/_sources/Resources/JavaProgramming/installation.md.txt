@@ -2,6 +2,7 @@
 
 If you are having trouble with installing any of the following, please feel free to reach out to veteran programming members on Discord.
 
+(os)=
 ## Operating system
 
 ::::{tab-set}
@@ -34,6 +35,7 @@ Make sure you're on macOS 12 or higher. Both Intel Macs and Apple Silicon Macs a
 
 ::::
 
+(git)=
 ## Git
 Our choice of project-management software is Git.
 
@@ -80,14 +82,15 @@ Otherwise, install [Homebrew](https://brew.sh/) and then follow the Homebrew ins
 
 ::::
 
-
+(gh_cli)=
 ## GitHub CLI
 Create a GitHub account (username doesn't matter) or use an existing one. Send your username in the "GitHub Username" thread in `#programming` on Discord so I can add you to our organization. Afterwards, you need to login on your laptop. There are many ways but my most recommended is [GitHub CLI](https://cli.github.com/).
 
 ## Git login
 When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell or Bash) and type `gh auth login`. Select `Github.com`, `HTTPS`, `Y`, `Login with a web browser`, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.
 
-## (Only for pre-season) Java
+(java)=
+## Java
 
 ::::{tab-set}
 :sync-group: os
@@ -132,6 +135,7 @@ export JAVA_HOME="$HOME/wpilib/2025/jdk/bin/"
 
 ::::
 
+(wpilib)=
 ## FRC Game Tools and WPILib
 
 ::::{tab-set}
@@ -187,6 +191,7 @@ curl -o- -L https://raw.githubusercontent.com/ethanc8/FRCLinuxDevKit/macos/insta
 
 ::::
 
+(pathplanner)=
 ## PathPlanner
 
 PathPlanner is the app we use to make our autonomous routines.
@@ -215,6 +220,7 @@ The WPILib installation script also installs PathPlanner, so you don't need to d
 
 ::::
 
+(phoenixtuner)=
 ## Phoenix Tuner X
 
 ::::{tab-set}
@@ -261,6 +267,7 @@ Unfortunately, Phoenix Tuner X is currently not available for macOS.
 
 ::::
 
+(rev)=
 ## REV Hardware Client
 
 ::::{tab-set}
@@ -286,6 +293,6 @@ Unfortunately, REV Hardware Client is currently not available for macOS.
 
 ::::
 
-
+(maven)=
 ## (Optional) Apache Maven
 Install [Apache Maven](https://maven.apache.org/download.cgi) only if you are an experienced FRC programming member and wish to contribute to TitanAlgorithms. Make sure Maven is in your `PATH`.
