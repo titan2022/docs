@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-Titan-Processing's conda environment should already be set up on the target. The target should have conda installed via miniforge3.
+Titan-Processing's conda environment should already be set up on the target. The target should have conda installed via miniforge3. Also, the target should have `sshpass` installed.
 
 The host (your laptop containing the code to be sent to the target) should have `ssh` and `sshpass`.
 
