@@ -336,6 +336,19 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="deployment-scripts">
 <h1>Deployment scripts<a class="headerlink" href="#deployment-scripts" title="Permalink to this heading">¶</a></h1>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h2>
+<p>Titan-Processing’s conda environment should already be set up on the target. The target should have conda installed via miniforge3.</p>
+<p>The host (your laptop containing the code to be sent to the target) should have <code class="docutils literal notranslate"><span class="pre">ssh</span></code> and <code class="docutils literal notranslate"><span class="pre">sshpass</span></code>.</p>
+<p>On Debian, Ubuntu and Debian derivatives, these can be installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openssh-client<span class="w"> </span>sshpass
+</pre></div>
+</div>
+<p>On openSUSE and openSUSE derivatives, these can be installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>openssh-clients<span class="w"> </span>sshpass
+</pre></div>
+</div>
+</section>
 <section id="local-deployment-scripts">
 <h2>Local deployment scripts<a class="headerlink" href="#local-deployment-scripts" title="Permalink to this heading">¶</a></h2>
 <p>These assume a Debian Bookworm or Ubuntu 22.04 target. They are run directly on the coprocessor.</p>
@@ -436,6 +449,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Deployment scripts</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#local-deployment-scripts">Local deployment scripts</a></li>
 <li><a class="reference internal" href="#remote-deployment-scripts">Remote deployment scripts</a><ul>
 <li><a class="reference internal" href="#specifying-credentials">Specifying credentials</a></li>

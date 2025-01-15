@@ -1,5 +1,21 @@
 # Deployment scripts
 
+## Dependencies
+
+Titan-Processing's conda environment should already be set up on the target. The target should have conda installed via miniforge3.
+
+The host (your laptop containing the code to be sent to the target) should have `ssh` and `sshpass`.
+
+On Debian, Ubuntu and Debian derivatives, these can be installed with:
+```bash
+sudo apt install openssh-client sshpass
+```
+
+On openSUSE and openSUSE derivatives, these can be installed with:
+```bash
+sudo zypper in openssh-clients sshpass
+```
+
 ## Local deployment scripts
 
 These assume a Debian Bookworm or Ubuntu 22.04 target. They are run directly on the coprocessor.
