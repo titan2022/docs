@@ -25,7 +25,7 @@ Device tree overlays can be enabled and disabled by editing `/etc/default/u-boot
 #U_BOOT_TIMEOUT="50"
 #U_BOOT_FDT=""
 #U_BOOT_FDT_DIR="/lib/firmware/"
-U_BOOT_FDT_OVERLAYS="orangepi-5-plus-disable-leds.dtbo"
+U_BOOT_FDT_OVERLAYS="device-tree/rockchip/overlay/orangepi-5-plus-disable-leds.dtbo"
 #U_BOOT_FDT_OVERLAYS_DIR="/lib/firmware/"
 #U_BOOT_SYNC_DTBS="false"
 ```
@@ -37,6 +37,5 @@ In order to do this, run:
 ```bash
 sudo nano /etc/default/u-boot # Edit the file
 sudo u-boot-update # Apply your changes
+sudo reboot
 ```
-
-Then reboot.

@@ -357,7 +357,7 @@
 <span class="c1">#U_BOOT_TIMEOUT=&quot;50&quot;</span>
 <span class="c1">#U_BOOT_FDT=&quot;&quot;</span>
 <span class="c1">#U_BOOT_FDT_DIR=&quot;/lib/firmware/&quot;</span>
-<span class="nv">U_BOOT_FDT_OVERLAYS</span><span class="o">=</span><span class="s2">&quot;orangepi-5-plus-disable-leds.dtbo&quot;</span>
+<span class="nv">U_BOOT_FDT_OVERLAYS</span><span class="o">=</span><span class="s2">&quot;device-tree/rockchip/overlay/orangepi-5-plus-disable-leds.dtbo&quot;</span>
 <span class="c1">#U_BOOT_FDT_OVERLAYS_DIR=&quot;/lib/firmware/&quot;</span>
 <span class="c1">#U_BOOT_SYNC_DTBS=&quot;false&quot;</span>
 </pre></div>
@@ -366,9 +366,9 @@
 <p>In order to do this, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/default/u-boot<span class="w"> </span><span class="c1"># Edit the file</span>
 sudo<span class="w"> </span>u-boot-update<span class="w"> </span><span class="c1"># Apply your changes</span>
+sudo<span class="w"> </span>reboot
 </pre></div>
 </div>
-<p>Then reboot.</p>
 </section>
 </section>
 </section>
