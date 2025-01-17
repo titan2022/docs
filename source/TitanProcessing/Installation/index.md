@@ -61,6 +61,16 @@ cmake -B . -S .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DBUILD_EXAMPLES=1 -DCMAKE_BU
 ninja
 ```
 
+## Build Options
+
+- `-DTEST`: builds tests
+- `-DBUILD_EXAMPLES`: builds example files (found in `example` directory)
+- `-DNO_REALSENSE`: builds without RealSense code for compatibility
+
+## Testing
+
+Run `ctest -j4 -C Debug --output-on-failure` in the `build/` directory.
+
 ## Instructions (old - Debian packages)
 
 **Warning:** These instructions are not being updated. Although many team members used these instructions before the Conda builds were set up, it is difficult to support installations using our custom Debian packages.
@@ -114,8 +124,3 @@ sudo make install
 ninja
 sudo ninja install
 ```
-
-### Build Options
-
-* `-DBUILD_EXAMPLES`: builds example files (found in `example` directory)
-* `-DNO_REALSENSE`: builds without RealSense code for compatibility
