@@ -1,0 +1,15 @@
+name: titan2022-docs
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python
+  - pip
+  - sphinx>=8.0
+  - sphinx-design
+  - sphinx-copybutton
+  - furo
+  - pydata-sphinx-theme
+  - myst-parser
+  - pip:
+    - sphinxcontrib-domaintools
