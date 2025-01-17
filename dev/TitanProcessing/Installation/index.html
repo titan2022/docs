@@ -389,6 +389,18 @@ ninja
 </div>
 </section>
 </section>
+<section id="build-options">
+<h2>Build Options<a class="headerlink" href="#build-options" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-DTEST</span></code>: builds tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-DBUILD_EXAMPLES</span></code>: builds example files (found in <code class="docutils literal notranslate"><span class="pre">example</span></code> directory)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-DNO_REALSENSE</span></code>: builds without RealSense code for compatibility</p></li>
+</ul>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">¶</a></h2>
+<p>Run <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-j4</span> <span class="pre">-C</span> <span class="pre">Debug</span> <span class="pre">--output-on-failure</span></code> in the <code class="docutils literal notranslate"><span class="pre">build/</span></code> directory.</p>
+</section>
 <section id="instructions-old-debian-packages">
 <h2>Instructions (old - Debian packages)<a class="headerlink" href="#instructions-old-debian-packages" title="Permalink to this heading">¶</a></h2>
 <p><strong>Warning:</strong> These instructions are not being updated. Although many team members used these instructions before the Conda builds were set up, it is difficult to support installations using our custom Debian packages.</p>
@@ -443,13 +455,6 @@ ninja
 sudo<span class="w"> </span>ninja<span class="w"> </span>install
 </pre></div>
 </div>
-<section id="build-options">
-<h3>Build Options<a class="headerlink" href="#build-options" title="Permalink to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-DBUILD_EXAMPLES</span></code>: builds example files (found in <code class="docutils literal notranslate"><span class="pre">example</span></code> directory)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-DNO_REALSENSE</span></code>: builds without RealSense code for compatibility</p></li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -515,10 +520,9 @@ sudo<span class="w"> </span>ninja<span class="w"> </span>install
 <li><a class="reference internal" href="#building-the-library-and-examples">Building the library and examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#instructions-old-debian-packages">Instructions (old - Debian packages)</a><ul>
 <li><a class="reference internal" href="#build-options">Build Options</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#instructions-old-debian-packages">Instructions (old - Debian packages)</a></li>
 </ul>
 </li>
 </ul>
