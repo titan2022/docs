@@ -18,6 +18,7 @@ AprilTags/index.md
 Localization/index.md
 Networking/index.md
 DeploymentScripts/index.md
+3DGeometry/index.md
 ```
 
 ## Contributing
