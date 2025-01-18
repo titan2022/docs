@@ -19,6 +19,7 @@ Localization/index.md
 Networking/index.md
 DeploymentScripts/index.md
 3DGeometry/index.md
+TitanDashboard/index.md
 ```
 
 ## Contributing
