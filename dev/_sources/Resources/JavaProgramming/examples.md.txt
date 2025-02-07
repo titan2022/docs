@@ -11,6 +11,7 @@
 #### PathPlanner
 
 * [CTRE swerve with PathPlanner](https://github.com/CrossTheRoadElec/Phoenix6-Examples/tree/main/java/SwerveWithPathPlanner)
+* [PathPlanner official Java example](https://github.com/mjansen4857/pathplanner/tree/main/examples/java)
 
 ### Large codebases
 
