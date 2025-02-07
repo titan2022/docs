@@ -13,6 +13,10 @@
 * [CTRE swerve with PathPlanner](https://github.com/CrossTheRoadElec/Phoenix6-Examples/tree/main/java/SwerveWithPathPlanner)
 * [PathPlanner official Java example](https://github.com/mjansen4857/pathplanner/tree/main/examples/java)
 
+#### Integrating vision with robot code
+
+* [AdvantageKit vision example (warning: zip download)](https://github.com/Mechanical-Advantage/AdvantageKit/releases/download/v4.1.0/AdvantageKit_VisionTemplate.zip)
+
 ### Large codebases
 
 * [YAGSL-Example](https://github.com/BroncBotz3481/YAGSL-Example)
