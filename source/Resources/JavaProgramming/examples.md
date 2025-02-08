@@ -15,7 +15,7 @@
 
 #### Integrating vision with robot code
 
-* [AdvantageKit vision example (warning: zip download)](https://github.com/Mechanical-Advantage/AdvantageKit/releases/download/v4.1.0/AdvantageKit_VisionTemplate.zip)
+* [AdvantageKit vision template](https://github.com/ethanc8/AdvantageKit_VisionTemplate)
 
 ### Large codebases
 
