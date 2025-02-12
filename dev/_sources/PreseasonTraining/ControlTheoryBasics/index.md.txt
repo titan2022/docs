@@ -24,9 +24,9 @@ There are many systems that depend on closed-loop control to function. Reliably 
 
 PID (proportional–integral–derivative) controllers are the most common form of adjustable closed-loop controllers. It allows you to tweak three constant coefficients (as stated by its name) to increase efficiency and response while lowering undesirable effects like undershooting or overshooting.
 
-Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination's location $r(t)$ (also called the **setpoint**). At time $t$, you know that your car is located at $y(t)$. These are the two variable inputs to the PID controller. The **process variable**, $e(t) = r(t) - y(t)$, is the difference between the destination and the car's current position.
+Imagine you are trying to drive a car to a location on a straight but slippery and poorly constructed road. Call your destination's location $r(t)$ (also called the **setpoint**). At time $t$, you know that your car is located at $y(t)$, which is called the **process variable**. These are the two variable inputs to the PID controller. The **error value**, $e(t) = r(t) - y(t)$, is the difference between the destination and the car's current position.
 
-The constant inputs to the PID controller are $K_p$, $K_i$, and $K_d$, three coefficients that go into the equation $u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}$, where $u(t)$ is the distance that we tell the car to go at time $t$. (It isn't too important to understand this math.) We send $u(t)$ to the motor, and wait until we figure out where the car is after we tried to drive $u(t)$. Then we repeat this process.
+The constant inputs to the PID controller are $K_p$, $K_i$, and $K_d$, three coefficients that go into the equation $u(t) = K_p e(t) + K_i \int_0^t e(\tau)\,d\tau + K_d \frac{de(t)}{dt}$, where $u(t)$ is the distance that we tell the car to go at time $t$. (It isn't too important to understand this math.) We send $u(t)$ (the **control effort**) to the motor, and wait until we figure out where the car is after we tried to drive $u(t)$. Then we repeat this process.
 
 ```{figure} PID_en.svg
 
