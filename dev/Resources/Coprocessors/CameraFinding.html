@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="5 - Robot design" href="../RobotDesign/index.html" /><link rel="prev" title="Applications" href="index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="4 - Linux" href="../Linux/index.html" /><link rel="prev" title="Orange Pi" href="OrangePi.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Git - Titan Robotics 2024 documentation</title>
+        <title>Finding cameras - Titan Robotics 2024 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -251,8 +251,8 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../StyleGuide.html">Style guide</a></li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Applications</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Applications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Git</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Applications/index.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Applications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Applications/git.html">Git</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../RobotDesign/index.html">5 - Robot design</a></li>
@@ -264,11 +264,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../CppProgramming/index.html">2 - C++ Programming</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Coprocessors/index.html">Coprocessors</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Coprocessors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Coprocessors/RemoteAccess.html">Remote access</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Coprocessors/Configuration.html">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Coprocessors/OrangePi.html">Orange Pi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Coprocessors/CameraFinding.html">Finding cameras</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Coprocessors</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Coprocessors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RemoteAccess.html">Remote access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OrangePi.html">Orange Pi</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Finding cameras</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Linux/index.html">4 - Linux</a></li>
@@ -324,12 +324,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/Resources/Applications/git.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/Resources/Coprocessors/CameraFinding.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/Resources/Applications/git.md" title="Edit this page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/Resources/Coprocessors/CameraFinding.md" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -348,89 +348,27 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this heading">¶</a></h1>
-<p>This is a short cheatsheet on VSCode source control usage. Feel free to use Git CLI if you already have experience or want to learn it. Full guide on VSCode source control can be found <a class="reference external" href="https://code.visualstudio.com/docs/sourcecontrol/overview">here</a>.</p>
-<section id="structure">
-<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">¶</a></h2>
+          <section class="tex2jax_ignore mathjax_ignore" id="finding-cameras">
+<h1>Finding cameras<a class="headerlink" href="#finding-cameras" title="Permalink to this heading">¶</a></h1>
+<p>There are three locations with camera devices:</p>
 <ul class="simple">
-<li><p>A Git project is called a repository</p></li>
-<li><p>Github is a Git platform for hosting Git projects online</p></li>
-<li><p>Inside a repo, you can create branches</p></li>
-<li><p>Typically, the <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">master</span></code> is used in production</p></li>
-<li><p>Each branch contains a list of changes called commits</p></li>
-<li><p>Each commit contains changes to files and a message</p></li>
-<li><p>All commits are created locally; you need to do a push to upload them to Github</p></li>
-<li><p>To download changes, do a pull</p></li>
-<li><p>To update your list of branches, do a fetch (VSCode has an option to do this automatically)</p></li>
-<li><p>You can dublicate branches, work on them separately, and merge them back together</p></li>
-<li><p>This allows everyone to work on different features independently without breaking things</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/video*</span></code> - these are randomly assigned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/v4l/by-id/</span></code> - by the name of the camera (which is typically the manufacturer and model number)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/v4l/by-path/</span></code> - by the USB port</p></li>
 </ul>
-</section>
-<section id="cloning">
-<h2>Cloning<a class="headerlink" href="#cloning" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Cloning is downloading a repository</p></li>
-<li><p>First, click on green Code button and copy the HTTPS link</p></li>
-</ul>
-<p><img alt="Copying HTTPS link" src="../../_images/git_clone.png" /></p>
-<ul class="simple">
-<li><p>Second, go to VSCode source control tab and click clone</p></li>
-</ul>
-<p><img alt="Cloning" src="../../_images/vsc_clone.png" /></p>
-<ul class="simple">
-<li><p>Paste your link and press enter</p></li>
-<li><p>Select a folder to save the project in</p></li>
-</ul>
-<p><img alt="Pasting" src="../../_images/vsc_paste.png" /></p>
-<ul class="simple">
-<li><p>Open the same folder next time to open the project</p></li>
-<li><p>Please don’t clone the repo every time you want to work on it!</p></li>
-</ul>
-</section>
-<section id="committing">
-<h2>Committing<a class="headerlink" href="#committing" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>First, make the changes you want to make</p></li>
-<li><p>Go to source control tab and press <code class="docutils literal notranslate"><span class="pre">+</span></code> for all files you want to include in your commit</p></li>
-<li><p>Write a message (a description) for your commit (this step is required)</p></li>
-<li><p>You can press <code class="docutils literal notranslate"><span class="pre">-</span></code> for files you want to remove from your commit</p></li>
-<li><p>Once you are ready, press commit button</p></li>
-</ul>
-</section>
-<section id="pushing-pulling">
-<h2>Pushing &amp; Pulling<a class="headerlink" href="#pushing-pulling" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>After committing, you need to push</p></li>
-<li><p>You can click VSCode’s blue “sync” button, which will push and pull at the same time</p></li>
-<li><p>Otherwise, you can click on additional actions and click push or pull</p></li>
-</ul>
-<p><img alt="Push/pull actions" src="../../_images/vsc_push_pull.png" /></p>
-</section>
-<section id="switching-branches">
-<h2>Switching branches<a class="headerlink" href="#switching-branches" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>To check which branch you are on, view the message input bar</p></li>
-</ul>
-<p><img alt="Checking branch" src="../../_images/vsc_branch.png" /></p>
-<ul class="simple">
-<li><p>Click on addional actions and click “checkout to”</p></li>
-</ul>
-<p><img alt="Checkout to" src="../../_images/vsc_checkout.png" /></p>
-<ul class="simple">
-<li><p>Select or create your branch</p></li>
-<li><p>Any branches starting with <code class="docutils literal notranslate"><span class="pre">origin/</span></code> will automatically pull from Github</p></li>
-</ul>
-</section>
-<section id="merging">
-<h2>Merging<a class="headerlink" href="#merging" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Go to the same additional actions menu and select Branch &gt; Merge</p></li>
-<li><p>Select which branches to merge from and to</p></li>
-<li><p>Always remember to notify other programming members before merging to avoid conflicts</p></li>
-<li><p>If a merge is a particularly big change, use <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull requests</a> instead</p></li>
-<li><p>Try to avoid merge conflicts by only working on specific files in one branch</p></li>
-</ul>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/dev/v4l/by-id/</span></code> and <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/dev/v4l/by-path/</span></code> to correlate the two; they are symlinks to <code class="docutils literal notranslate"><span class="pre">/dev/video*</span></code>.</p>
+<p>Most cameras have two devices, typically only the first one works.</p>
+<section id="testing-cameras">
+<h2>Testing cameras<a class="headerlink" href="#testing-cameras" title="Permalink to this heading">¶</a></h2>
+<p>start a stream from v4l2 device with m-jpeg transcoded into h264 rtp/udp</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0<span class="w"> </span>v4l2src<span class="w"> </span><span class="nv">device</span><span class="o">=</span>/dev/video0<span class="w"> </span>!<span class="w"> </span>image/jpeg<span class="w"> </span>!<span class="w"> </span>decodebin<span class="w"> </span>!<span class="w"> </span>videoconvert<span class="w"> </span>!<span class="w"> </span>x264enc<span class="w"> </span><span class="nv">tune</span><span class="o">=</span>zerolatency<span class="w"> </span><span class="nv">bitrate</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span>speed-preset<span class="o">=</span>medium<span class="w"> </span>!<span class="w"> </span>rtph264pay<span class="w"> </span>!<span class="w"> </span>udpsink<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">8081</span>
+</pre></div>
+</div>
+<p>test the stream (requires graphical environment)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0<span class="w"> </span>udpsrc<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">8081</span><span class="w"> </span><span class="nv">caps</span><span class="o">=</span><span class="s2">&quot;application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96&quot;</span><span class="w"> </span>!<span class="w"> </span>rtph264depay<span class="w"> </span>!<span class="w"> </span>decodebin<span class="w"> </span>!<span class="w"> </span>videoconvert<span class="w"> </span>!<span class="w"> </span>autovideosink
+</pre></div>
+</div>
+<p>If the graphical environment and the device with the camera are different, use <code class="docutils literal notranslate"><span class="pre">udpsink</span> <span class="pre">host=&lt;IP</span> <span class="pre">address</span> <span class="pre">of</span> <span class="pre">graphical</span> <span class="pre">environment&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">udpsink</span> <span class="pre">host=127.0.0.1</span></code>.</p>
 </section>
 </section>
 
@@ -439,23 +377,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../RobotDesign/index.html">
+          <a class="next-page" href="../Linux/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">5 - Robot design</div>
+                <div class="title">4 - Linux</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="OrangePi.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Applications</div>
+                <div class="title">Orange Pi</div>
                 
               </div>
             </a>
@@ -489,13 +427,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Git</a><ul>
-<li><a class="reference internal" href="#structure">Structure</a></li>
-<li><a class="reference internal" href="#cloning">Cloning</a></li>
-<li><a class="reference internal" href="#committing">Committing</a></li>
-<li><a class="reference internal" href="#pushing-pulling">Pushing &amp; Pulling</a></li>
-<li><a class="reference internal" href="#switching-branches">Switching branches</a></li>
-<li><a class="reference internal" href="#merging">Merging</a></li>
+<li><a class="reference internal" href="#">Finding cameras</a><ul>
+<li><a class="reference internal" href="#testing-cameras">Testing cameras</a></li>
 </ul>
 </li>
 </ul>
