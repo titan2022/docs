@@ -1,5 +1,13 @@
 # Deployment scripts
 
+:::{toctree}
+:maxdepth: 2
+:caption: Contents
+:titlesonly: true
+
+deployment-tutorial
+:::
+
 ## Dependencies
 
 Titan-Processing's conda environment should already be set up on the target. The target should have conda installed via miniforge3. Also, the target should have `sshpass` installed.
