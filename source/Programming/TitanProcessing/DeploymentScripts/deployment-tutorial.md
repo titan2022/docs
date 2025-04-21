@@ -36,7 +36,11 @@ sudo zypper in openssh-clients sshpass
 
 ### Angry IP Scanner
 
-Download [Angry IP Scanner](https://angryip.org/).
+Download [here](https://angryip.org/).
+
+### Nmap
+
+CLI and lighter alternative to Angry IP Scanner. Download [here](#).
 
 ## Wiring and networking
 
@@ -45,19 +49,25 @@ There are two options:
 * Network sharing (tethering) - if you need to do first-time setup or update the packages on the Orange Pi
 * Robot network - when the Orange Pi is already on the robot, and you don't need to do first-time setup or update packages
 
-#### Network sharing (tethering)
+### Network sharing (tethering)
 
 Plug an ethernet cable directly into both the Orange Pi and the laptop. Make sure the Orange Pi has no other network connections and the laptop has Internet via another Ethernet port, via WiFi, or some other way.
 
 Then follow the instructions in [Network Sharing](/Resources/Networking/network-sharing).
 
-#### Robot network
+### Robot network
 
-Connect to the radio via Ethernet or WiFi (do not connect directly to the Orange Pi or to the roboRIO).
+Connect to the radio via Ethernet or WiFi (do not connect directly to the Orange Pi or to the roboRIO). Use either Angry IP Scanner or Nmap to find the IP of the Orange Pi.
 
-Use Angry IP Scanner (or another tool like `nmap`) to scan the address range `10.TE.AM.0` to `10.TE.AM.255` (for FRC#2022 this is `10.20.22.0` to `10.20.22.255`). Find the Orange Pi in the list of devices in the range (its hostname should show up in another column; usually its IP is 10.20.22.200-10.20.22.210 but it can vary).
+Use Angry IP Scanner to scan the address range `10.TE.AM.0` to `10.TE.AM.255` (for FRC#2022 this is `10.20.22.0` to `10.20.22.255`). Find the Orange Pi in the list of devices in the range (its hostname should show up in another column; usually its IP is 10.20.22.200-10.20.22.210 but it can vary).
 
-### Next steps
+Use Nmap to scan the address range `10.TE.AM.0` to `10.TE.AM.255` using the following command,
+```bash
+nmap -sP 10.TE.AM.0/24
+```
+where the number `/24` (out of 32 bytes) indicates the subnet `255.255.255.0`. Although not applicable to this tutorial but, for example, the subnet `255.255.0.0` can be represented as `/16`. The flag `-sP` [...]. The output will display a list of devices on the network. Simply copy the IP you see that is not your own.
+
+## Next steps
 
 1. Put the IP address you find into `scripts/host-orangepi/credentials.sh`.
 2. SSH into the Orange Pi: (use the correct username and hostname)

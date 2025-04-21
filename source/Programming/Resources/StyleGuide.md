@@ -2,7 +2,7 @@
 
 This guide aims to keep our team's code style consistent, so please follow it as much as possible. Access casing for variables and methods is especially important since a lot of code references code that someone else wrote. 
 
-## Naming
+## Naming conventions
 
 ### Java
 * Public variables: `PascalCase`
@@ -32,7 +32,7 @@ This guide aims to keep our team's code style consistent, so please follow it as
 * Test files: `test_camelCase.cpp`
 * CMake modules: `PascalCase.cmake`
 
-## Java Structure
+## Standard Java Structure
 
 The following outlines the file structure in a WPILib projecct.
 
@@ -44,3 +44,7 @@ The following outlines the file structure in a WPILib projecct.
 * Auto folder for full auto routines (not PathPlanner)
 * `utils` folder for reused code
 * Follow [PathPlanner documentation](https://pathplanner.dev/home.html) for PathPlanner structure
+
+## Superstructure Java structure
+
+TODO

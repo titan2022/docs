@@ -7,6 +7,7 @@ caption: Contents
 titlesonly: true
 ---
 Configuration.md
+AccessPoint.md
 ```
 
 (Radios)=

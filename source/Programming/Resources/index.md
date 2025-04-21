@@ -13,11 +13,12 @@ titlesonly: true
 ---
 StyleGuide.md
 Applications/index.md
-RobotDesign/index.md
 JavaProgramming/index.md
 CppProgramming/index.md
 Coprocessors/index.md
 Linux/index.md
 Radio/index.md
 Networking/index.md
+Optimization/index.md
+CommandBased/index.md
 ```
