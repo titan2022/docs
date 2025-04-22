@@ -61,11 +61,11 @@ Connect to the radio via Ethernet or WiFi (do not connect directly to the Orange
 
 Use Angry IP Scanner to scan the address range `10.TE.AM.0` to `10.TE.AM.255` (for FRC#2022 this is `10.20.22.0` to `10.20.22.255`). Find the Orange Pi in the list of devices in the range (its hostname should show up in another column; usually its IP is 10.20.22.200-10.20.22.210 but it can vary).
 
-Use Nmap to scan the address range `10.TE.AM.0` to `10.TE.AM.255` using the following command,
+Alternatively use Nmap to scan the address range `10.TE.AM.0` to `10.TE.AM.255` using the following command,
 ```bash
 nmap -sP 10.TE.AM.0/24
 ```
-where the number `/24` (out of 32 bytes) indicates the subnet `255.255.255.0`. Although not applicable to this tutorial but, for example, the subnet `255.255.0.0` can be represented as `/16`. The flag `-sP` [...]. The output will display a list of devices on the network. Simply copy the IP you see that is not your own.
+where the number `/24` (out of 32 bytes) indicates the subnet `255.255.255.0`. Although not applicable to this tutorial but, for example, the subnet `255.255.0.0` can be represented as `/16`. The flag `-sP` means skip port scan, meaning that it will not try to find open ports after finding a host, taking less time. The output will display a list of devices on the network. Simply copy the IP you see that is not your own.
 
 ## Next steps
 
