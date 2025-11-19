@@ -1,4 +1,4 @@
-name: titan2022-docs
+name: NewDocumentation
 channels:
   - conda-forge
   - nodefaults
@@ -9,7 +9,7 @@ dependencies:
   - sphinx-design
   - sphinx-copybutton
   - furo
-  - pydata-sphinx-theme
+  # - pydata-sphinx-theme
   - myst-parser
   - pip:
     - sphinxcontrib-domaintools
