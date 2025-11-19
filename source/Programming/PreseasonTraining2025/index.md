@@ -14,5 +14,4 @@ titlesonly: true
 
 * [Nov 12 - 1.1 Introduction](1.1_Introduction)
 * [Nov 13 - 2.1 Command-based programming (lecture)](2_CommandBased)
-* [Nov 17 - Installation of software](/Resources/JavaProgramming/installation)
-
+* [Nov 17 - Installation of software](/Resources/JavaProgramming/installation.md)
