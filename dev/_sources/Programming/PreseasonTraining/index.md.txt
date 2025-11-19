@@ -1,4 +1,4 @@
-# Preseason Training
+# Preseason Training (2024)
 
 ```{toctree}
 ---
