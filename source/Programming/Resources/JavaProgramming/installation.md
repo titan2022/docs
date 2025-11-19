@@ -2,6 +2,8 @@
 
 If you are having trouble with installing any of the following, please feel free to reach out to veteran programming members on Discord.
 
+**At this time, the macOS install script is not working; please do not try to install on macOS. I will ping when it's working again.**
+
 (os)=
 ## Operating system
 
@@ -45,7 +47,10 @@ Our choice of project-management software is Git.
 :::{tab-item} Windows
 :sync: win
 
-If you do not have it installed already, do so at [its official website](https://git-scm.com/download/win) (select the 64-bit standalone installer). All the default options are fine, feel free to spam "next".
+If you do not have it installed already, do so at [its official website](https://git-scm.com/download/win) (select the 64-bit standalone installer). Most of the default options are fine, but:
+* Set the editor to "GNU nano"
+* Use `main` as the default branch
+* Add Git Bash to Windows Terminal
 :::
 
 :::{tab-item} Linux
@@ -89,7 +94,7 @@ Create a GitHub account (username doesn't matter) or use an existing one. Send y
 ## Git login
 When you install both Git and GitHub CLI, open a terminal window (preferably PowerShell or Bash) and type `gh auth login`. Select `Github.com`, `HTTPS`, `Y`, `Login with a web browser`, copy the 8 letter code and press enter. Paste your code on the web page and return back. You should be logged in.
 
-(java)=
+<!-- (java)=
 ## Java
 
 ::::{tab-set}
@@ -133,7 +138,7 @@ export JAVA_HOME="$HOME/wpilib/2025/jdk/bin/"
 ```
 :::
 
-::::
+:::: -->
 
 (wpilib)=
 ## FRC Game Tools and WPILib
