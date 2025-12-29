@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Preseason Training (2024)" href="../PreseasonTraining/index.html" /><link rel="prev" title="1.1 Introduction" href="1.1_Introduction.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="3 PID and feedforward" href="3_PID_feedforward.html" /><link rel="prev" title="1.1 Introduction" href="1.1_Introduction.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>2 Command-based programming - Titan Robotics 2024 documentation</title>
@@ -205,6 +205,8 @@
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Preseason training (2025)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Preseason training (2025)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="1.1_Introduction.html">1.1 Introduction</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">2 Command-based programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3_PID_feedforward.html">3 PID and feedforward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4_Swerve.html">4 Swerve and autos</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../PreseasonTraining/index.html">Preseason Training (2024)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Preseason Training (2024)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -381,7 +383,62 @@
 <h1>2 Command-based programming<a class="headerlink" href="#command-based-programming" title="Link to this heading">¶</a></h1>
 <section id="lecture">
 <h2>2.1 Lecture<a class="headerlink" href="#lecture" title="Link to this heading">¶</a></h2>
-<p><a class="reference external" href="https://docs.google.com/presentation/d/1oYfl6V0sdiAbQPNuvmw6tMe7_MwqZdPDRTk7-M82QfE/edit">slides</a></p>
+<p><a class="reference external" href="https://docs.google.com/presentation/d/1oYfl6V0sdiAbQPNuvmw6tMe7_MwqZdPDRTk7-M82QfE/edit"><big><strong>slides</strong></big></a></p>
+<section id="further-reading">
+<h3>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html"><em>Command-Based Programming</em> in the WPILib documentation</a></p></li>
+</ul>
+</section>
+</section>
+<section id="activity">
+<h2>2.2 Activity<a class="headerlink" href="#activity" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://docs.google.com/presentation/d/19UBcB5TavPg54613Egh7rUXC6EmpprQ9OHRuUrDbzOI/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88">slides</a></p>
+<section id="specifications">
+<h3>Specifications<a class="headerlink" href="#specifications" title="Link to this heading">¶</a></h3>
+<p>You are given:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Robot.java</span></code> with the <code class="docutils literal notranslate"><span class="pre">CommandScheduler</span></code> running</p></li>
+<li><p>Skeleton for subsystems/commands</p></li>
+</ul>
+<p>You will:</p>
+<ol class="arabic simple">
+<li><p>Populate <code class="docutils literal notranslate"><span class="pre">IntakeSubsystem.java</span></code></p></li>
+<li><p>Add motor control (<code class="docutils literal notranslate"><span class="pre">runIn</span></code>, <code class="docutils literal notranslate"><span class="pre">runOut</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code>)</p></li>
+<li><p>Add a proximity sensor and Debouncer to detect a game piece</p></li>
+<li><p>Populate commands that:</p>
+<ul class="simple">
+<li><p>Run the intake until a game piece is detected (<code class="docutils literal notranslate"><span class="pre">IntakeUntilPiece</span></code>)</p></li>
+<li><p>Allow manual reverse (<code class="docutils literal notranslate"><span class="pre">IntakeOut</span></code>)</p></li>
+</ul>
+</li>
+<li><p>Test using Gradle</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gradlew<span class="w"> </span>cleanTest<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--rerun-tasks
+</pre></div>
+</div>
+</section>
+<section id="instructions">
+<h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">¶</a></h3>
+<p>In your terminal, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/titan2022/command_based_project<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>command_based_project
+</pre></div>
+</div>
+<p>Then run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gradlew<span class="w"> </span>cleanTest<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--rerun-tasks
+</pre></div>
+</div>
+<p>This should throw a number of errors. You should complete the skeleton code according to the project specifications in the previous slide and rerun the test. It will result in passing (green) on all four tests once you have properly implemented everything.</p>
+<p>Step 1 -  Implement Motor
+Step 2 - Add proximity sensor + Debouncer
+Step 3 - Implement IntakeOut.java
+Step 4 - Implement IntakeUntilPiece command
+Step 5 - Add a manual reverse command (IntakeOut)</p>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Link to this heading">¶</a></h3>
+<p>The solution can be found in the <code class="docutils literal notranslate"><span class="pre">solution</span></code> branch of <a class="reference external" href="https://github.com/titan2022/command_based_project/tree/solution">&#64;titan2022/command_based_project</a>.</p>
+</section>
 </section>
 </section>
 
@@ -390,12 +447,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../PreseasonTraining/index.html">
+          <a class="next-page" href="3_PID_feedforward.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Preseason Training (2024)</div>
+                <div class="title">3 PID and feedforward</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -441,7 +498,16 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">2 Command-based programming</a><ul>
-<li><a class="reference internal" href="#lecture">2.1 Lecture</a></li>
+<li><a class="reference internal" href="#lecture">2.1 Lecture</a><ul>
+<li><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#activity">2.2 Activity</a><ul>
+<li><a class="reference internal" href="#specifications">Specifications</a></li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+<li><a class="reference internal" href="#solution">Solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
