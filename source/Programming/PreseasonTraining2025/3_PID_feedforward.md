@@ -2,7 +2,7 @@
 
 ## 3.1 Lecture
 
-[<big>**slides**</big>](https://docs.google.com/presentation/d/1pc51KDn9JJ3KvddbucvLxrrfCmgnM5Yqc02aFtfd4qk/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
+[<big>**SLIDES**</big>](https://docs.google.com/presentation/d/1pc51KDn9JJ3KvddbucvLxrrfCmgnM5Yqc02aFtfd4qk/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
 
 ### Further reading
 
@@ -19,4 +19,8 @@
 
 ## 3.2 Activity
 
+[<big>**SLIDES**</big>](https://docs.google.com/presentation/d/1tZLZZepvsndfnXILGYvMgUW2_10ALzjbtPqmvinW5gk/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
 
+Template code: <https://github.com/titan2022/PIDF-Project-2025>
+
+Solution: <https://github.com/titan2022/PIDF-Project-2025/tree/solution>
