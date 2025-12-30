@@ -6,7 +6,7 @@
 
 ### Further reading
 
-* [2024 writeup by Ethan and Georgi](/PreseasonTraining/ControlTheoryBasics/index)
+* [2024 writeup by Ethan and Georgi](/Programming/PreseasonTraining/ControlTheoryBasics/index)
 * WPILib documentation
   * [Introduction to PID](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/introduction-to-pid.html#introduction-to-pid)
   * [PID Control in WPILib](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html#pid-control-in-wpilib)
