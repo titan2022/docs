@@ -2,7 +2,7 @@
 
 ## 4.1 Swerve (lecture)
 
-[slides](https://docs.google.com/presentation/d/1kLkauLlXwDVI9xJz2AhoNB4Ka0SpLsX1d31MDrMS4Vs/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
+[slides](https://docs.google.com/presentation/d/1Xbno-diph4qFYNC9qb-QD1k0LXxNHUu7RO7waoPDIe0/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
 
 ### Further reading
 
