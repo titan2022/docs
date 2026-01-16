@@ -1,0 +1,30 @@
+[workspace]
+authors = ["ethanc8 <echaroenpitaks@gmail.com>"]
+channels = ["conda-forge", "nodefaults"]
+name = "NewDocumentation"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "*"
+pip = "*"
+sphinx = ">=8.0"
+sphinx-design = "*"
+sphinx-copybutton = "*"
+furo = "*"
+myst-parser = "*"
+
+[pypi-dependencies]
+sphinxcontrib-domaintools = "*"
+
+[feature.rst-to-myst.dependencies]
+python = "*"
+
+[feature.rst-to-myst.pypi-dependencies]
+rst-to-myst = "*"
+sphinx = "*"
+
+[environments]
+rst-to-myst = {features = ["rst-to-myst"], no-default-feature = true}
