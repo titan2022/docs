@@ -10,6 +10,7 @@ dependencies.md
 examples.md
 guides.md
 installation.md
+SystemIdentification/index
 ```
 
 ## Introduction

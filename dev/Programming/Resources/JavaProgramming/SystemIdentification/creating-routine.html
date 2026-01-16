@@ -1,0 +1,633 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="Running the Identification Routine" href="running-routine.html" /><link rel="prev" title="Introduction to System Identification" href="introduction.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Creating an Identification Routine - Titan Robotics 2024 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">Titan Robotics 2024 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Titan Robotics 2024 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../../index.html">Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../PreseasonTraining2025/index.html">Preseason training (2025)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Preseason training (2025)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining2025/1.1_Introduction.html">1.1 Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining2025/2_CommandBased.html">2 Command-based programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining2025/3_PID_feedforward.html">3 PID and feedforward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining2025/4_Swerve.html">4 Swerve and autos</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../PreseasonTraining/index.html">Preseason Training (2024)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Preseason Training (2024)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/Overview/index.html">Programming Subteam Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/LEDProgramming/index.html">LED Programming</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../PreseasonTraining/JavaBasics/index.html">Java Basics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Java Basics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../PreseasonTraining/JavaBasics/InventoryManager.html">1 - Inventory Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../PreseasonTraining/JavaBasics/WordleClone.html">2 - Wordle Clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../PreseasonTraining/JavaBasics/BrainfInterpreter.html">3 - Brainf interpreter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../PreseasonTraining/JavaBasics/OldNotes.html">Old notes from 2023</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/TankDriveSimulation/index.html">Tank Drive Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/TankAutonomous/index.html">Tank Autonomous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/ElectricalOverview/index.html">Electrical overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/LinuxInstallation/index.html">Linux installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/OpenCV_ColorSegmentation/index.html">Color-based segmentation in OpenCV Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/ControlTheoryBasics/index.html">Control Theory Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/2024CodeOverview/index.html">2024 Code overview</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/index.html">Specializations</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Specializations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Coprocessor/index.html">Coprocessor</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Coprocessor</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Coprocessor/Packaging/index.html">Packaging</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Packaging</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Coprocessor/Packaging/Nov13.html">Nov 13</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/MachineLearning/index.html">Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Machine Learning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../PreseasonTraining/Specializations/MachineLearning/Dec4.html">Dec 4 - Introduction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../PreseasonTraining/Specializations/MachineLearning/Dec11.html">Dec 11 - Convolutional Neural Networks</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Algorithms/index.html">Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Algorithms</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Algorithms/C%2B%2B/index.html">C++ lessons</a></li>
+<li class="toctree-l5 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Algorithms/KalmanFilters/index.html">Kalman Filters</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Kalman Filters</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../PreseasonTraining/Specializations/Algorithms/KalmanFilters/Book.html">Kalman Filters Book</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../../PreseasonTraining/Specializations/MathPhysics/index.html">Math/physics modeling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Math/physics modeling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../PreseasonTraining/Specializations/MathPhysics/Calculus/index.html">Basic calculus</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../PreseasonTraining/BreakHomework.html">Winter Break Homework</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../../index.html">Resources</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Resources</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../StyleGuide.html">Style guide</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../Applications/index.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Applications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Applications/git.html">Git</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="../index.html">Java / roboRIO Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Java / roboRIO Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../dependencies.html">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples.html">Good example code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../guides.html">Programming guides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l4 current has-children"><a class="reference internal" href="index.html">System identification</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of System identification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="introduction.html">Introduction to System Identification</a></li>
+<li class="toctree-l5 current current-page"><a class="current reference internal" href="#">Creating an Identification Routine</a></li>
+<li class="toctree-l5"><a class="reference internal" href="running-routine.html">Running the Identification Routine</a></li>
+<li class="toctree-l5"><a class="reference internal" href="loading-data.html">Loading Data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="viewing-diagnostics.html">Viewing Diagnostics</a></li>
+<li class="toctree-l5"><a class="reference internal" href="analyzing-gains.html">Analyzing Data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="additional-utils.html">Additional Utilities and Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../CppProgramming/index.html">C++ Programming</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of C++ Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../CppProgramming/ModernCpp.html">Modern C++</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../Coprocessors/index.html">Coprocessors</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of Coprocessors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Coprocessors/RemoteAccess.html">Remote access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Coprocessors/Configuration.html">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Coprocessors/OrangePi.html">Orange Pi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Coprocessors/CameraFinding.html">Finding cameras</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Linux/index.html">4 - Linux</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../Radio/index.html">Radio</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of Radio</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Radio/Configuration.html">Radio configuration and upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Radio/AccessPoint.html">Access point mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../Networking/index.html">Networking</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of Networking</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Networking/finding-clients.html">Finding clients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Networking/network-sharing.html">Network sharing</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../Optimization/index.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of Optimization</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Optimization/CommonIssues.html">Common Optimization Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Optimization/Profiling.html">Profiling (Java)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../CommandBased/index.html">Command Based Programming</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of Command Based Programming</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../CommandBased/CommandsOverview.html">Commands Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../TitanAlgorithms/index.html">Titan Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../TitanDashboard/index.html">Titan Dashboard</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../TitanProcessing/index.html">Titan-Processing</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of Titan-Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../TitanProcessing/Installation/index.html">Building</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../TitanProcessing/Setup/index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle navigation of Setup</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../TitanProcessing/Setup/Configuration.html">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../TitanProcessing/Setup/Calibration.html">Calibration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TitanProcessing/AprilTags/index.html">AprilTag Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TitanProcessing/Localization/index.html">Localization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TitanProcessing/Networking/index.html">Networking</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../TitanProcessing/DeploymentScripts/index.html">Deployment scripts</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle navigation of Deployment scripts</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../TitanProcessing/DeploymentScripts/deployment-tutorial.html">Deployment tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../TitanProcessing/3DGeometry/index.html">3D geometry</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of 3D geometry</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../TitanProcessing/3DGeometry/CoordinateSystems.html">Coordinate systems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TitanProcessing/TitanDashboard/index.html">Titan-Dashboard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../Strategy/index.html">Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><div class="visually-hidden">Toggle navigation of Strategy</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../Strategy/Programming/index.html">Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><div class="visually-hidden">Toggle navigation of Strategy</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Strategy/Programming/ProgrammingOverview/index.html">Programming Strategy Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TeamHistory/index.html">Team #2022 History</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/blob/dev/source/Programming/Resources/JavaProgramming/SystemIdentification/creating-routine.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/titan2022/docs/edit/dev/source/Programming/Resources/JavaProgramming/SystemIdentification/creating-routine.md" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="creating-an-identification-routine">
+<h1>Creating an Identification Routine<a class="headerlink" href="#creating-an-identification-routine" title="Link to this heading">¶</a></h1>
+<section id="types-of-tests">
+<h2>Types of Tests<a class="headerlink" href="#types-of-tests" title="Link to this heading">¶</a></h2>
+<p>A standard motor identification routine consists of two types of tests:</p>
+<ul class="simple">
+<li><p><strong>Quasistatic:</strong> In this test, the mechanism is gradually sped-up such that the voltage corresponding to acceleration is negligible (hence, “as if static”).</p></li>
+<li><p><strong>Dynamic:</strong> In this test, a constant ‘step voltage’ is given to the mechanism, so that the behavior while accelerating can be determined.</p></li>
+</ul>
+<p>Each test type is run both forwards and backwards, for four tests in total. The tests can be run in any order, but running a “backwards” test directly after a “forwards” test is generally advisable (as it will more or less reset the mechanism to its original position). <code class="docutils literal notranslate"><span class="pre">SysIdRoutine</span></code> provides command factories that may be used to run the tests, for example as part of an autonomous routine. Previous versions of SysId used a project generator to create and deploy robot code to run these tests, but it proved to be very fragile and difficult to maintain. The user code-based workflow enables teams to use mechanism code they already know works, including soft and hard limits.</p>
+</section>
+<section id="units">
+<h2>Units<a class="headerlink" href="#units" title="Link to this heading">¶</a></h2>
+<p>Keeping track of units is one of the most critical tasks when doing System Identification. At all times, you <em>must</em> be aware of:</p>
+<ul class="simple">
+<li><p>The units your sensor reports in</p></li>
+<li><p>The units your motor controller needs setpoints in</p></li>
+<li><p>The units of the control gains</p></li>
+</ul>
+<p>If the units do not match, some amount of manual dimensional analysis will be required to convert them.</p>
+</section>
+<section id="what-to-log">
+<h2>What to Log<a class="headerlink" href="#what-to-log" title="Link to this heading">¶</a></h2>
+<p>SysId requires three different datasets for each motor that will be characterized:</p>
+<ol class="arabic simple">
+<li><p>Position</p></li>
+<li><p>Velocity</p></li>
+<li><p><em>Output</em> Voltage (not battery/bus voltage)</p></li>
+</ol>
+</section>
+<section id="choosing-a-logger">
+<h2>Choosing a Logger<a class="headerlink" href="#choosing-a-logger" title="Link to this heading">¶</a></h2>
+<p>SysId will only accept WPILib DataLogs (.wpilog files), but there are many ways to create them.</p>
+<ul class="simple">
+<li><p>Logging to NetworkTables and using <code class="docutils literal notranslate"><span class="pre">DataLogManager</span></code> to clone it to a DataLog</p></li>
+<li><p>Epilogue using a File backend</p></li>
+<li><p>DogLog (3rd-party library)</p></li>
+<li><p>Vendor logging solutions such as CTRE’s <code class="docutils literal notranslate"><span class="pre">SignalLogger</span></code> or the <code class="docutils literal notranslate"><span class="pre">URCL</span></code> REV logger</p></li>
+</ul>
+<p>When determining which logging solution to use, measurement timing is the primary consideration. The quality of the fit depends primarily on the level of timing jitter (or the amount that the time between measurements changes randomly during the test duration), though making the actual interval length itself smaller can also improve accuracy. Most timing jitter is caused by the Java Garbage Collector on the SystemCore, and so a low-hanging fruit for data improvement is to move to a lower-jitter collection method such as direct CAN timestamp measurements offtered by CTRE’s <code class="docutils literal notranslate"><span class="pre">SignalLogger</span></code> or <code class="docutils literal notranslate"><span class="pre">URCL</span></code> for REV devices.</p>
+<p>Any of these should work perfectly fine, but consult the documentation for each to learn how to use it. The remainder of this page will assume you are using WPILib logging.</p>
+</section>
+<section id="how-to-log">
+<h2>How to Log<a class="headerlink" href="#how-to-log" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a full example project, see the SysIdRoutine example (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/sysidroutine">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SysIdRoutine">C++</a>, <a class="reference external" href="https://github.com/robotpy/examples/tree/main/SysId">Python</a>)</p>
+</div>
+<p>WPILib provides the <code class="docutils literal notranslate"><span class="pre">SysIdRoutine</span></code> class for creating and automating SysId tests to streamline data collection for teams. The API is designed with the Command-Based paradigm in mind, as it is used by the majority of FRC teams. The underlying <code class="docutils literal notranslate"><span class="pre">SysIdRoutineLog</span></code> recording API is usable in Non-Command codebases but will not be detailed here.</p>
+<section id="sysidroutine">
+<h3>SysIdRoutine<a class="headerlink" href="#sysidroutine" title="Link to this heading">¶</a></h3>
+<p>The intended usecase of <code class="docutils literal notranslate"><span class="pre">SysIdRoutine</span></code> is for one instance to be constructed in each subsystem. This instance must be provided with the test config (the Quasistatic test’s voltage ramp rate, the Dynamic test’s step voltage, and optionally a timeout) and a Mechanism object containing callbacks for driving the mechanism’s motors and recording the test data as well as an instance of the subsystem object. If you do not understand Lambda Expressions or the concept of Callbacks, or just need a refresher, read the <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/functions-as-data.html">Treating Functions as Data</a> article.</p>
+<p>The drive callback only needs to take the provided voltage object and use the voltage to set the motor output.</p>
+<p>The data logging callback requires you to specify the name the motor will be logged under, as well as the values you wish to record. The API supports many quantities, but Voltage, Position, and Velocity are the important ones for System Identification purposes. Angular and linear position, velocity, and acceleration are distinct entities, so make sure you are using the correct units.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All datapoints must be passed to the API using unit-safe types (<code class="docutils literal notranslate"><span class="pre">Measure</span></code> in Java, an mp-units quantity in C++). Some motor APIs return data natively using unit-safe values, but the majority do not, so you will need to construct them using the motor data before or while calling the log methods!</p>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">SysIdRoutine</span><span class="w"> </span><span class="n">routine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SysIdRoutine</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// no arguments means to use the defaults (1V / Second ramp rate, 7V step foltage, 10 second timeout).</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Config</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Volts</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mf">0.5</span><span class="p">).</span><span class="na">Per</span><span class="p">(</span><span class="n">Second</span><span class="p">),</span><span class="w"> </span><span class="c1">// 0.5V / sec ramp rate</span>
+<span class="w">        </span><span class="n">Volts</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="c1">// 4V step voltage</span>
+<span class="w">        </span><span class="n">Seconds</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">// 4 second timeout</span>
+<span class="w">    </span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Mechanism</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// you can use a method reference for this, but if you understand lambda expressions it is easiest to use them instead.</span>
+<span class="w">        </span><span class="n">volts</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">motor</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="n">volts</span><span class="p">.</span><span class="na">magnitude</span><span class="p">());</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="n">log</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// comment this</span>
+<span class="w">            </span><span class="n">log</span><span class="p">.</span><span class="na">motor</span><span class="p">(</span><span class="s">&quot;shooter-wheel&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">voltage</span><span class="p">(</span><span class="n">Volts</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="na">getVoltage</span><span class="p">()))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">position</span><span class="p">(</span><span class="n">Rotations</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="na">getPosition</span><span class="p">()))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">velocity</span><span class="p">(</span><span class="n">Rotations</span><span class="p">.</span><span class="na">per</span><span class="p">(</span><span class="n">Second</span><span class="p">).</span><span class="na">of</span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">()));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="sysidroutine-details">
+<h3>SysIdRoutine details<a class="headerlink" href="#sysidroutine-details" title="Link to this heading">¶</a></h3>
+<section id="routine-config">
+<h4>Routine Config<a class="headerlink" href="#routine-config" title="Link to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">Config</span></code> object takes in a a voltage ramp rate for use in Quasistatic tests, a steady state step voltage for use in Dynamic tests, a time to use as the maximum test duration for safety reasons, and a callback method that accepts the current test state (such as “dynamic-forward”) for use by a 3rd party logging solution. The constructor may be left blank to default the ramp rate to 1 volt per second and the step voltage to 7 volts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all 3rd party loggers will interact with SysIdRoutine directly. CTRE users who do not wish to use SysIdRoutine directly for logging should use the [SignalLogger](<a class="reference external" href="https://pro.docs.ctr-electronics.com/en/latest/docs/api-reference/api-usage/signal-logging.html">https://pro.docs.ctr-electronics.com/en/latest/docs/api-reference/api-usage/signal-logging.html</a>) API and use Tuner X to convert to wpilog. REV users may use Team 6328’s [Unofficial REV-Compatible Logger (URCL)](<a class="reference external" href="https://docs.advantagescope.org/more-features/urcl">https://docs.advantagescope.org/more-features/urcl</a>). In both cases the log callback should be set to <code class="docutils literal notranslate"><span class="pre">null</span></code>. Once the log file is in hand, it may be used with SysId just like any other.</p>
+</div>
+<p>The timeout and state callback are optional and defaulted to 10 seconds and null (which will log the data to a normal WPILog file) respectively.</p>
+<p>In order to use SysIdRoutine with a third-party logger, the 4th argument can be provided as follows (in this example we use CTRE’s SignalLogger):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Config</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Volts</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mf">0.5</span><span class="p">).</span><span class="na">Per</span><span class="p">(</span><span class="n">Second</span><span class="p">),</span><span class="w"> </span><span class="c1">// 0.5V / sec ramp rate</span>
+<span class="w">        </span><span class="n">Volts</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="c1">// 4V step voltage</span>
+<span class="w">        </span><span class="n">Seconds</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="c1">// 4 second timeout</span>
+<span class="hll"><span class="w">        </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">SignalLogger</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="na">toString</span><span class="p">())</span>
+</span><span class="w">    </span><span class="p">),</span><span class="w"> </span>
+</pre></div>
+</div>
+</section>
+<section id="declaring-the-mechanism">
+<h4>Declaring the Mechanism<a class="headerlink" href="#declaring-the-mechanism" title="Link to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">Mechanism</span></code> object takes a voltage consumer, a log consumer, the subsystem being characterized, and the name of the mechanism (to record in the log). The drive callback takes in the routine-generated voltage command and passes it to the relevant motors. The log callback reads the motor voltage, position, and velocity for each relevant motor and adds it to the running log. The subsystem is required so that it may be added to the requirements of the routine commands. The name is optional and will be defaulted to the string returned by <code class="docutils literal notranslate"><span class="pre">getName()</span></code>.</p>
+<p>The callbacks can either be created in-place via Lambda expressions or can be their own standalone functions and be passed in via method references. Best practice is to create the routine and callbacks inside the subsystem, to prevent leakage.</p>
+</section>
+<section id="mechanism-callbacks">
+<h4>Mechanism Callbacks<a class="headerlink" href="#mechanism-callbacks" title="Link to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">Mechanism</span></code> callbacks are essentially just plumbing between the routine and your motors and sensors.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">drive</span></code> callback exists so that you can pass the requested voltage directly to your motor controller(s).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">log</span></code> callback reads sensors so that the routine can log the voltage, position, and velocity at each timestep.</p>
+<p>See the SysIdRoutine ([Java](<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/sysidroutine">https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/sysidroutine</a>), [C++](<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SysIdRoutine">https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SysIdRoutine</a>)) example project for example callbacks.</p>
+</section>
+</section>
+<section id="test-factories">
+<h3>Test Factories<a class="headerlink" href="#test-factories" title="Link to this heading">¶</a></h3>
+<p>To be able to run the tests, SysIdRoutine exposes test “factories”, or functions that each return a command that will execute a given test. These should be exposed by the subsystem.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">sysIdQuasistatic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">routine</span><span class="p">.</span><span class="na">quasistatic</span><span class="p">(</span><span class="n">direction</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">sysIdDynamic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">routine</span><span class="p">.</span><span class="na">dynamic</span><span class="p">(</span><span class="n">direction</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Either bind the factory methods to either controller buttons or create an autonomous routine with them. It is recommended to bind them to buttons that the user must hold down for the duration of the test so that the user can stop the routine quickly if it exceeds safe limits.</p>
+<p>Here is an example of binding buttons to these commands in <code class="docutils literal notranslate"><span class="pre">Robot</span></code> or <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Joystick Y = quasistatic forward</span>
+<span class="cm"> * Joystick A = quasistatic reverse</span>
+<span class="cm"> * Joystick B = dynamic forward</span>
+<span class="cm"> * Joystick X = dyanmic reverse</span>
+<span class="cm"> */</span>
+<span class="n">m_joystick</span><span class="p">.</span><span class="na">y</span><span class="p">().</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">m_mechanism</span><span class="p">.</span><span class="na">sysIdQuasistatic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="p">.</span><span class="na">kForward</span><span class="p">));</span>
+<span class="n">m_joystick</span><span class="p">.</span><span class="na">a</span><span class="p">().</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">m_mechanism</span><span class="p">.</span><span class="na">sysIdQuasistatic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="p">.</span><span class="na">kReverse</span><span class="p">));</span>
+<span class="n">m_joystick</span><span class="p">.</span><span class="na">b</span><span class="p">().</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">m_mechanism</span><span class="p">.</span><span class="na">sysIdDynamic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="p">.</span><span class="na">kForward</span><span class="p">));</span>
+<span class="n">m_joystick</span><span class="p">.</span><span class="na">x</span><span class="p">().</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">m_mechanism</span><span class="p">.</span><span class="na">sysIdDynamic</span><span class="p">(</span><span class="n">SysIdRoutine</span><span class="p">.</span><span class="na">Direction</span><span class="p">.</span><span class="na">kReverse</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>All four tests must be run and captured in a single log file. As a result, it is important that the user starts the logger before running the tests and stops the logger after all tests have been completed. (However, this is not standard practice when using loggers other than the CTRE Signal Logger.) This will ensure the log is not cluttered with data from other actions such as driving the robot to an open area. Here is an example for the CTRE Signal Logger:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">m_joystick</span><span class="p">.</span><span class="na">leftBumper</span><span class="p">().</span><span class="na">onTrue</span><span class="p">(</span><span class="n">Commands</span><span class="p">.</span><span class="na">runOnce</span><span class="p">(</span><span class="n">SignalLogger</span><span class="p">::</span><span class="n">start</span><span class="p">));</span>
+<span class="n">m_joystick</span><span class="p">.</span><span class="na">rightBumper</span><span class="p">().</span><span class="na">onTrue</span><span class="p">(</span><span class="n">Commands</span><span class="p">.</span><span class="na">runOnce</span><span class="p">(</span><span class="n">SignalLogger</span><span class="p">::</span><span class="n">stop</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="running-routine.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Running the Identification Routine</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="introduction.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Introduction to System Identification</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Titan Robotics #2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Creating an Identification Routine</a><ul>
+<li><a class="reference internal" href="#types-of-tests">Types of Tests</a></li>
+<li><a class="reference internal" href="#units">Units</a></li>
+<li><a class="reference internal" href="#what-to-log">What to Log</a></li>
+<li><a class="reference internal" href="#choosing-a-logger">Choosing a Logger</a></li>
+<li><a class="reference internal" href="#how-to-log">How to Log</a><ul>
+<li><a class="reference internal" href="#sysidroutine">SysIdRoutine</a></li>
+<li><a class="reference internal" href="#sysidroutine-details">SysIdRoutine details</a><ul>
+<li><a class="reference internal" href="#routine-config">Routine Config</a></li>
+<li><a class="reference internal" href="#declaring-the-mechanism">Declaring the Mechanism</a></li>
+<li><a class="reference internal" href="#mechanism-callbacks">Mechanism Callbacks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-factories">Test Factories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=6fefd858"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
