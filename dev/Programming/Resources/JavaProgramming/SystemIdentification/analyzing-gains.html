@@ -402,9 +402,9 @@
 <p class="admonition-title">Note</p>
 <p>If you would like to change units, you will have to press the <span class="guilabel">Override Units</span> button and fill out the information on the popup.</p>
 </div>
-<img alt="Analyzing data for feedforward" src="Programming/Resources/JavaProgramming/SystemIdentification/images/feedback-analysis.png" />
+<img alt="Analyzing data for feedforward" src="../../../../_images/feedback-analysis.png" />
 <p>The computed mechanism system parameters will then be displayed.</p>
-<img alt="Analysis coefficient results" src="Programming/Resources/JavaProgramming/SystemIdentification/images/feedforward-values.png" />
+<img alt="Analysis coefficient results" src="../../../../_images/feedforward-values.png" />
 </section>
 <section id="feedback-analysis">
 <h2>Feedback Analysis<a class="headerlink" href="#feedback-analysis" title="Link to this heading">¶</a></h2>
@@ -413,7 +413,7 @@
 <p>These gains are, in effect, “educated guesses” - they are not guaranteed to be perfect, and should be viewed as a “starting point” for further tuning.</p>
 </div>
 <p>To view the feedback constants, click on the dropdown arrow on the <span class="guilabel">Feedback</span> section.</p>
-<img alt="Feedback analysis pane" src="Programming/Resources/JavaProgramming/SystemIdentification/images/feedback-analysis.png" />
+<img alt="Feedback analysis pane" src="../../../../_images/feedback-analysis.png" />
 <p>This view can be used to calculate optimal feedback gains for a PD or P controller for your mechanism (via <span class="xref std std-term">LQR</span>).</p>
 </section>
 <section id="enter-controller-parameters">
@@ -424,7 +424,7 @@
 </div>
 <p>The calculated feedforward gains are <em>dimensioned quantities</em>. Unfortunately, not much attention is often paid to the units of PID gains in FRC{{ reg }} controls, and so the various typical options for PID controller implementations differ in their unit conventions (which are often not made clear to the user).</p>
 <p>To specify the correct settings for your PID controller, use the following options.</p>
-<img alt="Picture of the controller settings" src="Programming/Resources/JavaProgramming/SystemIdentification/images/controller-settings.png" />
+<img alt="Picture of the controller settings" src="../../../../_images/controller-settings.png" />
 <ul class="simple">
 <li><p><span class="guilabel">Gain Settings Preset</span> This drop-down menu will auto-populate the remaining fields with likely settings for one of a number of common FRC controller setups. Note that some settings, such as post-encoder gearing, PPR, and the presence of a follower motor must still be manually specified (as the analyzer has no way of knowing these without user input), and that others may vary from the given defaults depending on user setup.</p></li>
 <li><p><span class="guilabel">Controller Period</span> This is the execution period of the control loop, in seconds. The default RIO loop rate is 50Hz, corresponding to a period of 0.02s. The onboard controllers on most “smart controllers” run at 1Khz, or a period of 0.001s.</p></li>
@@ -461,14 +461,14 @@ d = \frac{T(n - 1)}{2}
 <section id="specify-optimality-criteria">
 <h2>Specify Optimality Criteria<a class="headerlink" href="#specify-optimality-criteria" title="Link to this heading">¶</a></h2>
 <p>Finally, the user must specify what will be considered an “optimal” controller. This takes the form of desired tolerances for the system error and control effort - note that it is <em>not</em> guaranteed that the system will obey these tolerances at all times.</p>
-<img alt="Entering optimality criteria for the feedback controller" src="Programming/Resources/JavaProgramming/SystemIdentification/images/optimality-criteria.png" />
+<img alt="Entering optimality criteria for the feedback controller" src="../../../../_images/optimality-criteria.png" />
 <p>As a rule, smaller values for the <span class="guilabel">Max Acceptable Error</span> and larger values for the <span class="guilabel">Max Acceptable Control Effort</span> will result in larger gains - this will result in larger control efforts, which can grant better setpoint-tracking but may cause more violent behavior and greater wear on components.</p>
 <p>The <span class="guilabel">Max Acceptable Control Effort</span> should never exceed 12V, as that corresponds to full battery voltage, and ideally should be somewhat lower than this.</p>
 </section>
 <section id="select-loop-type">
 <h2>Select Loop Type<a class="headerlink" href="#select-loop-type" title="Link to this heading">¶</a></h2>
 <p>It is typical to control mechanisms with both position and velocity PIDs, depending on application. Either can be selected using the drop-down <span class="guilabel">Loop Type</span> menu.</p>
-<img alt="Specifying loop type" src="Programming/Resources/JavaProgramming/SystemIdentification/images/looptype.png" />
+<img alt="Specifying loop type" src="../../../../_images/looptype.png" />
 </section>
 </section>
 

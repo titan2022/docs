@@ -394,7 +394,7 @@
 <section id="goodness-of-fit-metrics">
 <h2>Goodness-of-Fit Metrics<a class="headerlink" href="#goodness-of-fit-metrics" title="Link to this heading">¶</a></h2>
 <p>There are three numerical accuracy metrics that are computed with this tool: acceleration <span class="xref std std-term">r-squared</span>, simulated velocity r-squared, and the simulated velocity <span class="xref std std-term">RMSE</span>.</p>
-<img alt="Analysis accuracy metrics" src="Programming/Resources/JavaProgramming/SystemIdentification/images/viewing-metrics.png" />
+<img alt="Analysis accuracy metrics" src="../../../../_images/viewing-metrics.png" />
 <p>The acceleration r-squared is the fraction of the variance in measured acceleration (used as the independent variable in the SysId regression) explained by the linear model. This can be quite variable, because acceleration is very susceptible to system noise. Mechanisms tend to vibrate quite a bit, so this value rarely goes above <code class="docutils literal notranslate"><span class="pre">0.5</span></code>, even on very good datasets. If the acceleration r-squared goes below around <code class="docutils literal notranslate"><span class="pre">0.2</span></code>, the kA gain will be of dubious quality and the mechanism vibration should be reduced if possible. Even if your r-squared is outside this range it may still be valid, but it is recommended to improve the data if practical.</p>
 <p>The simulated velocity r-squared is the fraction of the variance in measured velocity explained by a noiseless simulation of the motor movement stepped forward with the constants determined from the regression. A value north of <code class="docutils literal notranslate"><span class="pre">.9</span></code> indicates a good fit.</p>
 <p>The simulated velocity RMSE is the standard deviation of the velocity error from the simulated model. This is a good estimation of the amount of process noise present during the test routine, and can be used as a low-end estimate for the model noise term in <span class="xref std std-ref">state-space control</span>.</p>
@@ -402,7 +402,7 @@
 <section id="diagnostic-plots">
 <h2>Diagnostic Plots<a class="headerlink" href="#diagnostic-plots" title="Link to this heading">¶</a></h2>
 <p>SysId also produces several diagnostic plots to help users evaluate the quality of their model fit.</p>
-<img alt="Diagnostic plot location" src="Programming/Resources/JavaProgramming/SystemIdentification/images/plot-view.png" />
+<img alt="Diagnostic plot location" src="../../../../_images/plot-view.png" />
 <section id="time-domain-plots">
 <h3>Time-Domain Plots<a class="headerlink" href="#time-domain-plots" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
@@ -410,7 +410,7 @@
 <p>To improve plot quality, the diagnostic plots are separated by direction. Be sure to view both the forward <em>and</em> backward plots when troubleshooting!</p>
 </div>
 <p>The Time-Domain Diagnostics plots display velocity versus time over the course of the analyzed tests. These should look something like this:</p>
-<img alt="Picture of the time domain plots" src="Programming/Resources/JavaProgramming/SystemIdentification/images/time-domain-plots.png" />
+<img alt="Picture of the time domain plots" src="../../../../_images/time-domain-plots.png" />
 <p>The velocity time domain plots contain three sets of data: Raw Data, Filtered Data, and Simulation. The Raw Data is the recorded data from your robot, the Filtered Data is the data after a median filter has been applied to the data, and the Simulation represents the velocity predictions of a model based off of the feedforward gains from the tool (these are used to calculate the “sim” error metrics mentioned above).</p>
 <p>A successful quasistatic graph will be very nearly linear, while a successful dynamic graph will be an approximately exponential approach of the steady-speed.</p>
 <p>Deviation from this behavior is a sign of an <span class="xref std std-ref">error</span>, either in your robot setup, analysis settings, or your test procedure.</p>
@@ -418,9 +418,9 @@
 <section id="acceleration-velocity-plot">
 <h3>Acceleration-Velocity Plot<a class="headerlink" href="#acceleration-velocity-plot" title="Link to this heading">¶</a></h3>
 <p>The acceleration-versus-velocity plot displays the mechanism velocity versus the portion of acceleration corresponding to factors other than friction (ideally, this would leave only back-EMF) and applied voltage across <em>all</em> of the tests.</p>
-<img alt="Voltage domain plots picture" src="Programming/Resources/JavaProgramming/SystemIdentification/images/accel-vs-vel-plot.png" />
+<img alt="Voltage domain plots picture" src="../../../../_images/accel-vs-vel-plot.png" />
 <p>This plot should be quite linear, with patches of relatively noiseless quasistatic data intermixed with quite-noisy dynamic data. The noise on the dynamic sections of the plot may be reduced by increasing the <span class="guilabel">Window Size</span> setting.</p>
-<img alt="Picture of the window size selector" src="Programming/Resources/JavaProgramming/SystemIdentification/images/window-size-selector.png" />
+<img alt="Picture of the window size selector" src="../../../../_images/window-size-selector.png" />
 <p>However, if your robot or mechanism has low mass compared to the motor power, this may “eat” what little meaningful acceleration data you have. In these cases <code class="docutils literal notranslate"><span class="pre">kA</span></code> will tend towards zero and can be ignored for feedforward purposes. However, if <code class="docutils literal notranslate"><span class="pre">kA</span></code> cannot be accurately measured, the calculated feedback gains are likely to be inaccurate, and manual tuning may be required.</p>
 </section>
 </section>
@@ -430,16 +430,16 @@
 <section id="improperly-set-motion-threshold">
 <h3>Improperly Set Motion Threshold<a class="headerlink" href="#improperly-set-motion-threshold" title="Link to this heading">¶</a></h3>
 <p>One of the most-common errors is an inappropriate value for the motion threshold.</p>
-<img alt="Motion threshold selector" src="Programming/Resources/JavaProgramming/SystemIdentification/images/motionthreshold-selector.png" />
+<img alt="Motion threshold selector" src="../../../../_images/motionthreshold-selector.png" />
 <section id="velocity-threshold-too-low">
 <h4>Velocity Threshold Too Low<a class="headerlink" href="#velocity-threshold-too-low" title="Link to this heading">¶</a></h4>
-<img alt="Quasistatic time-domain plot with velocity threshold too low" src="Programming/Resources/JavaProgramming/SystemIdentification/images/low-threshold.png" />
+<img alt="Quasistatic time-domain plot with velocity threshold too low" src="../../../../_images/low-threshold.png" />
 <p>The presence of a “leading tail” (emphasized by added red circle) in the quasistatic time-domain plot indicates that the <span class="guilabel">Velocity Threshold</span> setting is too low, and thus data points from before the robot begins to move are being included.</p>
 <p>To solve this, increase the velocity threshold and re-analyze the data.</p>
 </section>
 <section id="motion-threshold-too-high">
 <h4>Motion Threshold Too High<a class="headerlink" href="#motion-threshold-too-high" title="Link to this heading">¶</a></h4>
-<img alt="Quasistatic time-domain plot with velocity threshold too high" src="Programming/Resources/JavaProgramming/SystemIdentification/images/high-threshold.png" />
+<img alt="Quasistatic time-domain plot with velocity threshold too high" src="../../../../_images/high-threshold.png" />
 <p>While not nearly as problematic as a too-low threshold, a velocity threshold that is too high will result in a large “gap” in the acceleration-versus-velocity plot.</p>
 <p>To solve this, decrease the velocity threshold and re-analyze the data.</p>
 </section>
@@ -450,7 +450,7 @@
 <p class="admonition-title">Note</p>
 <p>There are two types of noise that affect mechanical systems - signal noise and system noise. Signal noise corresponds to measurement error, while system noise corresponds to actual physical motion that is unaccounted-for by your model (e.g. vibration). If SysId suggests that your system is noisy, you must figure out which of the two types of noise is at play - signal noise is often easier to eliminate than system noise.</p>
 </div>
-<img alt="Programming/Resources/JavaProgramming/SystemIdentification/images/velo-noise.png" src="Programming/Resources/JavaProgramming/SystemIdentification/images/velo-noise.png" />
+<img alt="../../../../_images/velo-noise.png" src="../../../../_images/velo-noise.png" />
 <p>Many FRC setups suffer from poorly-installed encoders - errors in shaft concentricity (for optical encoders) and magnet location (For magnetic encoders) can both contribute to noisy velocity signals, as can inappropriate filtering settings. Encoder noise will be immediately visible in your diagnostic plots, as can be seen above. Encoder noise is especially common on the [toughbox mini](<a class="reference external" href="https://www.andymark.com/products/toughbox-mini-options">https://www.andymark.com/products/toughbox-mini-options</a>) gearboxes provided in the kit of parts.</p>
 <p>System parameters can sometimes be accurately determined even from data polluted by encoder noise by increasing the window size setting. However, this sort of encoder noise is problematic for robot code much the same way it is problematic for the system identification tool. As the root cause of the noise is not known, it is recommended to try a different encoder setup if this is observed, either by moving the encoders to a different shaft, replacing them with a different type of encoder, or increasing the sample per average in project generation (adds an additional layer of filtering).</p>
 </section>
