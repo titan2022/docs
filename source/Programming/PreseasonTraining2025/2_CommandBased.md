@@ -1,11 +1,13 @@
 # 2 Command-based programming
 
+(2.1)=
 ## 2.1 Lecture
 [<big>**SLIDES**</big>](https://docs.google.com/presentation/d/1oYfl6V0sdiAbQPNuvmw6tMe7_MwqZdPDRTk7-M82QfE/edit)
 
 ### Further reading
 * [*Command-Based Programming* in the WPILib documentation](https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html)
 
+(2.2)=
 ## 2.2 Activity
 
 [slides](https://docs.google.com/presentation/d/19UBcB5TavPg54613Egh7rUXC6EmpprQ9OHRuUrDbzOI/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)

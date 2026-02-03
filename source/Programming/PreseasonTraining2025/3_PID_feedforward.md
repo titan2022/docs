@@ -1,5 +1,6 @@
 # 3 PID and feedforward
 
+(3.1)=
 ## 3.1 PID and feedforward - lecture
 
 [<big>**SLIDES**</big>](https://docs.google.com/presentation/d/1pc51KDn9JJ3KvddbucvLxrrfCmgnM5Yqc02aFtfd4qk/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
@@ -17,6 +18,7 @@
 * *Controls Engineering in the FIRST Robotics Competition* - detailed book
   * [chapter 2 "PID controllers"](https://file.tavsys.net/control/controls-engineering-in-frc.pdf#page=30)
 
+(3.2)=
 ## 3.2 PID/feedforward project (elevator)
 
 [<big>**SLIDES**</big>](https://docs.google.com/presentation/d/1tZLZZepvsndfnXILGYvMgUW2_10ALzjbtPqmvinW5gk/edit?slide=id.g36a207f0c2e_0_88#slide=id.g36a207f0c2e_0_88)
@@ -25,6 +27,7 @@ Template code: <https://github.com/titan2022/PIDF-Project-2025>
 
 Solution: <https://github.com/titan2022/PIDF-Project-2025/tree/solution>
 
+(3.3)=
 ## 3.3 PID and feedforward tuning activity
 
 :::{note}
